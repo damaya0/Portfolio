@@ -106,8 +106,6 @@ export const EDUCATION: Education[] = [
     duration: 'Jan 2018 – Oct 2020',
     achievements: [
       '🏆 Ranked 9th in Sri Lanka and 3rd in Colombo District',
-      'Honors in Renewable Energy Engineering',
-      'Honors in Signals, Circuits and Systems',
     ],
     coursework: ['Combined Mathematics', 'Physics', 'Chemistry'],
     id: 'edu2',
