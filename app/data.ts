@@ -9,11 +9,13 @@ type Education = {
 }
 
 type InternExperience = {
-  company: string
   title: string
+  company: string
   duration: string
+  description: string
   responsibilities: string[]
-  link?: string
+  technologies: string[]
+  images?: string[]
   id: string
 }
 
@@ -22,6 +24,8 @@ type Award = {
   organization: string
   year?: string
   description?: string
+  image?: string
+  awards?: string[]
   id: string
 }
 
@@ -30,6 +34,7 @@ type AcademicProject = {
   description: string
   link?: string
   technologies?: string[]
+  image?: string
   id: string
 }
 
@@ -47,11 +52,18 @@ type Accomplishment = {
   id: string
 }
 
-type Volunteering = {
+type VolunteeringRole = {
   role: string
-  organization: string
-  duration?: string
+  startDate: string
+  endDate: string
   description?: string
+}
+
+type Volunteering = {
+  organization: string
+  icon?: string
+  image?: string
+  roles: VolunteeringRole[]
   id: string
 }
 
@@ -93,8 +105,9 @@ export const EDUCATION: Education[] = [
     degree: 'GCE Advanced Level',
     duration: 'Jan 2018 – Oct 2020',
     achievements: [
-      'Z-score 2.8655',
-      'Ranked 9th in Sri Lanka and 3rd in Colombo District',
+      '🏆 Ranked 9th in Sri Lanka and 3rd in Colombo District',
+      'Honors in Renewable Energy Engineering',
+      'Honors in Signals, Circuits and Systems',
     ],
     coursework: ['Combined Mathematics', 'Physics', 'Chemistry'],
     id: 'edu2',
@@ -103,24 +116,90 @@ export const EDUCATION: Education[] = [
 
 export const INTERN_EXPERIENCE: InternExperience[] = [
   {
-    company: 'WSO2',
     title: 'Software Engineering Intern',
-    duration: 'Dec 2024 – May 2025',
+    company: 'WSO2',
+    duration: 'June 2024 – December 2024',
+    description:
+      'Working on integration solutions and microservices architecture, contributing to enterprise-level software development.',
     responsibilities: [
-      'Designed and implemented an Agentic AI analyzer for WSO2 Micro Integrator diagnostics',
-      'Developed Ballerina integration for HubSpot Companies API',
+      'Developed modules using the Ballerina programming language',
+      'Worked as Editor for Ballerina Central',
+      'Designed and Developed an Agentic-AI System for Mi Diagnostics',
+      'Did a research on Advance Data Synchronization with Gateways',
     ],
-    link: 'https://wso2.com',
+    technologies: [
+      'Ballerina',
+      'Java',
+      'Python',
+      'Agentic-AI',
+      'LangChain',
+      'LangGraph',
+      'React',
+      'TypeScript',
+    ],
+    images: [
+      '/internship/wso2-1.jpg',
+      '/internship/wso2-2.jpg',
+      '/internship/wso2-3.jpg',
+      '/internship/wso2-4.jpg',
+      '/internship/wso2-5.jpg',
+      '/internship/wso2-6.jpg',
+      '/internship/wso2-7.jpg',
+    ],
     id: 'intern1',
   },
 ]
 
 export const AWARDS: Award[] = [
+  // Awards with images - displayed first
   {
     title: '1st Runners up – Spark Challenge 2024',
     organization: 'Industry Competition',
+    image: '/awards/spark-challenge.jpg',
     id: 'award1',
   },
+  {
+    title: 'Best Community Project Award',
+    organization: 'Innovation Bootcamp by Meta',
+    year: '2023',
+    image: '/awards/community-project.jpg',
+    id: 'award4',
+  },
+  {
+    title: 'Gavelier of the Year',
+    organization: 'Gavel Club',
+    year: '2023',
+    image: '/awards/gavelier-year.jpg',
+    id: 'award5',
+  },
+  {
+    title: 'Spirit of Service',
+    organization: 'Rotaract UoM',
+    year: '2023',
+    image: '/awards/spirit-service.jpg',
+    id: 'award6',
+  },
+  // School Awards - Separate section (moved to end)
+  {
+    title: 'School Awards - Final Prize Giving',
+    organization: 'Ananda College',
+    year: '2020',
+    description:
+      'I won eight prestigious prizes and awards at the final prize giving of my school life. I received these prizes from honorable then president Ranil Wickremesinghe.',
+    image: '/awards/school-awards.jpg',
+    awards: [
+      'C.W. Leadbeater Challenge Cup - Island 9th',
+      'Fritz Kunz Memorial Award',
+      'C.M. Weerarathna Memorial Award',
+      'P.De.S.Kularathna Memorial Award',
+      'Jayantha Mallimarachchi Memorial Award',
+      'OBA Japan Branch Award',
+      'Harold Jayathilaka Memorial Award for Physics',
+      'Muhandiram Charles Memorial Award for Combined Mathematics',
+    ],
+    id: 'award_school',
+  },
+  // Awards without images
   {
     title: 'Merit Award – Predicta 1.0 Machine Learning Competition',
     organization: 'ML Competition',
@@ -134,47 +213,14 @@ export const AWARDS: Award[] = [
     id: 'award3',
   },
   {
-    title: 'Best Community Project Award',
-    organization: 'Innovation Bootcamp by Meta',
-    year: '2023',
-    id: 'award4',
-  },
-  {
-    title: 'Gavelier of the Year',
-    organization: 'Gavel Club',
-    year: '2023',
-    id: 'award5',
-  },
-  {
-    title: 'Spirit of Service',
-    organization: 'Rotaract UoM',
-    year: '2023',
-    id: 'award6',
-  },
-  {
     title: 'Mahapola Higher Education Scholarship (Merit)',
     organization: 'Government of Sri Lanka',
     id: 'award7',
   },
   {
-    title: 'CW Leadbeater Challenge Cup',
-    organization: 'Ananda College',
-    id: 'award8',
-  },
-  {
-    title: 'Harold Jayathilaka Memorial Award',
-    organization: 'Ananda College',
-    id: 'award9',
-  },
-  {
-    title: 'Muhandiram Charles Memorial Award',
-    organization: 'Ananda College',
-    id: 'award10',
-  },
-  {
     title: 'Ananda Pradeepa Award',
     organization: 'Ananda College',
-    id: 'award11',
+    id: 'award9',
   },
 ]
 
@@ -184,56 +230,29 @@ export const ACADEMIC_PROJECTS: AcademicProject[] = [
     description:
       'Final year project in collaboration with Dialog Axiata for wildlife detection using multimodal approaches',
     technologies: ['Machine Learning', 'Computer Vision'],
+    image: '/projects/wild-animal.jpg',
     id: 'project1',
-  },
-  {
-    name: 'Joint Phase Noise and Channel Estimation for Sub-THz Communication',
-    description:
-      'Final year project focusing on advanced communication systems',
-    technologies: ['Signal Processing', 'Communication Systems'],
-    id: 'project2',
   },
   {
     name: 'Smart Water Bottle',
     description: 'IoT-based smart water bottle with health tracking features',
     technologies: ['IoT', 'Embedded Systems'],
+    image: '/projects/smart-water.jpg',
     id: 'project3',
-  },
-  {
-    name: 'UniLink Social Platform',
-    description: 'Social networking platform for university students',
-    technologies: ['Web Development', 'Full Stack'],
-    id: 'project4',
-  },
-  {
-    name: 'RAKI Elderly Assistant',
-    description: 'AI-powered assistant system for elderly care',
-    technologies: ['AI', 'Python'],
-    id: 'project5',
-  },
-  {
-    name: 'nanoGPT Implementation',
-    description: 'Implementation of a compact GPT language model',
-    technologies: ['Deep Learning', 'PyTorch', 'NLP'],
-    id: 'project6',
-  },
-  {
-    name: 'Anomaly Detection Chest X-ray System',
-    description: 'Medical imaging system for detecting anomalies in chest X-rays',
-    technologies: ['Deep Learning', 'Computer Vision', 'Medical Imaging'],
-    id: 'project7',
-  },
-  {
-    name: 'Smart Medibox',
-    description: 'Smart medication dispenser with reminder system',
-    technologies: ['IoT', 'Arduino', 'Embedded Systems'],
-    id: 'project8',
   },
   {
     name: 'Depth Camera Using Single Cam',
     description: 'Depth estimation system using monocular camera',
     technologies: ['Computer Vision', 'Python', 'OpenCV'],
+    image: '/projects/depth-camera.jpg',
     id: 'project9',
+  },
+  {
+    name: 'RAKI Elderly Assistant',
+    description: 'AI-powered assistant system for elderly care',
+    technologies: ['AI', 'Python'],
+    image: '/projects/raki-elderly.jpg',
+    id: 'project5',
   },
   {
     name: 'UART FPGA Implementation',
@@ -288,98 +307,187 @@ export const SKILLS: Skill[] = [
 
 export const ACCOMPLISHMENTS: Accomplishment[] = [
   {
+    title: 'WSO2 Certified Micro Integrator Practitioner - V4',
+    organization: 'WSO2',
+    year: '2024',
+    id: 'cert1',
+  },
+  {
     title: 'High Performance + Mission Critical Software Development using C++',
     organization: 'LSEG',
     year: '2024',
-    id: 'cert1',
+    id: 'cert2',
   },
   {
     title: 'Machine Learning Specialization',
     organization: 'DeepLearning.AI (Coursera)',
     year: '2024',
-    id: 'cert2',
+    id: 'cert3',
   },
   {
     title: 'Deep Learning Specialization',
     organization: 'DeepLearning.AI',
     year: 'Ongoing',
-    id: 'cert3',
+    id: 'cert4',
+  },
+  {
+    title: 'Computer Vision and Image Processing Essentials',
+    organization: 'IBM (Coursera)',
+    year: '2024',
+    id: 'cert5',
   },
   {
     title: 'Marketing Foundations',
     organization: 'LinkedIn',
     year: '2019',
-    id: 'cert4',
+    id: 'cert6',
   },
 ]
 
 export const VOLUNTEERING: Volunteering[] = [
   {
-    role: 'Chairperson',
-    organization: 'IEEE Professional Communication Chapter',
-    duration: '2025 – Present',
-    id: 'vol1',
+    organization: 'Gavel Club of University of Moratuwa',
+    image: '/volunteering/gavel.jpg',
+    roles: [
+      {
+        role: 'Vice President of Membership',
+        startDate: 'March 2024',
+        endDate: 'March 2025',
+        description:
+          'Managed membership database and mentoring programs. Organized joint club meetings to foster growth. Successfully increased membership from over 60 people during tenure.',
+      },
+      {
+        role: 'Project Chairperson (Chapter-X)',
+        startDate: 'January 2024',
+        endDate: 'March 2024',
+        description: 'Served as Co-chairperson of Chapter-X.',
+      },
+      {
+        role: 'Member',
+        startDate: 'January 2023',
+        endDate: 'March 2024',
+        description:
+          'Logistic Pillar Head for Speech Olympiad XVI and Project Chairperson for Ruhuna-Mora joint meeting. Achievements include Speech Olympiad XVI Finalist, Speech Olympiad XV Semi-Finalist, and 4th place at Eloquence inter-university public speaking competition.',
+      },
+    ],
+    id: 'org1',
   },
   {
-    role: 'Assistant Treasurer',
-    organization: 'IEEE Professional Communication Chapter',
-    duration: '2023 – 2025',
-    id: 'vol2',
+    organization: 'Rotaract Club of University of Moratuwa',
+    image: '/volunteering/rotaract.jpg',
+    roles: [
+      {
+        role: 'Inducted Member',
+        startDate: 'January 2023',
+        endDate: 'December 2024',
+        description:
+          'Worked as an organizing committee member in over 10 voluntary projects. Roles included moderating the Induction Ceremony, compere for Sri Lanka Model Rotaract United Nations, and moderating the Kerdizo workshop.',
+      },
+      {
+        role: 'Chairperson (Boon-Digiti)',
+        startDate: 'February 2023',
+        endDate: 'August 2023',
+        description:
+          'Volunteered as co-chairperson of the project Boon-Digiti, an initiative by the international service avenue.',
+      },
+      {
+        role: 'Chairperson (Annual Prom Night)',
+        startDate: 'May 2023',
+        endDate: 'July 2023',
+        description:
+          'Volunteered as the co-chairperson of the annual prom night.',
+      },
+      {
+        role: 'Chairperson (Are You Ready?)',
+        startDate: 'February 2023',
+        endDate: 'May 2023',
+        description:
+          'Co-chaired "Career Insight," a sub-project of the official career fair of the University of Moratuwa, "Are You Ready?".',
+      },
+    ],
+    id: 'org2',
   },
   {
-    role: 'Field Representative',
-    organization: 'University of Moratuwa',
-    duration: 'Semesters 4–6',
-    id: 'vol3',
+    organization: 'IEEE Professional Communication Student Branch Chapter of University of Moratuwa',
+    image: '/volunteering/ieee.jpg',
+    roles: [
+      {
+        role: 'Chairperson',
+        startDate: 'March 2024',
+        endDate: 'Present',
+        description: 'Leading the student branch chapter.',
+      },
+      {
+        role: 'Assistant Treasurer',
+        startDate: 'January 2023',
+        endDate: 'June 2025',
+        description: 'Managed financial operations of the chapter.',
+      },
+    ],
+    id: 'org3',
   },
   {
-    role: 'Vice President (Membership)',
-    organization: 'Gavel Club',
-    id: 'vol4',
+    organization: 'Old Anandian Engineers\' Guild',
+    image: '/volunteering/oaeg.jpg',
+    roles: [
+      {
+        role: 'Assistant Director',
+        startDate: 'March 2023',
+        endDate: 'March 2023',
+        description:
+          'Served in a leadership capacity for the guild for a specific tenure.',
+      },
+      {
+        role: 'Committee Member',
+        startDate: 'March 2022',
+        endDate: 'March 2023',
+        description:
+          'Served as a full-time committee member, contributing to management and organization.',
+      },
+    ],
+    id: 'org4',
   },
   {
-    role: 'Marketing Committee Member',
-    organization: 'EXMO',
-    id: 'vol5',
+    organization: 'Electronic Club UOM',
+    image: '/volunteering/eclub.jpg',
+    roles: [
+      {
+        role: 'Committee Member',
+        startDate: 'August 2023',
+        endDate: 'August 2024',
+        description:
+          'Part of the organizing committee for the flagship event of the department, Envoyage. Developed compering and leadership skills.',
+      },
+    ],
+    id: 'org5',
   },
   {
-    role: 'Executive, External Relations',
-    organization: 'Electronic Club',
-    id: 'vol6',
-  },
-  {
-    role: 'Assistant Director Projects',
-    organization: 'Old Anandians Engineering Guild',
-    id: 'vol7',
-  },
-  {
-    role: 'Public Speaking Competitor',
-    organization: 'Various Competitions',
-    description:
-      'Semi-Finalist Speech Olympiad XV, Finalist Speech Olympiad XVI, 4th at Eloquence (Inter-Uni), Semi-finalist Mora Lenz Media Awards',
-    id: 'vol8',
-  },
-  {
-    role: 'Event Organizer',
-    organization: 'Various University Events',
-    description:
-      'ChapterX, Boon Digiti, Prom Night, Gavel Meetings, Career Insight, Speech Olympiad, Congregation, Envoyage',
-    id: 'vol9',
+    organization: 'Electronic and Telecom. Engineering - University of Moratuwa',
+    image: '/volunteering/entc.jpg',
+    roles: [
+      {
+        role: 'Batch Representative',
+        startDate: 'January 2024',
+        endDate: 'May 2025',
+        description:
+          'Serving as the full-time batch representative for the department, demonstrating communication and leadership skills.',
+      },
+    ],
+    id: 'org6',
   },
 ]
 
 export const BLOG_POSTS: BlogPost[] = [
   {
-    title: 'Exploring the Intersection of Design, AI, and Design Engineering',
-    description: 'How AI is changing the way we design',
-    link: '/blog/exploring-the-intersection-of-design-ai-and-design-engineering',
+    title: 'Designing and Implementing an Agentic AI analyzer for WSO2 Micro Integrator diagnostics',
+    description: 'An in-depth look at building an intelligent AI analyzer for WSO2 Micro Integrator using agentic AI principles',
+    link: 'https://medium.com/@damsithadikari2001/designing-and-implementing-an-agentic-ai-analyzer-for-wso2-micro-integrator-diagnostics-ae6eaae7628a',
     uid: 'blog-1',
   },
   {
-    title: 'Why I left my job to start my own company',
-    description:
-      'A deep dive into my decision to leave my job and start my own company',
-    link: '/blog/exploring-the-intersection-of-design-ai-and-design-engineering',
+    title: 'Ballerina Integration for HubSpot Companies API',
+    description: 'A comprehensive guide to integrating Ballerina with HubSpot Companies API',
+    link: 'https://medium.com/@damsithadikari2001/ballerina-integration-for-hubspot-companies-api-6c4497de4692',
     uid: 'blog-2',
   },
 ]

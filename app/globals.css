@@ -11,6 +11,7 @@
   color utility to any element that depends on these defaults.
 */
 @layer base {
+
   *,
   ::after,
   ::before,
@@ -27,7 +28,7 @@
     --light-purple: #E9D5FF;
     --light-blue: #DBEAFE;
     --text-dark: #1F2937;
-    
+
     /* Syntax Highlighting */
     --sh-class: #7aa2f7;
     --sh-sign: #89ddff;
@@ -76,9 +77,12 @@
 
   /* Custom Animations */
   @keyframes float {
-    0%, 100% {
+
+    0%,
+    100% {
       transform: translateY(0px);
     }
+
     50% {
       transform: translateY(-10px);
     }
@@ -88,9 +92,11 @@
     0% {
       background-position: 0% 50%;
     }
+
     50% {
       background-position: 100% 50%;
     }
+
     100% {
       background-position: 0% 50%;
     }
@@ -202,5 +208,15 @@
     background: linear-gradient(135deg, rgba(107, 127, 255, 0.2) 0%, rgba(124, 58, 237, 0.2) 100%);
     transform: translateY(-2px);
     box-shadow: 0 4px 12px rgba(107, 127, 255, 0.2);
+  }
+
+  /* Hide Scrollbar */
+  .scrollbar-hide::-webkit-scrollbar {
+    display: none;
+  }
+
+  .scrollbar-hide {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
   }
 }

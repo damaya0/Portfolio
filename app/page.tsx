@@ -1,17 +1,18 @@
 'use client'
 import { motion } from 'motion/react'
 import {
-  GraduationCap,
   Briefcase,
-  Trophy,
+  Calendar,
+  ChevronRight,
   Code,
-  Wrench,
-  Award,
+  GraduationCap,
   Heart,
   Mail,
-  Phone,
   MapPin,
-  Calendar,
+  Phone,
+  Trophy,
+  Wrench,
+  Award,
 } from 'lucide-react'
 import { Spotlight } from '@/components/ui/spotlight'
 import { Magnetic } from '@/components/ui/magnetic'
@@ -135,10 +136,162 @@ export default function Personal() {
             </div>
           </div>
           <div className="flex justify-center">
-            <div className="relative w-64 h-64 rounded-2xl bg-gradient-to-br from-blue-100 to-purple-100 dark:from-blue-900/20 dark:to-purple-900/20 flex items-center justify-center">
-              <div className="text-8xl font-bold gradient-text">DA</div>
+            <div className="relative w-64 h-64 rounded-2xl overflow-hidden shadow-xl ring-2 ring-purple-200 dark:ring-purple-800">
+              <img
+                src="/profile/profile.jpg"
+                alt="Damsith Adikari"
+                className="w-full h-full object-cover"
+                onError={(e) => {
+                  // Fallback to DA placeholder if image not found
+                  e.currentTarget.style.display = 'none'
+                  e.currentTarget.nextElementSibling?.classList.remove('hidden')
+                }}
+              />
+              <div className="hidden absolute inset-0 bg-gradient-to-br from-blue-100 to-purple-100 dark:from-blue-900/20 dark:to-purple-900/20 flex items-center justify-center">
+                <div className="text-8xl font-bold gradient-text">DA</div>
+              </div>
             </div>
           </div>
+        </div>
+      </motion.section>
+
+      {/* Intern Experience */}
+      <motion.section
+        id="experience"
+        variants={VARIANTS_SECTION}
+        transition={TRANSITION_SECTION}
+        className="scroll-mt-20"
+      >
+        <h2 className="section-heading gradient-text">
+          Work <span className="gradient-text-pink">Experience</span>
+        </h2>
+        <div className="space-y-6">
+          <div className="space-y-8">
+            {INTERN_EXPERIENCE.map((exp) => (
+              <Spotlight
+                key={exp.id}
+                className="group rounded-2xl bg-white p-6 shadow-xl ring-1 ring-zinc-200/50 dark:bg-zinc-900/40 dark:ring-zinc-800/50"
+              >
+                {/* Internship Images Gallery */}
+                {exp.images && exp.images.length > 0 && (
+                  <div className="mb-6 -mx-6 -mt-6">
+                    <div className="relative h-64 bg-gradient-to-br from-blue-100 to-purple-100 dark:from-blue-900/30 dark:to-purple-900/30 overflow-hidden">
+                      <div className="flex gap-2 overflow-x-auto h-full p-4 scrollbar-hide">
+                        {exp.images.map((image, idx) => (
+                          <div
+                            key={idx}
+                            className="relative flex-shrink-0 w-80 h-full rounded-lg overflow-hidden bg-white dark:bg-zinc-800"
+                          >
+                            <img
+                              src={image}
+                              alt={`${exp.company} - Photo ${idx + 1}`}
+                              className="w-full h-full object-cover"
+                              onError={(e) => {
+                                e.currentTarget.style.display = 'none'
+                                e.currentTarget.nextElementSibling?.classList.remove('hidden')
+                              }}
+                            />
+                            <div className="hidden absolute inset-0 bg-gradient-to-br from-blue-100 to-purple-100 dark:from-blue-900/30 dark:to-purple-900/30 flex items-center justify-center">
+                              <Briefcase className="h-12 w-12 text-purple-300 dark:text-purple-700" />
+                            </div>
+                          </div>
+                        ))}
+                      </div>
+                    </div>
+                  </div>
+                )}
+
+                <div className="flex items-start gap-4">
+                  <div className="rounded-xl bg-gradient-to-br from-blue-100 to-purple-100 dark:from-blue-900/20 dark:to-purple-900/20 p-3">
+                    <Briefcase className="h-6 w-6 icon-blue" />
+                  </div>
+                  <div className="flex-1">
+                    <div className="flex items-start justify-between flex-wrap gap-2">
+                      <div>
+                        <h3 className="text-xl font-bold text-zinc-900 dark:text-zinc-50">
+                          {exp.title}
+                        </h3>
+                        <p className="text-purple-600 dark:text-purple-400 font-medium mt-1">
+                          {exp.company}
+                        </p>
+                      </div>
+                      <span className="flex items-center gap-1.5 text-sm text-zinc-500">
+                        <Calendar className="h-4 w-4" />
+                        {exp.duration}
+                      </span>
+                    </div>
+                    <p className="mt-3 text-zinc-600 dark:text-zinc-400 leading-relaxed">
+                      {exp.description}
+                    </p>
+
+                    <details className="mt-4 group/details">
+                      <summary className="cursor-pointer text-sm font-semibold text-purple-600 dark:text-purple-400 hover:text-purple-700 dark:hover:text-purple-300 flex items-center gap-2">
+                        <ChevronRight className="h-4 w-4 transition-transform group-open/details:rotate-90" />
+                        Key Responsibilities
+                      </summary>
+                      <ul className="mt-3 space-y-2 ml-6">
+                        {exp.responsibilities.map((resp, idx) => (
+                          <li
+                            key={idx}
+                            className="text-sm text-zinc-600 dark:text-zinc-400 flex items-start gap-2"
+                          >
+                            <span className="text-purple-500 mt-1">•</span>
+                            {resp}
+                          </li>
+                        ))}
+                      </ul>
+                    </details>
+
+                    <div className="mt-4 flex flex-wrap gap-2">
+                      {exp.technologies.map((tech, idx) => (
+                        <span key={idx} className="skill-pill text-xs">
+                          {tech}
+                        </span>
+                      ))}
+                    </div>
+                  </div>
+                </div>
+              </Spotlight>
+            ))}
+          </div>
+
+          {/* Blog Posts Subsection */}
+          {BLOG_POSTS.length > 0 && (
+            <div className="mt-8">
+              <h3 className="text-lg font-semibold text-zinc-900 dark:text-zinc-100 mb-4">
+                Related Articles
+              </h3>
+              <div className="relative rounded-xl bg-gradient-to-br from-blue-50 to-purple-50 dark:from-blue-900/10 dark:to-purple-900/10 p-2">
+                <AnimatedBackground
+                  enableHover
+                  className="h-full w-full rounded-lg bg-white/80 dark:bg-zinc-900/80"
+                  transition={{
+                    type: 'spring',
+                    bounce: 0,
+                    duration: 0.2,
+                  }}
+                >
+                  {BLOG_POSTS.map((post) => (
+                    <Link
+                      key={post.uid}
+                      className="relative block rounded-lg px-4 py-3 z-10"
+                      href={post.link}
+                      data-id={post.uid}
+                    >
+                      <div className="relative z-10 flex flex-col space-y-1">
+                        <h4 className="relative z-10 font-medium text-zinc-900 dark:text-zinc-100">
+                          {post.title}
+                        </h4>
+                        <p className="relative z-10 text-sm text-zinc-600 dark:text-zinc-400">
+                          {post.description}
+                        </p>
+                      </div>
+                    </Link>
+                  ))}
+                </AnimatedBackground>
+              </div>
+            </div>
+          )}
         </div>
       </motion.section>
 
@@ -183,9 +336,14 @@ export default function Personal() {
                         {edu.achievements.map((achievement, idx) => (
                           <p
                             key={idx}
-                            className="text-sm text-zinc-600 dark:text-zinc-400 flex items-start gap-2"
+                            className={`text-sm flex items-start gap-2 ${achievement.includes('🏆')
+                              ? 'text-zinc-900 dark:text-zinc-50 font-semibold bg-gradient-to-r from-purple-50 to-pink-50 dark:from-purple-900/20 dark:to-pink-900/20 px-3 py-2 rounded-lg'
+                              : 'text-zinc-600 dark:text-zinc-400'
+                              }`}
                           >
-                            <span className="text-purple-500 mt-1">•</span>
+                            <span className={achievement.includes('🏆') ? '' : 'text-purple-500 mt-1'}>
+                              {achievement.includes('🏆') ? '' : '•'}
+                            </span>
                             {achievement}
                           </p>
                         ))}
@@ -216,98 +374,40 @@ export default function Personal() {
         </div>
       </motion.section>
 
-      {/* Intern Experience */}
+      {/* Certifications */}
       <motion.section
-        id="experience"
+        id="certifications"
         variants={VARIANTS_SECTION}
         transition={TRANSITION_SECTION}
         className="scroll-mt-20"
       >
         <h2 className="section-heading gradient-text">
-          Work <span className="gradient-text-pink">Experience</span>
+          <span className="gradient-text-pink">Certifications</span>
         </h2>
-        <div className="space-y-6">
-          {INTERN_EXPERIENCE.map((intern) => (
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+          {ACCOMPLISHMENTS.map((cert) => (
             <div
-              key={intern.id}
-              className="relative overflow-hidden rounded-2xl bg-gradient-to-br from-blue-50 to-purple-50 p-[2px] dark:from-blue-900/20 dark:to-purple-900/20"
+              key={cert.id}
+              className="group rounded-xl bg-white p-4 shadow-md ring-1 ring-zinc-200/50 dark:bg-zinc-900/40 dark:ring-zinc-800/50 hover:shadow-lg hover:ring-purple-300 dark:hover:ring-purple-700 transition-all"
             >
-              <Spotlight
-                className="from-blue-600 via-purple-600 to-pink-600 blur-2xl"
-                size={80}
-              />
-              <div className="relative h-full w-full rounded-[14px] bg-white p-6 dark:bg-zinc-950">
-                <div className="flex items-start gap-4">
-                  <div className="rounded-full bg-gradient-to-br from-blue-100 to-purple-100 p-3 dark:from-blue-900/30 dark:to-purple-900/30">
-                    <Briefcase className="h-6 w-6 icon-blue" />
-                  </div>
-                  <div className="flex-1">
-                    <div className="flex items-start justify-between flex-wrap gap-2">
-                      <div>
-                        <h3 className="text-xl font-bold text-zinc-900 dark:text-zinc-100">
-                          {intern.title}
-                        </h3>
-                        <p className="text-purple-600 dark:text-purple-400 font-medium">
-                          {intern.company}
-                        </p>
-                      </div>
-                      <span className="flex items-center gap-1 text-sm text-zinc-500">
-                        <Calendar className="h-4 w-4" />
-                        {intern.duration}
-                      </span>
-                    </div>
-                    <div className="mt-4 space-y-2">
-                      {intern.responsibilities.map((resp, idx) => (
-                        <p
-                          key={idx}
-                          className="text-sm text-zinc-600 dark:text-zinc-400 flex items-start gap-2"
-                        >
-                          <span className="text-purple-500 mt-1">•</span>
-                          {resp}
-                        </p>
-                      ))}
-                    </div>
-                  </div>
+              <div className="flex items-start gap-3">
+                <Award className="h-5 w-5 icon-blue mt-1 flex-shrink-0" />
+                <div>
+                  <h3 className="text-sm font-semibold text-zinc-900 dark:text-zinc-50">
+                    {cert.title}
+                  </h3>
+                  <p className="text-xs text-purple-600 dark:text-purple-400 mt-1">
+                    {cert.organization} • {cert.year}
+                  </p>
+                  {cert.description && (
+                    <p className="text-xs text-zinc-500 dark:text-zinc-400 mt-1">
+                      {cert.description}
+                    </p>
+                  )}
                 </div>
               </div>
             </div>
           ))}
-
-          {/* Blog Posts Subsection */}
-          {BLOG_POSTS.length > 0 && (
-            <div className="mt-8">
-              <h3 className="text-lg font-semibold text-zinc-900 dark:text-zinc-100 mb-4">
-                Related Articles
-              </h3>
-              <AnimatedBackground
-                enableHover
-                className="h-full w-full rounded-xl bg-gradient-to-br from-blue-50 to-purple-50 dark:from-blue-900/10 dark:to-purple-900/10"
-                transition={{
-                  type: 'spring',
-                  bounce: 0,
-                  duration: 0.2,
-                }}
-              >
-                {BLOG_POSTS.map((post) => (
-                  <Link
-                    key={post.uid}
-                    className="block rounded-xl px-4 py-3"
-                    href={post.link}
-                    data-id={post.uid}
-                  >
-                    <div className="flex flex-col space-y-1">
-                      <h4 className="font-medium text-zinc-900 dark:text-zinc-100">
-                        {post.title}
-                      </h4>
-                      <p className="text-sm text-zinc-600 dark:text-zinc-400">
-                        {post.description}
-                      </p>
-                    </div>
-                  </Link>
-                ))}
-              </AnimatedBackground>
-            </div>
-          )}
         </div>
       </motion.section>
 
@@ -321,15 +421,125 @@ export default function Personal() {
         <h2 className="section-heading gradient-text">
           Awards & <span className="gradient-text-pink">Scholarships</span>
         </h2>
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-          {AWARDS.map((award) => (
+
+        {/* Awards with Images - 2 per row */}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+          {AWARDS.filter(award => award.image && award.id !== 'award_school').map((award) => (
+            <div
+              key={award.id}
+              className="group rounded-xl bg-white shadow-md ring-1 ring-zinc-200/50 dark:bg-zinc-900/40 dark:ring-zinc-800/50 hover:shadow-lg hover:ring-purple-300 dark:hover:ring-purple-700 transition-all overflow-hidden"
+            >
+              {/* Award Image */}
+              <div className="relative h-40 bg-gradient-to-br from-blue-100 to-purple-100 dark:from-blue-900/30 dark:to-purple-900/30 overflow-hidden">
+                <img
+                  src={award.image}
+                  alt={award.title}
+                  className="w-full h-full object-cover"
+                  onError={(e) => {
+                    e.currentTarget.style.display = 'none'
+                    e.currentTarget.nextElementSibling?.classList.remove('hidden')
+                  }}
+                />
+                <div className="hidden absolute inset-0 bg-gradient-to-br from-blue-100 to-purple-100 dark:from-blue-900/30 dark:to-purple-900/30 flex items-center justify-center">
+                  <Trophy className="h-12 w-12 text-purple-300 dark:text-purple-700" />
+                </div>
+              </div>
+
+              {/* Award Content */}
+              <div className="p-4">
+                <div className="flex items-start gap-3">
+                  <Trophy className="h-5 w-5 icon-pink mt-1 flex-shrink-0" />
+                  <div className="flex-1">
+                    <h3 className="text-sm font-semibold text-zinc-900 dark:text-zinc-50">
+                      {award.title}
+                    </h3>
+                    <p className="text-xs text-purple-600 dark:text-purple-400 mt-1">
+                      {award.organization}
+                      {award.year && ` • ${award.year}`}
+                    </p>
+                    {award.description && (
+                      <p className="text-xs text-zinc-600 dark:text-zinc-400 mt-2 leading-relaxed">
+                        {award.description}
+                      </p>
+                    )}
+                  </div>
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
+
+        {/* School Awards - Separate Full-Width Row */}
+        {AWARDS.filter(award => award.id === 'award_school').map((award) => (
+          <div
+            key={award.id}
+            className="mt-6 group rounded-2xl bg-white shadow-xl ring-1 ring-zinc-200/50 dark:bg-zinc-900/40 dark:ring-zinc-800/50 hover:shadow-2xl hover:ring-purple-300 dark:hover:ring-purple-700 transition-all overflow-hidden"
+          >
+            {/* Award Image */}
+            {award.image && (
+              <div className="relative h-64 md:h-80 bg-gradient-to-br from-blue-100 to-purple-100 dark:from-blue-900/30 dark:to-purple-900/30 overflow-hidden">
+                <img
+                  src={award.image}
+                  alt={award.title}
+                  className="w-full h-full object-cover"
+                  onError={(e) => {
+                    e.currentTarget.style.display = 'none'
+                    e.currentTarget.nextElementSibling?.classList.remove('hidden')
+                  }}
+                />
+                <div className="hidden absolute inset-0 bg-gradient-to-br from-blue-100 to-purple-100 dark:from-blue-900/30 dark:to-purple-900/30 flex items-center justify-center">
+                  <Trophy className="h-16 w-16 text-purple-300 dark:text-purple-700" />
+                </div>
+              </div>
+            )}
+
+            {/* Award Content */}
+            <div className="p-6 md:p-8">
+              <div className="flex items-start gap-4">
+                <Trophy className="h-6 w-6 icon-pink mt-1 flex-shrink-0" />
+                <div className="flex-1">
+                  <h3 className="text-xl font-bold text-zinc-900 dark:text-zinc-50">
+                    {award.title}
+                  </h3>
+                  <p className="text-sm text-purple-600 dark:text-purple-400 mt-1">
+                    {award.organization}
+                    {award.year && ` • ${award.year}`}
+                  </p>
+                  {award.description && (
+                    <p className="text-sm text-zinc-600 dark:text-zinc-400 mt-3 leading-relaxed">
+                      {award.description}
+                    </p>
+                  )}
+                  {/* Grouped Awards List */}
+                  {award.awards && award.awards.length > 0 && (
+                    <div className="mt-4 grid grid-cols-1 md:grid-cols-2 gap-2">
+                      {award.awards.map((subAward, idx) => (
+                        <div
+                          key={idx}
+                          className="text-sm text-zinc-700 dark:text-zinc-300 flex items-start gap-2"
+                        >
+                          <span className="text-purple-500 mt-1">•</span>
+                          <span className="font-medium">{subAward}</span>
+                        </div>
+                      ))}
+                    </div>
+                  )}
+                </div>
+              </div>
+            </div>
+          </div>
+        ))}
+
+        {/* Awards without Images - 2 per row */}
+        <div className="mt-6 grid grid-cols-1 md:grid-cols-2 gap-4">
+          {AWARDS.filter(award => !award.image && award.id !== 'award_school').map((award) => (
             <div
               key={award.id}
               className="group rounded-xl bg-white p-4 shadow-md ring-1 ring-zinc-200/50 dark:bg-zinc-900/40 dark:ring-zinc-800/50 hover:shadow-lg hover:ring-purple-300 dark:hover:ring-purple-700 transition-all"
             >
               <div className="flex items-start gap-3">
                 <Trophy className="h-5 w-5 icon-pink mt-1 flex-shrink-0" />
-                <div>
+                <div className="flex-1">
                   <h3 className="text-sm font-semibold text-zinc-900 dark:text-zinc-50">
                     {award.title}
                   </h3>
@@ -338,7 +548,7 @@ export default function Personal() {
                     {award.year && ` • ${award.year}`}
                   </p>
                   {award.description && (
-                    <p className="text-xs text-zinc-500 dark:text-zinc-400 mt-1">
+                    <p className="text-xs text-zinc-600 dark:text-zinc-400 mt-2 leading-relaxed">
                       {award.description}
                     </p>
                   )}
@@ -363,37 +573,58 @@ export default function Personal() {
           {ACADEMIC_PROJECTS.map((project) => (
             <div
               key={project.id}
-              className="group rounded-2xl bg-white p-6 shadow-lg ring-1 ring-zinc-200/50 dark:bg-zinc-900/40 dark:ring-zinc-800/50 hover:shadow-xl hover:ring-purple-300 dark:hover:ring-purple-700 transition-all"
+              className="group rounded-2xl bg-white shadow-lg ring-1 ring-zinc-200/50 dark:bg-zinc-900/40 dark:ring-zinc-800/50 hover:shadow-xl hover:ring-purple-300 dark:hover:ring-purple-700 transition-all overflow-hidden"
             >
-              <div className="flex items-start gap-3">
-                <Code className="h-6 w-6 icon-blue mt-1 flex-shrink-0" />
-                <div className="flex-1">
-                  {project.link ? (
-                    <a
-                      href={project.link}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="text-lg font-bold text-zinc-900 hover:text-purple-600 dark:text-zinc-50 dark:hover:text-purple-400"
-                    >
-                      {project.name}
-                    </a>
-                  ) : (
-                    <h3 className="text-lg font-bold text-zinc-900 dark:text-zinc-50">
-                      {project.name}
-                    </h3>
-                  )}
-                  <p className="mt-2 text-sm text-zinc-600 dark:text-zinc-400">
-                    {project.description}
-                  </p>
-                  {project.technologies && project.technologies.length > 0 && (
-                    <div className="mt-3 flex flex-wrap gap-2">
-                      {project.technologies.map((tech, idx) => (
-                        <span key={idx} className="skill-pill text-xs">
-                          {tech}
-                        </span>
-                      ))}
-                    </div>
-                  )}
+              {/* Project Image */}
+              {project.image && (
+                <div className="relative h-48 bg-gradient-to-br from-blue-100 to-purple-100 dark:from-blue-900/30 dark:to-purple-900/30 overflow-hidden">
+                  <img
+                    src={project.image}
+                    alt={project.name}
+                    className="w-full h-full object-cover"
+                    onError={(e) => {
+                      e.currentTarget.style.display = 'none'
+                      e.currentTarget.nextElementSibling?.classList.remove('hidden')
+                    }}
+                  />
+                  <div className="hidden absolute inset-0 bg-gradient-to-br from-blue-100 to-purple-100 dark:from-blue-900/30 dark:to-purple-900/30 flex items-center justify-center">
+                    <Code className="h-12 w-12 text-purple-300 dark:text-purple-700" />
+                  </div>
+                </div>
+              )}
+
+              {/* Project Content */}
+              <div className="p-6">
+                <div className="flex items-start gap-3">
+                  {!project.image && <Code className="h-6 w-6 icon-blue mt-1 flex-shrink-0" />}
+                  <div className="flex-1">
+                    {project.link ? (
+                      <a
+                        href={project.link}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="text-lg font-bold text-zinc-900 hover:text-purple-600 dark:text-zinc-50 dark:hover:text-purple-400"
+                      >
+                        {project.name}
+                      </a>
+                    ) : (
+                      <h3 className="text-lg font-bold text-zinc-900 dark:text-zinc-50">
+                        {project.name}
+                      </h3>
+                    )}
+                    <p className="mt-2 text-sm text-zinc-600 dark:text-zinc-400">
+                      {project.description}
+                    </p>
+                    {project.technologies && project.technologies.length > 0 && (
+                      <div className="mt-3 flex flex-wrap gap-2">
+                        {project.technologies.map((tech, idx) => (
+                          <span key={idx} className="skill-pill text-xs">
+                            {tech}
+                          </span>
+                        ))}
+                      </div>
+                    )}
+                  </div>
                 </div>
               </div>
             </div>
@@ -430,47 +661,10 @@ export default function Personal() {
             </div>
           ))}
         </div>
-      </motion.section>
-
-      {/* Accomplishments & Certifications */}
-      <motion.section
-        id="certifications"
-        variants={VARIANTS_SECTION}
-        transition={TRANSITION_SECTION}
-        className="scroll-mt-20"
-      >
-        <h2 className="section-heading gradient-text">
-          Accomplishments & <span className="gradient-text-pink">Certifications</span>
-        </h2>
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-          {ACCOMPLISHMENTS.map((cert) => (
-            <div
-              key={cert.id}
-              className="group rounded-xl bg-white p-4 shadow-md ring-1 ring-zinc-200/50 dark:bg-zinc-900/40 dark:ring-zinc-800/50 hover:shadow-lg hover:ring-purple-300 dark:hover:ring-purple-700 transition-all"
-            >
-              <div className="flex items-start gap-3">
-                <Award className="h-5 w-5 icon-blue mt-1 flex-shrink-0" />
-                <div>
-                  <h3 className="text-sm font-semibold text-zinc-900 dark:text-zinc-50">
-                    {cert.title}
-                  </h3>
-                  <p className="text-xs text-purple-600 dark:text-purple-400 mt-1">
-                    {cert.organization} • {cert.year}
-                  </p>
-                  {cert.description && (
-                    <p className="text-xs text-zinc-500 dark:text-zinc-400 mt-1">
-                      {cert.description}
-                    </p>
-                  )}
-                </div>
-              </div>
-            </div>
-          ))}
-        </div>
-      </motion.section>
+      </motion.section >
 
       {/* Volunteering & Community Involvement */}
-      <motion.section
+      < motion.section
         id="volunteering"
         variants={VARIANTS_SECTION}
         transition={TRANSITION_SECTION}
@@ -479,44 +673,84 @@ export default function Personal() {
         <h2 className="section-heading gradient-text">
           Volunteering & <span className="gradient-text-pink">Community</span>
         </h2>
-        <div className="space-y-3">
-          {VOLUNTEERING.map((vol) => (
-            <div
-              key={vol.id}
-              className="rounded-xl bg-white p-4 shadow-md ring-1 ring-zinc-200/50 dark:bg-zinc-900/40 dark:ring-zinc-800/50 hover:shadow-lg transition-shadow"
-            >
-              <div className="flex items-start gap-3">
-                <Heart className="h-5 w-5 icon-pink mt-1 flex-shrink-0" />
-                <div className="flex-1">
-                  <div className="flex items-start justify-between flex-wrap gap-2">
-                    <div>
-                      <h3 className="text-sm font-semibold text-zinc-900 dark:text-zinc-50">
-                        {vol.role}
-                      </h3>
-                      <p className="text-xs text-purple-600 dark:text-purple-400 mt-1">
-                        {vol.organization}
-                      </p>
+
+        <p className="text-center text-zinc-600 dark:text-zinc-400 mb-8 max-w-2xl mx-auto">
+          My contributions to community development and leadership
+        </p>
+
+        {/* Horizontal Scrolling Container for Organizations */}
+        <div className="relative -mx-4 px-4 md:mx-0 md:px-0">
+          <div className="flex gap-6 overflow-x-auto pb-6 snap-x snap-mandatory scrollbar-hide md:grid md:grid-cols-2 lg:grid-cols-3 md:overflow-visible">
+            {VOLUNTEERING.map((org) => (
+              <div
+                key={org.id}
+                className="min-w-[340px] md:min-w-0 snap-start flex-shrink-0 rounded-2xl bg-white shadow-lg ring-1 ring-zinc-200/50 dark:bg-zinc-900/40 dark:ring-zinc-800/50 hover:shadow-xl transition-all overflow-hidden flex flex-col"
+              >
+                {/* Organization Image */}
+                <div className="relative h-48 bg-gradient-to-br from-blue-100 to-purple-100 dark:from-blue-900/30 dark:to-purple-900/30 overflow-hidden">
+                  {org.image ? (
+                    <img
+                      src={org.image}
+                      alt={org.organization}
+                      className="w-full h-full object-cover"
+                    />
+                  ) : (
+                    <div className="w-full h-full flex items-center justify-center">
+                      <Heart className="h-16 w-16 text-purple-300 dark:text-purple-700" />
                     </div>
-                    {vol.duration && (
-                      <span className="text-xs text-zinc-500">
-                        {vol.duration}
-                      </span>
-                    )}
-                  </div>
-                  {vol.description && (
-                    <p className="text-xs text-zinc-600 dark:text-zinc-400 mt-2">
-                      {vol.description}
-                    </p>
                   )}
+                  {/* Organization Badge */}
+                  <div className="absolute bottom-3 left-3 right-3">
+                    <div className="bg-white/95 dark:bg-zinc-900/95 backdrop-blur-sm rounded-lg px-3 py-2 shadow-lg">
+                      <h3 className="text-sm font-bold text-zinc-900 dark:text-zinc-50 leading-tight">
+                        {org.organization}
+                      </h3>
+                    </div>
+                  </div>
+                </div>
+
+                {/* Roles List - Scrollable */}
+                <div className="flex-1 p-5 space-y-4 max-h-[400px] overflow-y-auto scrollbar-hide">
+                  {org.roles.map((role, roleIndex) => (
+                    <div
+                      key={roleIndex}
+                      className="pb-4 border-b border-zinc-100 dark:border-zinc-800 last:border-0 last:pb-0"
+                    >
+                      <div className="flex items-start gap-2 mb-2">
+                        <Heart className="h-4 w-4 icon-purple mt-1 flex-shrink-0" />
+                        <div className="flex-1">
+                          <h4 className="font-semibold text-sm text-zinc-900 dark:text-zinc-50">
+                            {role.role}
+                          </h4>
+                          <div className="flex items-center gap-1.5 text-xs text-zinc-500 mt-1">
+                            <Calendar className="h-3 w-3" />
+                            <span>
+                              {role.startDate} - {role.endDate}
+                            </span>
+                          </div>
+                        </div>
+                      </div>
+                      {role.description && (
+                        <p className="text-xs text-zinc-600 dark:text-zinc-400 leading-relaxed ml-6">
+                          {role.description}
+                        </p>
+                      )}
+                    </div>
+                  ))}
                 </div>
               </div>
-            </div>
-          ))}
+            ))}
+          </div>
         </div>
-      </motion.section>
+
+        {/* Scroll Hint for Mobile */}
+        <p className="text-xs text-center text-zinc-500 mt-4 md:hidden">
+          Swipe to see more →
+        </p>
+      </motion.section >
 
       {/* Get In Touch */}
-      <motion.section
+      < motion.section
         id="contact"
         variants={VARIANTS_SECTION}
         transition={TRANSITION_SECTION}
@@ -554,7 +788,7 @@ export default function Personal() {
             ))}
           </div>
         </div>
-      </motion.section>
-    </motion.main>
+      </motion.section >
+    </motion.main >
   )
 }
