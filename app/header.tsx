@@ -13,7 +13,7 @@ export function Header() {
           className="text-lg text-zinc-600 dark:text-zinc-400"
           delay={0.2}
         >
-          Hello there!, I'm
+          Hello there!, I&apos;m
         </TextEffect>
 
         <h1 className="text-6xl md:text-7xl lg:text-8xl font-bold gradient-text leading-tight">

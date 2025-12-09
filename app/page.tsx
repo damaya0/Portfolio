@@ -882,7 +882,7 @@ export default function Personal() {
         </h2>
         <div className="rounded-2xl bg-gradient-to-br from-blue-50 to-purple-50 p-8 dark:from-blue-900/20 dark:to-purple-900/20">
           <p className="text-lg text-zinc-700 dark:text-zinc-300 mb-6">
-            I'm always open to new opportunities and interesting projects. Feel
+            I&apos;m always open to new opportunities and interesting projects. Feel
             free to reach out!
           </p>
           <div className="space-y-4 mb-6">
