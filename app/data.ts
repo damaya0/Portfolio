@@ -137,14 +137,6 @@ export const INTERN_EXPERIENCE: InternExperience[] = [
       'React',
       'TypeScript',
     ],
-    images: [
-      '/internship/wso2-1.jpg',
-      '/internship/wso2-2.jpg',
-      '/internship/wso2-3.jpg',
-      '/internship/wso2-4.jpg',
-      '/internship/wso2-5.jpg',
-      '/internship/wso2-6.jpg',
-    ],
     id: 'intern1',
   },
 ]

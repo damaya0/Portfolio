@@ -171,36 +171,6 @@ export default function Personal() {
                 key={exp.id}
                 className="group rounded-2xl bg-white p-6 shadow-xl ring-1 ring-zinc-200/50 dark:bg-zinc-900/40 dark:ring-zinc-800/50"
               >
-                {/* Internship Images Gallery - Uncomment when images are uploaded
-                {exp.images && exp.images.length > 0 && (
-                  <div className="mb-6 -mx-6 -mt-6">
-                    <div className="relative h-64 bg-gradient-to-br from-blue-100 to-purple-100 dark:from-blue-900/30 dark:to-purple-900/30 overflow-hidden">
-                      <div className="flex gap-2 overflow-x-auto h-full p-4 scrollbar-hide">
-                        {exp.images.map((image, idx) => (
-                          <div
-                            key={idx}
-                            className="relative flex-shrink-0 w-80 h-full rounded-lg overflow-hidden bg-white dark:bg-zinc-800"
-                          >
-                            <img
-                              src={image}
-                              alt={`${exp.company} - Photo ${idx + 1}`}
-                              className="w-full h-full object-cover"
-                              onError={(e) => {
-                                e.currentTarget.style.display = 'none'
-                                e.currentTarget.nextElementSibling?.classList.remove('hidden')
-                              }}
-                            />
-                            <div className="hidden absolute inset-0 bg-gradient-to-br from-blue-100 to-purple-100 dark:from-blue-900/30 dark:to-purple-900/30 flex items-center justify-center">
-                              <Briefcase className="h-12 w-12 text-purple-300 dark:text-purple-700" />
-                            </div>
-                          </div>
-                        ))}
-                      </div>
-                    </div>
-                  </div>
-                )}
-                */}
-
                 <div className="flex items-start gap-4">
                   <div className="rounded-xl bg-gradient-to-br from-blue-100 to-purple-100 dark:from-blue-900/20 dark:to-purple-900/20 p-3">
                     <Briefcase className="h-6 w-6 icon-blue" />
