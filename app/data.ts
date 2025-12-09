@@ -1,17 +1,57 @@
-type Project = {
-  name: string
-  description: string
-  link: string
-  video: string
+type Education = {
+  institution: string
+  degree: string
+  duration: string
+  gpa?: string
+  achievements?: string[]
+  coursework?: string[]
   id: string
 }
 
-type WorkExperience = {
+type InternExperience = {
   company: string
   title: string
-  start: string
-  end: string
-  link: string
+  duration: string
+  responsibilities: string[]
+  link?: string
+  id: string
+}
+
+type Award = {
+  title: string
+  organization: string
+  year?: string
+  description?: string
+  id: string
+}
+
+type AcademicProject = {
+  name: string
+  description: string
+  link?: string
+  technologies?: string[]
+  id: string
+}
+
+type Skill = {
+  category: string
+  items: string[]
+  id: string
+}
+
+type Accomplishment = {
+  title: string
+  organization: string
+  year: string
+  description?: string
+  id: string
+}
+
+type Volunteering = {
+  role: string
+  organization: string
+  duration?: string
+  description?: string
   id: string
 }
 
@@ -27,50 +67,304 @@ type SocialLink = {
   link: string
 }
 
-export const PROJECTS: Project[] = [
+export const EDUCATION: Education[] = [
   {
-    name: 'Motion Primitives Pro',
-    description:
-      'Advanced components and templates to craft beautiful websites.',
-    link: 'https://pro.motion-primitives.com/',
-    video:
-      'https://res.cloudinary.com/read-cv/video/upload/t_v_b/v1/1/profileItems/W2azTw5BVbMXfj7F53G92hMVIn32/newProfileItem/d898be8a-7037-4c71-af0c-8997239b050d.mp4?_a=DATAdtAAZAA0',
-    id: 'project1',
+    institution: 'University of Moratuwa',
+    degree: 'BSc (Hons) Electronic & Telecommunication Engineering',
+    duration: 'Aug 2022 – Present',
+    gpa: '3.79/4.0',
+    achievements: [
+      "Dean's List (Semesters 1, 2, 4, 6)",
+    ],
+    coursework: [
+      'Linear Algebra',
+      'Applied Statistics',
+      'Image Processing and Machine Vision',
+      'Pattern Recognition',
+      'Digital System Design',
+      'Circuit Design',
+      'Embedded Systems and Applications',
+      'Data Structures and Algorithms',
+    ],
+    id: 'edu1',
   },
   {
-    name: 'Motion Primitives',
-    description: 'UI kit to make beautiful, animated interfaces.',
-    link: 'https://motion-primitives.com/',
-    video:
-      'https://res.cloudinary.com/read-cv/video/upload/t_v_b/v1/1/profileItems/W2azTw5BVbMXfj7F53G92hMVIn32/XSfIvT7BUWbPRXhrbLed/ee6871c9-8400-49d2-8be9-e32675eabf7e.mp4?_a=DATAdtAAZAA0',
-    id: 'project2',
+    institution: 'Ananda College, Colombo 10',
+    degree: 'GCE Advanced Level',
+    duration: 'Jan 2018 – Oct 2020',
+    achievements: [
+      'Z-score 2.8655',
+      'Ranked 9th in Sri Lanka and 3rd in Colombo District',
+    ],
+    coursework: ['Combined Mathematics', 'Physics', 'Chemistry'],
+    id: 'edu2',
   },
 ]
 
-export const WORK_EXPERIENCE: WorkExperience[] = [
+export const INTERN_EXPERIENCE: InternExperience[] = [
   {
-    company: 'Reglazed Studio',
-    title: 'CEO',
-    start: '2024',
-    end: 'Present',
-    link: 'https://ibelick.com',
-    id: 'work1',
+    company: 'WSO2',
+    title: 'Software Engineering Intern',
+    duration: 'Dec 2024 – May 2025',
+    responsibilities: [
+      'Designed and implemented an Agentic AI analyzer for WSO2 Micro Integrator diagnostics',
+      'Developed Ballerina integration for HubSpot Companies API',
+    ],
+    link: 'https://wso2.com',
+    id: 'intern1',
+  },
+]
+
+export const AWARDS: Award[] = [
+  {
+    title: '1st Runners up – Spark Challenge 2024',
+    organization: 'Industry Competition',
+    id: 'award1',
   },
   {
-    company: 'Freelance',
-    title: 'Design Engineer',
-    start: '2022',
-    end: '2024',
-    link: 'https://ibelick.com',
-    id: 'work2',
+    title: 'Merit Award – Predicta 1.0 Machine Learning Competition',
+    organization: 'ML Competition',
+    description: 'Ranked 7th',
+    id: 'award2',
   },
   {
-    company: 'Freelance',
-    title: 'Front-end Developer',
-    start: '2017',
-    end: 'Present',
-    link: 'https://ibelick.com',
-    id: 'work3',
+    title: 'ScholarX Mentee',
+    organization: 'SEF',
+    year: '2024',
+    id: 'award3',
+  },
+  {
+    title: 'Best Community Project Award',
+    organization: 'Innovation Bootcamp by Meta',
+    year: '2023',
+    id: 'award4',
+  },
+  {
+    title: 'Gavelier of the Year',
+    organization: 'Gavel Club',
+    year: '2023',
+    id: 'award5',
+  },
+  {
+    title: 'Spirit of Service',
+    organization: 'Rotaract UoM',
+    year: '2023',
+    id: 'award6',
+  },
+  {
+    title: 'Mahapola Higher Education Scholarship (Merit)',
+    organization: 'Government of Sri Lanka',
+    id: 'award7',
+  },
+  {
+    title: 'CW Leadbeater Challenge Cup',
+    organization: 'Ananda College',
+    id: 'award8',
+  },
+  {
+    title: 'Harold Jayathilaka Memorial Award',
+    organization: 'Ananda College',
+    id: 'award9',
+  },
+  {
+    title: 'Muhandiram Charles Memorial Award',
+    organization: 'Ananda College',
+    id: 'award10',
+  },
+  {
+    title: 'Ananda Pradeepa Award',
+    organization: 'Ananda College',
+    id: 'award11',
+  },
+]
+
+export const ACADEMIC_PROJECTS: AcademicProject[] = [
+  {
+    name: 'Multimodal Wild Animal Detection System',
+    description:
+      'Final year project in collaboration with Dialog Axiata for wildlife detection using multimodal approaches',
+    technologies: ['Machine Learning', 'Computer Vision'],
+    id: 'project1',
+  },
+  {
+    name: 'Joint Phase Noise and Channel Estimation for Sub-THz Communication',
+    description:
+      'Final year project focusing on advanced communication systems',
+    technologies: ['Signal Processing', 'Communication Systems'],
+    id: 'project2',
+  },
+  {
+    name: 'Smart Water Bottle',
+    description: 'IoT-based smart water bottle with health tracking features',
+    technologies: ['IoT', 'Embedded Systems'],
+    id: 'project3',
+  },
+  {
+    name: 'UniLink Social Platform',
+    description: 'Social networking platform for university students',
+    technologies: ['Web Development', 'Full Stack'],
+    id: 'project4',
+  },
+  {
+    name: 'RAKI Elderly Assistant',
+    description: 'AI-powered assistant system for elderly care',
+    technologies: ['AI', 'Python'],
+    id: 'project5',
+  },
+  {
+    name: 'nanoGPT Implementation',
+    description: 'Implementation of a compact GPT language model',
+    technologies: ['Deep Learning', 'PyTorch', 'NLP'],
+    id: 'project6',
+  },
+  {
+    name: 'Anomaly Detection Chest X-ray System',
+    description: 'Medical imaging system for detecting anomalies in chest X-rays',
+    technologies: ['Deep Learning', 'Computer Vision', 'Medical Imaging'],
+    id: 'project7',
+  },
+  {
+    name: 'Smart Medibox',
+    description: 'Smart medication dispenser with reminder system',
+    technologies: ['IoT', 'Arduino', 'Embedded Systems'],
+    id: 'project8',
+  },
+  {
+    name: 'Depth Camera Using Single Cam',
+    description: 'Depth estimation system using monocular camera',
+    technologies: ['Computer Vision', 'Python', 'OpenCV'],
+    id: 'project9',
+  },
+  {
+    name: 'UART FPGA Implementation',
+    description: 'Hardware implementation of UART protocol on FPGA',
+    technologies: ['FPGA', 'Digital Design', 'Verilog'],
+    id: 'project10',
+  },
+  {
+    name: 'Autonomous Robot',
+    description: 'Self-navigating robot with obstacle avoidance',
+    technologies: ['Robotics', 'Embedded Systems', 'Arduino'],
+    id: 'project11',
+  },
+  {
+    name: 'Future Weather Prediction',
+    description: 'Machine learning model for weather forecasting',
+    technologies: ['Machine Learning', 'Python', 'Data Analysis'],
+    id: 'project12',
+  },
+]
+
+export const SKILLS: Skill[] = [
+  {
+    category: 'Languages',
+    items: ['English (Professional)', 'Sinhala (Native)'],
+    id: 'skill1',
+  },
+  {
+    category: 'Programming',
+    items: ['Python', 'C++', 'MATLAB', 'Java'],
+    id: 'skill2',
+  },
+  {
+    category: 'Software & Tools',
+    items: [
+      'TensorFlow',
+      'PyTorch',
+      'Scikit-learn',
+      'Altium',
+      'LTSpice',
+      'OpenCV',
+      'Arduino',
+    ],
+    id: 'skill3',
+  },
+  {
+    category: 'Soft Skills',
+    items: ['Leadership', 'Project Management', 'Public Speaking'],
+    id: 'skill4',
+  },
+]
+
+export const ACCOMPLISHMENTS: Accomplishment[] = [
+  {
+    title: 'High Performance + Mission Critical Software Development using C++',
+    organization: 'LSEG',
+    year: '2024',
+    id: 'cert1',
+  },
+  {
+    title: 'Machine Learning Specialization',
+    organization: 'DeepLearning.AI (Coursera)',
+    year: '2024',
+    id: 'cert2',
+  },
+  {
+    title: 'Deep Learning Specialization',
+    organization: 'DeepLearning.AI',
+    year: 'Ongoing',
+    id: 'cert3',
+  },
+  {
+    title: 'Marketing Foundations',
+    organization: 'LinkedIn',
+    year: '2019',
+    id: 'cert4',
+  },
+]
+
+export const VOLUNTEERING: Volunteering[] = [
+  {
+    role: 'Chairperson',
+    organization: 'IEEE Professional Communication Chapter',
+    duration: '2025 – Present',
+    id: 'vol1',
+  },
+  {
+    role: 'Assistant Treasurer',
+    organization: 'IEEE Professional Communication Chapter',
+    duration: '2023 – 2025',
+    id: 'vol2',
+  },
+  {
+    role: 'Field Representative',
+    organization: 'University of Moratuwa',
+    duration: 'Semesters 4–6',
+    id: 'vol3',
+  },
+  {
+    role: 'Vice President (Membership)',
+    organization: 'Gavel Club',
+    id: 'vol4',
+  },
+  {
+    role: 'Marketing Committee Member',
+    organization: 'EXMO',
+    id: 'vol5',
+  },
+  {
+    role: 'Executive, External Relations',
+    organization: 'Electronic Club',
+    id: 'vol6',
+  },
+  {
+    role: 'Assistant Director Projects',
+    organization: 'Old Anandians Engineering Guild',
+    id: 'vol7',
+  },
+  {
+    role: 'Public Speaking Competitor',
+    organization: 'Various Competitions',
+    description:
+      'Semi-Finalist Speech Olympiad XV, Finalist Speech Olympiad XVI, 4th at Eloquence (Inter-Uni), Semi-finalist Mora Lenz Media Awards',
+    id: 'vol8',
+  },
+  {
+    role: 'Event Organizer',
+    organization: 'Various University Events',
+    description:
+      'ChapterX, Boon Digiti, Prom Night, Gavel Meetings, Career Insight, Speech Olympiad, Congregation, Envoyage',
+    id: 'vol9',
   },
 ]
 
@@ -88,38 +382,18 @@ export const BLOG_POSTS: BlogPost[] = [
     link: '/blog/exploring-the-intersection-of-design-ai-and-design-engineering',
     uid: 'blog-2',
   },
-  {
-    title: 'What I learned from my first year of freelancing',
-    description:
-      'A look back at my first year of freelancing and what I learned',
-    link: '/blog/exploring-the-intersection-of-design-ai-and-design-engineering',
-    uid: 'blog-3',
-  },
-  {
-    title: 'How to Export Metadata from MDX for Next.js SEO',
-    description: 'A guide on exporting metadata from MDX files to leverage Next.js SEO features.',
-    link: '/blog/example-mdx-metadata',
-    uid: 'blog-4',
-  },
 ]
 
 export const SOCIAL_LINKS: SocialLink[] = [
   {
-    label: 'Github',
-    link: 'https://github.com/ibelick',
-  },
-  {
-    label: 'Twitter',
-    link: 'https://twitter.com/ibelick',
+    label: 'GitHub',
+    link: 'https://github.com/damaya0',
   },
   {
     label: 'LinkedIn',
-    link: 'https://www.linkedin.com/in/ibelick',
-  },
-  {
-    label: 'Instagram',
-    link: 'https://www.instagram.com/ibelick',
+    link: 'https://linkedin.com/in/Damsith-Adikari',
   },
 ]
 
-export const EMAIL = 'your@email.com'
+export const EMAIL = 'damsithadikari2001@gmail.com'
+export const PHONE = '+94 713 843 356'

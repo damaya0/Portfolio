@@ -13,10 +13,16 @@ import {
 import Link from 'next/link'
 import { AnimatedBackground } from '@/components/ui/animated-background'
 import {
-  PROJECTS,
-  WORK_EXPERIENCE,
+  EDUCATION,
+  INTERN_EXPERIENCE,
+  AWARDS,
+  ACADEMIC_PROJECTS,
+  SKILLS,
+  ACCOMPLISHMENTS,
+  VOLUNTEERING,
   BLOG_POSTS,
   EMAIL,
+  PHONE,
   SOCIAL_LINKS,
 } from './data'
 
@@ -37,56 +43,6 @@ const VARIANTS_SECTION = {
 
 const TRANSITION_SECTION = {
   duration: 0.3,
-}
-
-type ProjectVideoProps = {
-  src: string
-}
-
-function ProjectVideo({ src }: ProjectVideoProps) {
-  return (
-    <MorphingDialog
-      transition={{
-        type: 'spring',
-        bounce: 0,
-        duration: 0.3,
-      }}
-    >
-      <MorphingDialogTrigger>
-        <video
-          src={src}
-          autoPlay
-          loop
-          muted
-          className="aspect-video w-full cursor-zoom-in rounded-xl"
-        />
-      </MorphingDialogTrigger>
-      <MorphingDialogContainer>
-        <MorphingDialogContent className="relative aspect-video rounded-2xl bg-zinc-50 p-1 ring-1 ring-zinc-200/50 ring-inset dark:bg-zinc-950 dark:ring-zinc-800/50">
-          <video
-            src={src}
-            autoPlay
-            loop
-            muted
-            className="aspect-video h-[50vh] w-full rounded-xl md:h-[70vh]"
-          />
-        </MorphingDialogContent>
-        <MorphingDialogClose
-          className="fixed top-6 right-6 h-fit w-fit rounded-full bg-white p-1"
-          variants={{
-            initial: { opacity: 0 },
-            animate: {
-              opacity: 1,
-              transition: { delay: 0.3, duration: 0.1 },
-            },
-            exit: { opacity: 0, transition: { duration: 0 } },
-          }}
-        >
-          <XIcon className="h-5 w-5 text-zinc-500" />
-        </MorphingDialogClose>
-      </MorphingDialogContainer>
-    </MorphingDialog>
-  )
 }
 
 function MagneticSocialLink({
@@ -131,130 +87,339 @@ export default function Personal() {
       initial="hidden"
       animate="visible"
     >
+      {/* About Me */}
       <motion.section
         variants={VARIANTS_SECTION}
         transition={TRANSITION_SECTION}
       >
         <div className="flex-1">
           <p className="text-zinc-600 dark:text-zinc-400">
-            Focused on creating intuitive and performant web experiences.
-            Bridging the gap between design and development.
+            Electronic & Telecommunication Engineering undergraduate at
+            University of Moratuwa with strong skills in software engineering,
+            AI/ML, and embedded systems. Passionate about building innovative
+            solutions that blend hardware and software expertise.
           </p>
         </div>
       </motion.section>
 
+      {/* Education */}
       <motion.section
         variants={VARIANTS_SECTION}
         transition={TRANSITION_SECTION}
       >
-        <h3 className="mb-5 text-lg font-medium">Selected Projects</h3>
-        <div className="grid grid-cols-1 gap-6 sm:grid-cols-2">
-          {PROJECTS.map((project) => (
-            <div key={project.name} className="space-y-2">
-              <div className="relative rounded-2xl bg-zinc-50/40 p-1 ring-1 ring-zinc-200/50 ring-inset dark:bg-zinc-950/40 dark:ring-zinc-800/50">
-                <ProjectVideo src={project.video} />
-              </div>
-              <div className="px-1">
-                <a
-                  className="font-base group relative inline-block font-[450] text-zinc-900 dark:text-zinc-50"
-                  href={project.link}
-                  target="_blank"
-                >
-                  {project.name}
-                  <span className="absolute bottom-0.5 left-0 block h-[1px] w-full max-w-0 bg-zinc-900 dark:bg-zinc-50 transition-all duration-200 group-hover:max-w-full"></span>
-                </a>
-                <p className="text-base text-zinc-600 dark:text-zinc-400">
-                  {project.description}
-                </p>
-              </div>
+        <h3 className="mb-5 text-lg font-medium">Education</h3>
+        <div className="flex flex-col space-y-4">
+          {EDUCATION.map((edu) => (
+            <div
+              key={edu.id}
+              className="rounded-2xl bg-zinc-50/40 p-4 ring-1 ring-zinc-200/50 ring-inset dark:bg-zinc-950/40 dark:ring-zinc-800/50"
+            >
+              <h4 className="font-medium text-zinc-900 dark:text-zinc-50">
+                {edu.institution}
+              </h4>
+              <p className="text-zinc-700 dark:text-zinc-300">{edu.degree}</p>
+              <p className="text-sm text-zinc-600 dark:text-zinc-400">
+                {edu.duration}
+                {edu.gpa && ` • GPA: ${edu.gpa}`}
+              </p>
+              {edu.achievements && edu.achievements.length > 0 && (
+                <div className="mt-2">
+                  {edu.achievements.map((achievement, idx) => (
+                    <p
+                      key={idx}
+                      className="text-sm text-zinc-600 dark:text-zinc-400"
+                    >
+                      • {achievement}
+                    </p>
+                  ))}
+                </div>
+              )}
+              {edu.coursework && edu.coursework.length > 0 && (
+                <div className="mt-2">
+                  <p className="text-sm font-medium text-zinc-700 dark:text-zinc-300">
+                    Coursework:
+                  </p>
+                  <p className="text-sm text-zinc-600 dark:text-zinc-400">
+                    {edu.coursework.join(', ')}
+                  </p>
+                </div>
+              )}
             </div>
           ))}
         </div>
       </motion.section>
 
+      {/* Intern Experience (with Blogs) */}
       <motion.section
         variants={VARIANTS_SECTION}
         transition={TRANSITION_SECTION}
       >
-        <h3 className="mb-5 text-lg font-medium">Work Experience</h3>
-        <div className="flex flex-col space-y-2">
-          {WORK_EXPERIENCE.map((job) => (
+        <h3 className="mb-5 text-lg font-medium">Intern Experience</h3>
+        <div className="flex flex-col space-y-4">
+          {INTERN_EXPERIENCE.map((intern) => (
             <a
+              key={intern.id}
               className="relative overflow-hidden rounded-2xl bg-zinc-300/30 p-[1px] dark:bg-zinc-600/30"
-              href={job.link}
+              href={intern.link}
               target="_blank"
               rel="noopener noreferrer"
-              key={job.id}
             >
               <Spotlight
                 className="from-zinc-900 via-zinc-800 to-zinc-700 blur-2xl dark:from-zinc-100 dark:via-zinc-200 dark:to-zinc-50"
                 size={64}
               />
               <div className="relative h-full w-full rounded-[15px] bg-white p-4 dark:bg-zinc-950">
-                <div className="relative flex w-full flex-row justify-between">
-                  <div>
-                    <h4 className="font-normal dark:text-zinc-100">
-                      {job.title}
-                    </h4>
-                    <p className="text-zinc-500 dark:text-zinc-400">
-                      {job.company}
+                <div className="relative flex w-full flex-col">
+                  <div className="flex flex-row justify-between">
+                    <div>
+                      <h4 className="font-medium dark:text-zinc-100">
+                        {intern.title}
+                      </h4>
+                      <p className="text-zinc-600 dark:text-zinc-400">
+                        {intern.company}
+                      </p>
+                    </div>
+                    <p className="text-sm text-zinc-600 dark:text-zinc-400">
+                      {intern.duration}
                     </p>
                   </div>
-                  <p className="text-zinc-600 dark:text-zinc-400">
-                    {job.start} - {job.end}
-                  </p>
+                  <div className="mt-3 space-y-1">
+                    {intern.responsibilities.map((resp, idx) => (
+                      <p
+                        key={idx}
+                        className="text-sm text-zinc-600 dark:text-zinc-400"
+                      >
+                        • {resp}
+                      </p>
+                    ))}
+                  </div>
                 </div>
               </div>
             </a>
           ))}
         </div>
+
+        {/* Blog Posts Subsection */}
+        {BLOG_POSTS.length > 0 && (
+          <div className="mt-6">
+            <h4 className="mb-3 text-base font-medium">Related Blog Posts</h4>
+            <div className="flex flex-col space-y-0">
+              <AnimatedBackground
+                enableHover
+                className="h-full w-full rounded-lg bg-zinc-100 dark:bg-zinc-900/80"
+                transition={{
+                  type: 'spring',
+                  bounce: 0,
+                  duration: 0.2,
+                }}
+              >
+                {BLOG_POSTS.map((post) => (
+                  <Link
+                    key={post.uid}
+                    className="-mx-3 rounded-xl px-3 py-3"
+                    href={post.link}
+                    data-id={post.uid}
+                  >
+                    <div className="flex flex-col space-y-1">
+                      <h5 className="font-normal dark:text-zinc-100">
+                        {post.title}
+                      </h5>
+                      <p className="text-sm text-zinc-500 dark:text-zinc-400">
+                        {post.description}
+                      </p>
+                    </div>
+                  </Link>
+                ))}
+              </AnimatedBackground>
+            </div>
+          </div>
+        )}
       </motion.section>
 
+      {/* Awards and Scholarships */}
       <motion.section
         variants={VARIANTS_SECTION}
         transition={TRANSITION_SECTION}
       >
-        <h3 className="mb-3 text-lg font-medium">Blog</h3>
-        <div className="flex flex-col space-y-0">
-          <AnimatedBackground
-            enableHover
-            className="h-full w-full rounded-lg bg-zinc-100 dark:bg-zinc-900/80"
-            transition={{
-              type: 'spring',
-              bounce: 0,
-              duration: 0.2,
-            }}
-          >
-            {BLOG_POSTS.map((post) => (
-              <Link
-                key={post.uid}
-                className="-mx-3 rounded-xl px-3 py-3"
-                href={post.link}
-                data-id={post.uid}
-              >
-                <div className="flex flex-col space-y-1">
-                  <h4 className="font-normal dark:text-zinc-100">
-                    {post.title}
-                  </h4>
-                  <p className="text-zinc-500 dark:text-zinc-400">
-                    {post.description}
-                  </p>
-                </div>
-              </Link>
-            ))}
-          </AnimatedBackground>
+        <h3 className="mb-5 text-lg font-medium">Awards and Scholarships</h3>
+        <div className="grid grid-cols-1 gap-3 sm:grid-cols-2">
+          {AWARDS.map((award) => (
+            <div
+              key={award.id}
+              className="rounded-xl bg-zinc-50/40 p-3 ring-1 ring-zinc-200/50 ring-inset dark:bg-zinc-950/40 dark:ring-zinc-800/50"
+            >
+              <h4 className="text-sm font-medium text-zinc-900 dark:text-zinc-50">
+                {award.title}
+              </h4>
+              <p className="text-sm text-zinc-600 dark:text-zinc-400">
+                {award.organization}
+                {award.year && ` • ${award.year}`}
+              </p>
+              {award.description && (
+                <p className="mt-1 text-xs text-zinc-500 dark:text-zinc-400">
+                  {award.description}
+                </p>
+              )}
+            </div>
+          ))}
         </div>
       </motion.section>
 
+      {/* Academic Projects */}
       <motion.section
         variants={VARIANTS_SECTION}
         transition={TRANSITION_SECTION}
       >
-        <h3 className="mb-5 text-lg font-medium">Connect</h3>
-        <p className="mb-5 text-zinc-600 dark:text-zinc-400">
-          Feel free to contact me at{' '}
+        <h3 className="mb-5 text-lg font-medium">Academic Projects</h3>
+        <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
+          {ACADEMIC_PROJECTS.map((project) => (
+            <div key={project.id} className="space-y-2">
+              <div className="rounded-2xl bg-zinc-50/40 p-4 ring-1 ring-zinc-200/50 ring-inset dark:bg-zinc-950/40 dark:ring-zinc-800/50">
+                {project.link ? (
+                  <a
+                    className="font-medium text-zinc-900 hover:underline dark:text-zinc-50"
+                    href={project.link}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    {project.name}
+                  </a>
+                ) : (
+                  <h4 className="font-medium text-zinc-900 dark:text-zinc-50">
+                    {project.name}
+                  </h4>
+                )}
+                <p className="mt-1 text-sm text-zinc-600 dark:text-zinc-400">
+                  {project.description}
+                </p>
+                {project.technologies && project.technologies.length > 0 && (
+                  <div className="mt-2 flex flex-wrap gap-1">
+                    {project.technologies.map((tech, idx) => (
+                      <span
+                        key={idx}
+                        className="rounded-full bg-zinc-200/60 px-2 py-0.5 text-xs text-zinc-700 dark:bg-zinc-800/60 dark:text-zinc-300"
+                      >
+                        {tech}
+                      </span>
+                    ))}
+                  </div>
+                )}
+              </div>
+            </div>
+          ))}
+        </div>
+      </motion.section>
+
+      {/* Skills & Technologies */}
+      <motion.section
+        variants={VARIANTS_SECTION}
+        transition={TRANSITION_SECTION}
+      >
+        <h3 className="mb-5 text-lg font-medium">Skills & Technologies</h3>
+        <div className="space-y-4">
+          {SKILLS.map((skill) => (
+            <div key={skill.id}>
+              <h4 className="mb-2 text-sm font-medium text-zinc-700 dark:text-zinc-300">
+                {skill.category}
+              </h4>
+              <div className="flex flex-wrap gap-2">
+                {skill.items.map((item, idx) => (
+                  <span
+                    key={idx}
+                    className="rounded-full bg-zinc-100 px-3 py-1.5 text-sm text-zinc-900 dark:bg-zinc-900 dark:text-zinc-100"
+                  >
+                    {item}
+                  </span>
+                ))}
+              </div>
+            </div>
+          ))}
+        </div>
+      </motion.section>
+
+      {/* Accomplishments & Certifications */}
+      <motion.section
+        variants={VARIANTS_SECTION}
+        transition={TRANSITION_SECTION}
+      >
+        <h3 className="mb-5 text-lg font-medium">
+          Accomplishments & Certifications
+        </h3>
+        <div className="grid grid-cols-1 gap-3 sm:grid-cols-2">
+          {ACCOMPLISHMENTS.map((cert) => (
+            <div
+              key={cert.id}
+              className="rounded-xl bg-zinc-50/40 p-3 ring-1 ring-zinc-200/50 ring-inset dark:bg-zinc-950/40 dark:ring-zinc-800/50"
+            >
+              <h4 className="text-sm font-medium text-zinc-900 dark:text-zinc-50">
+                {cert.title}
+              </h4>
+              <p className="text-sm text-zinc-600 dark:text-zinc-400">
+                {cert.organization} • {cert.year}
+              </p>
+              {cert.description && (
+                <p className="mt-1 text-xs text-zinc-500 dark:text-zinc-400">
+                  {cert.description}
+                </p>
+              )}
+            </div>
+          ))}
+        </div>
+      </motion.section>
+
+      {/* Volunteering & Community Involvement */}
+      <motion.section
+        variants={VARIANTS_SECTION}
+        transition={TRANSITION_SECTION}
+      >
+        <h3 className="mb-5 text-lg font-medium">
+          Volunteering & Community Involvement
+        </h3>
+        <div className="space-y-3">
+          {VOLUNTEERING.map((vol) => (
+            <div
+              key={vol.id}
+              className="rounded-xl bg-zinc-50/40 p-3 ring-1 ring-zinc-200/50 ring-inset dark:bg-zinc-950/40 dark:ring-zinc-800/50"
+            >
+              <div className="flex flex-row justify-between">
+                <div className="flex-1">
+                  <h4 className="text-sm font-medium text-zinc-900 dark:text-zinc-50">
+                    {vol.role}
+                  </h4>
+                  <p className="text-sm text-zinc-600 dark:text-zinc-400">
+                    {vol.organization}
+                  </p>
+                  {vol.description && (
+                    <p className="mt-1 text-xs text-zinc-500 dark:text-zinc-400">
+                      {vol.description}
+                    </p>
+                  )}
+                </div>
+                {vol.duration && (
+                  <p className="text-xs text-zinc-600 dark:text-zinc-400">
+                    {vol.duration}
+                  </p>
+                )}
+              </div>
+            </div>
+          ))}
+        </div>
+      </motion.section>
+
+      {/* Get In Touch */}
+      <motion.section
+        variants={VARIANTS_SECTION}
+        transition={TRANSITION_SECTION}
+      >
+        <h3 className="mb-5 text-lg font-medium">Get In Touch</h3>
+        <p className="mb-3 text-zinc-600 dark:text-zinc-400">
+          Feel free to reach out at{' '}
           <a className="underline dark:text-zinc-300" href={`mailto:${EMAIL}`}>
             {EMAIL}
+          </a>
+          {' or '}
+          <a className="underline dark:text-zinc-300" href={`tel:${PHONE}`}>
+            {PHONE}
           </a>
         </p>
         <div className="flex items-center justify-start space-x-3">
