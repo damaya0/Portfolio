@@ -176,9 +176,9 @@
   /* Timeline Styles */
   .timeline-line {
     position: absolute;
-    left: 1rem;
-    top: 2rem;
-    bottom: 2rem;
+    left: 0.5rem;
+    top: 0.5rem;
+    bottom: 0.5rem;
     width: 2px;
     background: linear-gradient(180deg, var(--primary-blue) 0%, var(--primary-purple) 100%);
   }

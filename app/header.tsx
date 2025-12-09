@@ -13,7 +13,7 @@ export function Header() {
           className="text-lg text-zinc-600 dark:text-zinc-400"
           delay={0.2}
         >
-          Hello, I'm
+          Hello there!, I'm
         </TextEffect>
 
         <h1 className="text-6xl md:text-7xl lg:text-8xl font-bold gradient-text leading-tight">
@@ -50,7 +50,7 @@ export function Header() {
             Get In Touch
           </a>
           <a
-            href="/resume.pdf"
+            href="/damsith-resume.pdf"
             download
             className="btn-secondary inline-flex items-center gap-2"
           >

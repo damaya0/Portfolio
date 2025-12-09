@@ -5,6 +5,7 @@ import {
   Calendar,
   ChevronRight,
   Code,
+  Github,
   GraduationCap,
   Heart,
   Mail,
@@ -255,43 +256,152 @@ export default function Personal() {
             ))}
           </div>
 
-          {/* Blog Posts Subsection */}
-          {BLOG_POSTS.length > 0 && (
-            <div className="mt-8">
-              <h3 className="text-lg font-semibold text-zinc-900 dark:text-zinc-100 mb-4">
-                Related Articles
-              </h3>
-              <div className="relative rounded-xl bg-gradient-to-br from-blue-50 to-purple-50 dark:from-blue-900/10 dark:to-purple-900/10 p-2">
-                <AnimatedBackground
-                  enableHover
-                  className="h-full w-full rounded-lg bg-white/80 dark:bg-zinc-900/80"
-                  transition={{
-                    type: 'spring',
-                    bounce: 0,
-                    duration: 0.2,
-                  }}
-                >
-                  {BLOG_POSTS.map((post) => (
-                    <Link
-                      key={post.uid}
-                      className="relative block rounded-lg px-4 py-3 z-10"
-                      href={post.link}
-                      data-id={post.uid}
-                    >
-                      <div className="relative z-10 flex flex-col space-y-1">
-                        <h4 className="relative z-10 font-medium text-zinc-900 dark:text-zinc-100">
-                          {post.title}
-                        </h4>
-                        <p className="relative z-10 text-sm text-zinc-600 dark:text-zinc-400">
-                          {post.description}
+          {/* Internship Projects Section */}
+          <div className="mt-12 space-y-6">
+            <div className="rounded-xl bg-gradient-to-br from-blue-50 to-purple-50 dark:from-blue-900/10 dark:to-purple-900/10 p-6">
+              <div className="flex items-start justify-between gap-4 mb-2">
+                <h3 className="text-2xl font-bold text-zinc-900 dark:text-zinc-50">
+                  Software Engineering Internship at WSO2
+                </h3>
+                <div className="flex-shrink-0 w-24 h-24 rounded-lg bg-white dark:bg-zinc-800 p-3 shadow-md ring-1 ring-zinc-200/50 dark:ring-zinc-700/50 flex items-center justify-center">
+                  <img
+                    src="/internship/wso2-logo.png"
+                    alt="WSO2 Logo"
+                    className="w-full h-full object-contain"
+                    onError={(e) => {
+                      e.currentTarget.style.display = 'none'
+                      e.currentTarget.nextElementSibling?.classList.remove('hidden')
+                    }}
+                  />
+                  <div className="hidden text-center">
+                    <Briefcase className="h-8 w-8 text-zinc-400 mx-auto" />
+                    <span className="text-xs text-zinc-400 mt-1 block">WSO2</span>
+                  </div>
+                </div>
+              </div>
+              <p className="text-zinc-600 dark:text-zinc-400 leading-relaxed mb-6">
+                I completed a 6 month hands-on Software Engineering Internship at WSO2. I completed two projects under this internship:
+              </p>
+
+              {/* Project 1 - Main Project */}
+              <div className="mb-6 rounded-lg bg-white dark:bg-zinc-900/40 p-5 shadow-md ring-1 ring-zinc-200/50 dark:ring-zinc-800/50">
+                <h4 className="text-lg font-bold text-purple-600 dark:text-purple-400 mb-3">
+                  Main Project: Agentic AI Diagnostic Analyzer (WSO2 Internship)
+                </h4>
+                <div className="space-y-3 text-sm">
+                  <div>
+                    <span className="font-semibold text-zinc-900 dark:text-zinc-50">Core System: </span>
+                    <span className="text-zinc-600 dark:text-zinc-400">
+                      Engineered a Tool-Augmented Agentic RAG framework to automate root cause analysis for WSO2 Micro Integrator.
+                    </span>
+                  </div>
+                  <div>
+                    <span className="font-semibold text-zinc-900 dark:text-zinc-50">Key Features: </span>
+                    <span className="text-zinc-600 dark:text-zinc-400">
+                      Built custom Python pipelines to parse JVM thread dumps/logs and integrated Pinecone and GitHub APIs for semantic code analysis.
+                    </span>
+                  </div>
+                  <div>
+                    <span className="font-semibold text-zinc-900 dark:text-zinc-50">Outcome: </span>
+                    <span className="text-zinc-600 dark:text-zinc-400">
+                      Delivered a full-stack application (React/Flask) that significantly reduces manual debugging time by generating actionable resolution reports.
+                    </span>
+                  </div>
+                  <div>
+                    <span className="font-semibold text-zinc-900 dark:text-zinc-50">Tech Stack: </span>
+                    <div className="flex flex-wrap gap-2 mt-2">
+                      {['Python', 'OpenAI API', 'LangChain/RAG', 'Pinecone', 'Flask', 'React'].map((tech) => (
+                        <span key={tech} className="skill-pill text-xs">
+                          {tech}
+                        </span>
+                      ))}
+                    </div>
+                  </div>
+                </div>
+
+                {/* Article 1 under Main Project */}
+                {BLOG_POSTS[0] && (
+                  <div className="mt-4 pt-4 border-t border-zinc-200 dark:border-zinc-800">
+                    <div className="flex items-start gap-3">
+                      <Code className="h-5 w-5 text-purple-500 mt-0.5 flex-shrink-0" />
+                      <div className="flex-1">
+                        <a
+                          href={BLOG_POSTS[0].link}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="text-sm font-semibold text-zinc-900 hover:text-purple-600 dark:text-zinc-50 dark:hover:text-purple-400 transition-colors"
+                        >
+                          {BLOG_POSTS[0].title}
+                        </a>
+                        <p className="text-xs text-zinc-500 dark:text-zinc-400 mt-1">
+                          {BLOG_POSTS[0].description}
                         </p>
                       </div>
-                    </Link>
-                  ))}
-                </AnimatedBackground>
+                    </div>
+                  </div>
+                )}
+              </div>
+
+              {/* Project 2 - Onboarding Project */}
+              <div className="rounded-lg bg-white dark:bg-zinc-900/40 p-5 shadow-md ring-1 ring-zinc-200/50 dark:ring-zinc-800/50">
+                <h4 className="text-lg font-bold text-purple-600 dark:text-purple-400 mb-3">
+                  Onboarding Project: HubSpot CRM Connector for Ballerina
+                </h4>
+                <div className="space-y-3 text-sm">
+                  <div>
+                    <span className="font-semibold text-zinc-900 dark:text-zinc-50">Core System: </span>
+                    <span className="text-zinc-600 dark:text-zinc-400">
+                      Developed a reusable Ballerina connector to interface directly with the HubSpot Companies REST API.
+                    </span>
+                  </div>
+                  <div>
+                    <span className="font-semibold text-zinc-900 dark:text-zinc-50">Key Features: </span>
+                    <span className="text-zinc-600 dark:text-zinc-400">
+                      Implemented secure OAuth 2.0 authentication and comprehensive support for CRUD and batch operations on CRM company records.
+                    </span>
+                  </div>
+                  <div>
+                    <span className="font-semibold text-zinc-900 dark:text-zinc-50">Outcome: </span>
+                    <span className="text-zinc-600 dark:text-zinc-400">
+                      Streamlined CRM integration for developers, enabling efficient automation of customer data management and business intelligence workflows.
+                    </span>
+                  </div>
+                  <div>
+                    <span className="font-semibold text-zinc-900 dark:text-zinc-50">Tech Stack: </span>
+                    <div className="flex flex-wrap gap-2 mt-2">
+                      {['Ballerina', 'HubSpot REST API', 'OAuth 2.0'].map((tech) => (
+                        <span key={tech} className="skill-pill text-xs">
+                          {tech}
+                        </span>
+                      ))}
+                    </div>
+                  </div>
+                </div>
+
+                {/* Article 2 under Onboarding Project */}
+                {BLOG_POSTS[1] && (
+                  <div className="mt-4 pt-4 border-t border-zinc-200 dark:border-zinc-800">
+                    <div className="flex items-start gap-3">
+                      <Code className="h-5 w-5 text-purple-500 mt-0.5 flex-shrink-0" />
+                      <div className="flex-1">
+                        <a
+                          href={BLOG_POSTS[1].link}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="text-sm font-semibold text-zinc-900 hover:text-purple-600 dark:text-zinc-50 dark:hover:text-purple-400 transition-colors"
+                        >
+                          {BLOG_POSTS[1].title}
+                        </a>
+                        <p className="text-xs text-zinc-500 dark:text-zinc-400 mt-1">
+                          {BLOG_POSTS[1].description}
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                )}
               </div>
             </div>
-          )}
+          </div>
         </div>
       </motion.section>
 
@@ -430,7 +540,7 @@ export default function Personal() {
               className="group rounded-xl bg-white shadow-md ring-1 ring-zinc-200/50 dark:bg-zinc-900/40 dark:ring-zinc-800/50 hover:shadow-lg hover:ring-purple-300 dark:hover:ring-purple-700 transition-all overflow-hidden"
             >
               {/* Award Image */}
-              <div className="relative h-40 bg-gradient-to-br from-blue-100 to-purple-100 dark:from-blue-900/30 dark:to-purple-900/30 overflow-hidden">
+              <div className="relative h-72 bg-gradient-to-br from-blue-100 to-purple-100 dark:from-blue-900/30 dark:to-purple-900/30 overflow-hidden">
                 <img
                   src={award.image}
                   alt={award.title}
@@ -477,7 +587,7 @@ export default function Personal() {
           >
             {/* Award Image */}
             {award.image && (
-              <div className="relative h-64 md:h-80 bg-gradient-to-br from-blue-100 to-purple-100 dark:from-blue-900/30 dark:to-purple-900/30 overflow-hidden">
+              <div className="relative h-[28rem] bg-gradient-to-br from-blue-100 to-purple-100 dark:from-blue-900/30 dark:to-purple-900/30 overflow-hidden">
                 <img
                   src={award.image}
                   alt={award.title}
@@ -577,7 +687,7 @@ export default function Personal() {
             >
               {/* Project Image */}
               {project.image && (
-                <div className="relative h-48 bg-gradient-to-br from-blue-100 to-purple-100 dark:from-blue-900/30 dark:to-purple-900/30 overflow-hidden">
+                <div className="relative h-72 bg-gradient-to-br from-blue-100 to-purple-100 dark:from-blue-900/30 dark:to-purple-900/30 overflow-hidden">
                   <img
                     src={project.image}
                     alt={project.name}
@@ -598,20 +708,35 @@ export default function Personal() {
                 <div className="flex items-start gap-3">
                   {!project.image && <Code className="h-6 w-6 icon-blue mt-1 flex-shrink-0" />}
                   <div className="flex-1">
-                    {project.link ? (
-                      <a
-                        href={project.link}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="text-lg font-bold text-zinc-900 hover:text-purple-600 dark:text-zinc-50 dark:hover:text-purple-400"
-                      >
-                        {project.name}
-                      </a>
-                    ) : (
-                      <h3 className="text-lg font-bold text-zinc-900 dark:text-zinc-50">
-                        {project.name}
-                      </h3>
-                    )}
+                    <div className="flex items-center justify-between gap-2">
+                      <div className="flex-1">
+                        {project.link ? (
+                          <a
+                            href={project.link}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="text-lg font-bold text-zinc-900 hover:text-purple-600 dark:text-zinc-50 dark:hover:text-purple-400"
+                          >
+                            {project.name}
+                          </a>
+                        ) : (
+                          <h3 className="text-lg font-bold text-zinc-900 dark:text-zinc-50">
+                            {project.name}
+                          </h3>
+                        )}
+                      </div>
+                      {project.link && (
+                        <a
+                          href={project.link}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="flex-shrink-0 p-2 rounded-lg bg-zinc-100 dark:bg-zinc-800 hover:bg-purple-100 dark:hover:bg-purple-900/30 transition-colors group/github"
+                          aria-label="View on GitHub"
+                        >
+                          <Github className="h-5 w-5 text-zinc-600 dark:text-zinc-400 group-hover/github:text-purple-600 dark:group-hover/github:text-purple-400" />
+                        </a>
+                      )}
+                    </div>
                     <p className="mt-2 text-sm text-zinc-600 dark:text-zinc-400">
                       {project.description}
                     </p>
@@ -673,10 +798,6 @@ export default function Personal() {
         <h2 className="section-heading gradient-text">
           Volunteering & <span className="gradient-text-pink">Community</span>
         </h2>
-
-        <p className="text-center text-zinc-600 dark:text-zinc-400 mb-8 max-w-2xl mx-auto">
-          My contributions to community development and leadership
-        </p>
 
         {/* Horizontal Scrolling Container for Organizations */}
         <div className="relative -mx-4 px-4 md:mx-0 md:px-0">

@@ -13,12 +13,13 @@ export function Navigation() {
     }, [])
 
     const navItems = [
-        { label: 'Home', href: '#home' },
         { label: 'About', href: '#about' },
-        { label: 'Education', href: '#education' },
         { label: 'Experience', href: '#experience' },
+        { label: 'Education', href: '#education' },
+        { label: 'Awards', href: '#awards' },
         { label: 'Projects', href: '#projects' },
         { label: 'Skills', href: '#skills' },
+        { label: 'Volunteering', href: '#volunteering' },
         { label: 'Contact', href: '#contact' },
     ]
 
