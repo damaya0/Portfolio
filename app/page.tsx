@@ -17,8 +17,6 @@ import {
 } from 'lucide-react'
 import { Spotlight } from '@/components/ui/spotlight'
 import { Magnetic } from '@/components/ui/magnetic'
-import Link from 'next/link'
-import { AnimatedBackground } from '@/components/ui/animated-background'
 import {
   EDUCATION,
   INTERN_EXPERIENCE,
