@@ -171,7 +171,7 @@ export default function Personal() {
                 key={exp.id}
                 className="group rounded-2xl bg-white p-6 shadow-xl ring-1 ring-zinc-200/50 dark:bg-zinc-900/40 dark:ring-zinc-800/50"
               >
-                {/* Internship Images Gallery */}
+                {/* Internship Images Gallery - Uncomment when images are uploaded
                 {exp.images && exp.images.length > 0 && (
                   <div className="mb-6 -mx-6 -mt-6">
                     <div className="relative h-64 bg-gradient-to-br from-blue-100 to-purple-100 dark:from-blue-900/30 dark:to-purple-900/30 overflow-hidden">
@@ -199,6 +199,7 @@ export default function Personal() {
                     </div>
                   </div>
                 )}
+                */}
 
                 <div className="flex items-start gap-4">
                   <div className="rounded-xl bg-gradient-to-br from-blue-100 to-purple-100 dark:from-blue-900/20 dark:to-purple-900/20 p-3">
