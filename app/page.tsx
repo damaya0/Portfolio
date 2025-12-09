@@ -165,66 +165,6 @@ export default function Personal() {
           Work <span className="gradient-text-pink">Experience</span>
         </h2>
         <div className="space-y-6">
-          <div className="space-y-8">
-            {INTERN_EXPERIENCE.map((exp) => (
-              <Spotlight
-                key={exp.id}
-                className="group rounded-2xl bg-white p-6 shadow-xl ring-1 ring-zinc-200/50 dark:bg-zinc-900/40 dark:ring-zinc-800/50"
-              >
-                <div className="flex items-start gap-4">
-                  <div className="rounded-xl bg-gradient-to-br from-blue-100 to-purple-100 dark:from-blue-900/20 dark:to-purple-900/20 p-3">
-                    <Briefcase className="h-6 w-6 icon-blue" />
-                  </div>
-                  <div className="flex-1">
-                    <div className="flex items-start justify-between flex-wrap gap-2">
-                      <div>
-                        <h3 className="text-xl font-bold text-zinc-900 dark:text-zinc-50">
-                          {exp.title}
-                        </h3>
-                        <p className="text-purple-600 dark:text-purple-400 font-medium mt-1">
-                          {exp.company}
-                        </p>
-                      </div>
-                      <span className="flex items-center gap-1.5 text-sm text-zinc-500">
-                        <Calendar className="h-4 w-4" />
-                        {exp.duration}
-                      </span>
-                    </div>
-                    <p className="mt-3 text-zinc-600 dark:text-zinc-400 leading-relaxed">
-                      {exp.description}
-                    </p>
-
-                    <details className="mt-4 group/details">
-                      <summary className="cursor-pointer text-sm font-semibold text-purple-600 dark:text-purple-400 hover:text-purple-700 dark:hover:text-purple-300 flex items-center gap-2">
-                        <ChevronRight className="h-4 w-4 transition-transform group-open/details:rotate-90" />
-                        Key Responsibilities
-                      </summary>
-                      <ul className="mt-3 space-y-2 ml-6">
-                        {exp.responsibilities.map((resp, idx) => (
-                          <li
-                            key={idx}
-                            className="text-sm text-zinc-600 dark:text-zinc-400 flex items-start gap-2"
-                          >
-                            <span className="text-purple-500 mt-1">•</span>
-                            {resp}
-                          </li>
-                        ))}
-                      </ul>
-                    </details>
-
-                    <div className="mt-4 flex flex-wrap gap-2">
-                      {exp.technologies.map((tech, idx) => (
-                        <span key={idx} className="skill-pill text-xs">
-                          {tech}
-                        </span>
-                      ))}
-                    </div>
-                  </div>
-                </div>
-              </Spotlight>
-            ))}
-          </div>
-
           {/* Internship Projects Section */}
           <div className="mt-12 space-y-6">
             <div className="rounded-xl bg-gradient-to-br from-blue-50 to-purple-50 dark:from-blue-900/10 dark:to-purple-900/10 p-6">
