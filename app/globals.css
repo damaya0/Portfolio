@@ -18,15 +18,189 @@
   ::file-selector-button {
     border-color: var(--color-gray-200, currentColor);
   }
-}
 
-:root {
-  --sh-class: #7aa2f7;
-  --sh-sign: #89ddff;
-  --sh-string: #9ece6a;
-  --sh-keyword: #bb9af7;
-  --sh-comment: #565f89;
-  --sh-jsxliterals: #7aa2f7;
-  --sh-property: #73daca;
-  --sh-entity: #e0af68;
+  :root {
+    /* Color Palette */
+    --primary-blue: #6B7FFF;
+    --primary-purple: #7C3AED;
+    --accent-pink: #EC4899;
+    --light-purple: #E9D5FF;
+    --light-blue: #DBEAFE;
+    --text-dark: #1F2937;
+    
+    /* Syntax Highlighting */
+    --sh-class: #7aa2f7;
+    --sh-sign: #89ddff;
+    --sh-string: #9ece6a;
+    --sh-keyword: #bb9af7;
+    --sh-comment: #565f89;
+    --sh-jsxliterals: #7aa2f7;
+    --sh-property: #73daca;
+    --sh-entity: #e0af68;
+  }
+
+  /* Gradient Text Utility */
+  .gradient-text {
+    background: linear-gradient(135deg, var(--primary-blue) 0%, var(--primary-purple) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .gradient-text-pink {
+    background: linear-gradient(135deg, var(--primary-purple) 0%, var(--accent-pink) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  /* Section Heading with Underline */
+  .section-heading {
+    position: relative;
+    display: inline-block;
+    font-size: 2rem;
+    font-weight: 700;
+    margin-bottom: 2rem;
+  }
+
+  .section-heading::after {
+    content: '';
+    position: absolute;
+    bottom: -8px;
+    left: 0;
+    width: 60px;
+    height: 4px;
+    background: linear-gradient(90deg, var(--primary-blue) 0%, var(--primary-purple) 100%);
+    border-radius: 2px;
+  }
+
+  /* Custom Animations */
+  @keyframes float {
+    0%, 100% {
+      transform: translateY(0px);
+    }
+    50% {
+      transform: translateY(-10px);
+    }
+  }
+
+  @keyframes gradient-shift {
+    0% {
+      background-position: 0% 50%;
+    }
+    50% {
+      background-position: 100% 50%;
+    }
+    100% {
+      background-position: 0% 50%;
+    }
+  }
+
+  .animate-float {
+    animation: float 3s ease-in-out infinite;
+  }
+
+  /* Button Styles */
+  .btn-primary {
+    background: linear-gradient(135deg, var(--primary-blue) 0%, var(--primary-purple) 100%);
+    color: white;
+    padding: 0.75rem 1.5rem;
+    border-radius: 0.5rem;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    border: none;
+    cursor: pointer;
+  }
+
+  .btn-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 25px rgba(107, 127, 255, 0.3);
+  }
+
+  .btn-secondary {
+    background: white;
+    color: var(--primary-purple);
+    padding: 0.75rem 1.5rem;
+    border-radius: 0.5rem;
+    font-weight: 600;
+    border: 2px solid var(--primary-purple);
+    transition: all 0.3s ease;
+    cursor: pointer;
+  }
+
+  .btn-secondary:hover {
+    background: var(--light-purple);
+    transform: translateY(-2px);
+  }
+
+  /* Card Enhancements */
+  .card-gradient-border {
+    position: relative;
+    background: white;
+    border-radius: 1rem;
+    padding: 1px;
+    background: linear-gradient(135deg, var(--primary-blue) 0%, var(--primary-purple) 50%, var(--accent-pink) 100%);
+  }
+
+  .card-gradient-border::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: 1rem;
+    padding: 2px;
+    background: linear-gradient(135deg, var(--primary-blue), var(--primary-purple));
+    -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+  }
+
+  /* Icon Styling */
+  .icon-blue {
+    color: var(--primary-blue);
+  }
+
+  .icon-purple {
+    color: var(--primary-purple);
+  }
+
+  .icon-pink {
+    color: var(--accent-pink);
+  }
+
+  /* Timeline Styles */
+  .timeline-line {
+    position: absolute;
+    left: 1rem;
+    top: 2rem;
+    bottom: 2rem;
+    width: 2px;
+    background: linear-gradient(180deg, var(--primary-blue) 0%, var(--primary-purple) 100%);
+  }
+
+  .timeline-dot {
+    width: 1rem;
+    height: 1rem;
+    border-radius: 50%;
+    background: var(--primary-blue);
+    border: 3px solid white;
+    box-shadow: 0 0 0 3px var(--light-blue);
+  }
+
+  /* Skill Pills */
+  .skill-pill {
+    background: linear-gradient(135deg, rgba(107, 127, 255, 0.1) 0%, rgba(124, 58, 237, 0.1) 100%);
+    color: var(--primary-purple);
+    padding: 0.5rem 1rem;
+    border-radius: 9999px;
+    font-weight: 500;
+    font-size: 0.875rem;
+    border: 1px solid rgba(107, 127, 255, 0.2);
+    transition: all 0.3s ease;
+  }
+
+  .skill-pill:hover {
+    background: linear-gradient(135deg, rgba(107, 127, 255, 0.2) 0%, rgba(124, 58, 237, 0.2) 100%);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(107, 127, 255, 0.2);
+  }
 }

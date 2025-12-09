@@ -1,15 +1,20 @@
 'use client'
 import { motion } from 'motion/react'
-import { XIcon } from 'lucide-react'
+import {
+  GraduationCap,
+  Briefcase,
+  Trophy,
+  Code,
+  Wrench,
+  Award,
+  Heart,
+  Mail,
+  Phone,
+  MapPin,
+  Calendar,
+} from 'lucide-react'
 import { Spotlight } from '@/components/ui/spotlight'
 import { Magnetic } from '@/components/ui/magnetic'
-import {
-  MorphingDialog,
-  MorphingDialogTrigger,
-  MorphingDialogContent,
-  MorphingDialogClose,
-  MorphingDialogContainer,
-} from '@/components/ui/morphing-dialog'
 import Link from 'next/link'
 import { AnimatedBackground } from '@/components/ui/animated-background'
 import {
@@ -22,7 +27,7 @@ import {
   VOLUNTEERING,
   BLOG_POSTS,
   EMAIL,
-  PHONE,
+  PHONE as PHONE_NUMBER,
   SOCIAL_LINKS,
 } from './data'
 
@@ -31,18 +36,19 @@ const VARIANTS_CONTAINER = {
   visible: {
     opacity: 1,
     transition: {
-      staggerChildren: 0.15,
+      staggerChildren: 0.1,
     },
   },
 }
 
 const VARIANTS_SECTION = {
-  hidden: { opacity: 0, y: 20, filter: 'blur(8px)' },
-  visible: { opacity: 1, y: 0, filter: 'blur(0px)' },
+  hidden: { opacity: 0, y: 30 },
+  visible: { opacity: 1, y: 0 },
 }
 
 const TRANSITION_SECTION = {
-  duration: 0.3,
+  duration: 0.5,
+  ease: 'easeOut',
 }
 
 function MagneticSocialLink({
@@ -56,7 +62,7 @@ function MagneticSocialLink({
     <Magnetic springOptions={{ bounce: 0 }} intensity={0.3}>
       <a
         href={link}
-        className="group relative inline-flex shrink-0 items-center gap-[1px] rounded-full bg-zinc-100 px-2.5 py-1 text-sm text-black transition-colors duration-200 hover:bg-zinc-950 hover:text-zinc-50 dark:bg-zinc-800 dark:text-zinc-100 dark:hover:bg-zinc-700"
+        className="group relative inline-flex shrink-0 items-center gap-2 rounded-full bg-gradient-to-r from-blue-500/10 to-purple-500/10 px-4 py-2 text-sm font-medium text-purple-700 transition-all duration-200 hover:from-blue-500/20 hover:to-purple-500/20 dark:text-purple-300"
       >
         {children}
         <svg
@@ -82,131 +88,200 @@ function MagneticSocialLink({
 export default function Personal() {
   return (
     <motion.main
-      className="space-y-24"
+      className="space-y-32 pb-20"
       variants={VARIANTS_CONTAINER}
       initial="hidden"
       animate="visible"
     >
       {/* About Me */}
       <motion.section
+        id="about"
         variants={VARIANTS_SECTION}
         transition={TRANSITION_SECTION}
+        className="scroll-mt-20"
       >
-        <div className="flex-1">
-          <p className="text-zinc-600 dark:text-zinc-400">
-            Electronic & Telecommunication Engineering undergraduate at
-            University of Moratuwa with strong skills in software engineering,
-            AI/ML, and embedded systems. Passionate about building innovative
-            solutions that blend hardware and software expertise.
-          </p>
+        <h2 className="section-heading gradient-text">
+          About <span className="gradient-text-pink">Me</span>
+        </h2>
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-start">
+          <div className="space-y-4">
+            <p className="text-lg text-zinc-700 dark:text-zinc-300 leading-relaxed">
+              Electronic & Telecommunication Engineering undergraduate at
+              University of Moratuwa with strong skills in software engineering,
+              AI/ML, and embedded systems.
+            </p>
+            <p className="text-lg text-zinc-700 dark:text-zinc-300 leading-relaxed">
+              Passionate about building innovative solutions that blend hardware
+              and software expertise to solve real-world problems with creativity
+              and impact.
+            </p>
+            <div className="space-y-3 pt-4">
+              <div className="flex items-center gap-3 text-zinc-600 dark:text-zinc-400">
+                <MapPin className="h-5 w-5 icon-purple" />
+                <span>Western Province, Sri Lanka</span>
+              </div>
+              <div className="flex items-center gap-3 text-zinc-600 dark:text-zinc-400">
+                <Mail className="h-5 w-5 icon-blue" />
+                <a href={`mailto:${EMAIL}`} className="hover:text-purple-600">
+                  {EMAIL}
+                </a>
+              </div>
+              <div className="flex items-center gap-3 text-zinc-600 dark:text-zinc-400">
+                <Phone className="h-5 w-5 icon-pink" />
+                <a href={`tel:${PHONE_NUMBER}`} className="hover:text-purple-600">
+                  {PHONE_NUMBER}
+                </a>
+              </div>
+            </div>
+          </div>
+          <div className="flex justify-center">
+            <div className="relative w-64 h-64 rounded-2xl bg-gradient-to-br from-blue-100 to-purple-100 dark:from-blue-900/20 dark:to-purple-900/20 flex items-center justify-center">
+              <div className="text-8xl font-bold gradient-text">DA</div>
+            </div>
+          </div>
         </div>
       </motion.section>
 
       {/* Education */}
       <motion.section
+        id="education"
         variants={VARIANTS_SECTION}
         transition={TRANSITION_SECTION}
+        className="scroll-mt-20"
       >
-        <h3 className="mb-5 text-lg font-medium">Education</h3>
-        <div className="flex flex-col space-y-4">
-          {EDUCATION.map((edu) => (
-            <div
-              key={edu.id}
-              className="rounded-2xl bg-zinc-50/40 p-4 ring-1 ring-zinc-200/50 ring-inset dark:bg-zinc-950/40 dark:ring-zinc-800/50"
-            >
-              <h4 className="font-medium text-zinc-900 dark:text-zinc-50">
-                {edu.institution}
-              </h4>
-              <p className="text-zinc-700 dark:text-zinc-300">{edu.degree}</p>
-              <p className="text-sm text-zinc-600 dark:text-zinc-400">
-                {edu.duration}
-                {edu.gpa && ` • GPA: ${edu.gpa}`}
-              </p>
-              {edu.achievements && edu.achievements.length > 0 && (
-                <div className="mt-2">
-                  {edu.achievements.map((achievement, idx) => (
-                    <p
-                      key={idx}
-                      className="text-sm text-zinc-600 dark:text-zinc-400"
-                    >
-                      • {achievement}
+        <h2 className="section-heading gradient-text">Education</h2>
+        <div className="relative space-y-8 pl-8">
+          <div className="timeline-line" />
+          {EDUCATION.map((edu, index) => (
+            <div key={edu.id} className="relative">
+              <div className="absolute -left-8 top-2 timeline-dot" />
+              <div className="rounded-2xl bg-white p-6 shadow-lg ring-1 ring-zinc-200/50 dark:bg-zinc-900/40 dark:ring-zinc-800/50 hover:shadow-xl transition-shadow">
+                <div className="flex items-start gap-4">
+                  <div className="rounded-full bg-gradient-to-br from-blue-100 to-purple-100 p-3 dark:from-blue-900/30 dark:to-purple-900/30">
+                    <GraduationCap className="h-6 w-6 icon-purple" />
+                  </div>
+                  <div className="flex-1">
+                    <div className="flex items-start justify-between flex-wrap gap-2">
+                      <h3 className="text-xl font-bold text-zinc-900 dark:text-zinc-50">
+                        {edu.degree}
+                      </h3>
+                      <span className="flex items-center gap-1 text-sm text-zinc-500">
+                        <Calendar className="h-4 w-4" />
+                        {edu.duration}
+                      </span>
+                    </div>
+                    <p className="text-purple-600 dark:text-purple-400 font-medium mt-1">
+                      {edu.institution}
                     </p>
-                  ))}
+                    {edu.gpa && (
+                      <p className="text-sm text-zinc-600 dark:text-zinc-400 mt-2">
+                        GPA: <span className="font-semibold">{edu.gpa}</span>
+                      </p>
+                    )}
+                    {edu.achievements && edu.achievements.length > 0 && (
+                      <div className="mt-3 space-y-1">
+                        {edu.achievements.map((achievement, idx) => (
+                          <p
+                            key={idx}
+                            className="text-sm text-zinc-600 dark:text-zinc-400 flex items-start gap-2"
+                          >
+                            <span className="text-purple-500 mt-1">•</span>
+                            {achievement}
+                          </p>
+                        ))}
+                      </div>
+                    )}
+                    {edu.coursework && edu.coursework.length > 0 && (
+                      <div className="mt-4">
+                        <p className="text-sm font-semibold text-zinc-700 dark:text-zinc-300 mb-2">
+                          Relevant Coursework:
+                        </p>
+                        <div className="flex flex-wrap gap-2">
+                          {edu.coursework.map((course, idx) => (
+                            <span
+                              key={idx}
+                              className="text-xs bg-purple-50 text-purple-700 px-2 py-1 rounded-full dark:bg-purple-900/20 dark:text-purple-300"
+                            >
+                              {course}
+                            </span>
+                          ))}
+                        </div>
+                      </div>
+                    )}
+                  </div>
                 </div>
-              )}
-              {edu.coursework && edu.coursework.length > 0 && (
-                <div className="mt-2">
-                  <p className="text-sm font-medium text-zinc-700 dark:text-zinc-300">
-                    Coursework:
-                  </p>
-                  <p className="text-sm text-zinc-600 dark:text-zinc-400">
-                    {edu.coursework.join(', ')}
-                  </p>
-                </div>
-              )}
+              </div>
             </div>
           ))}
         </div>
       </motion.section>
 
-      {/* Intern Experience (with Blogs) */}
+      {/* Intern Experience */}
       <motion.section
+        id="experience"
         variants={VARIANTS_SECTION}
         transition={TRANSITION_SECTION}
+        className="scroll-mt-20"
       >
-        <h3 className="mb-5 text-lg font-medium">Intern Experience</h3>
-        <div className="flex flex-col space-y-4">
+        <h2 className="section-heading gradient-text">
+          Work <span className="gradient-text-pink">Experience</span>
+        </h2>
+        <div className="space-y-6">
           {INTERN_EXPERIENCE.map((intern) => (
-            <a
+            <div
               key={intern.id}
-              className="relative overflow-hidden rounded-2xl bg-zinc-300/30 p-[1px] dark:bg-zinc-600/30"
-              href={intern.link}
-              target="_blank"
-              rel="noopener noreferrer"
+              className="relative overflow-hidden rounded-2xl bg-gradient-to-br from-blue-50 to-purple-50 p-[2px] dark:from-blue-900/20 dark:to-purple-900/20"
             >
               <Spotlight
-                className="from-zinc-900 via-zinc-800 to-zinc-700 blur-2xl dark:from-zinc-100 dark:via-zinc-200 dark:to-zinc-50"
-                size={64}
+                className="from-blue-600 via-purple-600 to-pink-600 blur-2xl"
+                size={80}
               />
-              <div className="relative h-full w-full rounded-[15px] bg-white p-4 dark:bg-zinc-950">
-                <div className="relative flex w-full flex-col">
-                  <div className="flex flex-row justify-between">
-                    <div>
-                      <h4 className="font-medium dark:text-zinc-100">
-                        {intern.title}
-                      </h4>
-                      <p className="text-zinc-600 dark:text-zinc-400">
-                        {intern.company}
-                      </p>
-                    </div>
-                    <p className="text-sm text-zinc-600 dark:text-zinc-400">
-                      {intern.duration}
-                    </p>
+              <div className="relative h-full w-full rounded-[14px] bg-white p-6 dark:bg-zinc-950">
+                <div className="flex items-start gap-4">
+                  <div className="rounded-full bg-gradient-to-br from-blue-100 to-purple-100 p-3 dark:from-blue-900/30 dark:to-purple-900/30">
+                    <Briefcase className="h-6 w-6 icon-blue" />
                   </div>
-                  <div className="mt-3 space-y-1">
-                    {intern.responsibilities.map((resp, idx) => (
-                      <p
-                        key={idx}
-                        className="text-sm text-zinc-600 dark:text-zinc-400"
-                      >
-                        • {resp}
-                      </p>
-                    ))}
+                  <div className="flex-1">
+                    <div className="flex items-start justify-between flex-wrap gap-2">
+                      <div>
+                        <h3 className="text-xl font-bold text-zinc-900 dark:text-zinc-100">
+                          {intern.title}
+                        </h3>
+                        <p className="text-purple-600 dark:text-purple-400 font-medium">
+                          {intern.company}
+                        </p>
+                      </div>
+                      <span className="flex items-center gap-1 text-sm text-zinc-500">
+                        <Calendar className="h-4 w-4" />
+                        {intern.duration}
+                      </span>
+                    </div>
+                    <div className="mt-4 space-y-2">
+                      {intern.responsibilities.map((resp, idx) => (
+                        <p
+                          key={idx}
+                          className="text-sm text-zinc-600 dark:text-zinc-400 flex items-start gap-2"
+                        >
+                          <span className="text-purple-500 mt-1">•</span>
+                          {resp}
+                        </p>
+                      ))}
+                    </div>
                   </div>
                 </div>
               </div>
-            </a>
+            </div>
           ))}
-        </div>
 
-        {/* Blog Posts Subsection */}
-        {BLOG_POSTS.length > 0 && (
-          <div className="mt-6">
-            <h4 className="mb-3 text-base font-medium">Related Blog Posts</h4>
-            <div className="flex flex-col space-y-0">
+          {/* Blog Posts Subsection */}
+          {BLOG_POSTS.length > 0 && (
+            <div className="mt-8">
+              <h3 className="text-lg font-semibold text-zinc-900 dark:text-zinc-100 mb-4">
+                Related Articles
+              </h3>
               <AnimatedBackground
                 enableHover
-                className="h-full w-full rounded-lg bg-zinc-100 dark:bg-zinc-900/80"
+                className="h-full w-full rounded-xl bg-gradient-to-br from-blue-50 to-purple-50 dark:from-blue-900/10 dark:to-purple-900/10"
                 transition={{
                   type: 'spring',
                   bounce: 0,
@@ -216,15 +291,15 @@ export default function Personal() {
                 {BLOG_POSTS.map((post) => (
                   <Link
                     key={post.uid}
-                    className="-mx-3 rounded-xl px-3 py-3"
+                    className="block rounded-xl px-4 py-3"
                     href={post.link}
                     data-id={post.uid}
                   >
                     <div className="flex flex-col space-y-1">
-                      <h5 className="font-normal dark:text-zinc-100">
+                      <h4 className="font-medium text-zinc-900 dark:text-zinc-100">
                         {post.title}
-                      </h5>
-                      <p className="text-sm text-zinc-500 dark:text-zinc-400">
+                      </h4>
+                      <p className="text-sm text-zinc-600 dark:text-zinc-400">
                         {post.description}
                       </p>
                     </div>
@@ -232,34 +307,43 @@ export default function Personal() {
                 ))}
               </AnimatedBackground>
             </div>
-          </div>
-        )}
+          )}
+        </div>
       </motion.section>
 
       {/* Awards and Scholarships */}
       <motion.section
+        id="awards"
         variants={VARIANTS_SECTION}
         transition={TRANSITION_SECTION}
+        className="scroll-mt-20"
       >
-        <h3 className="mb-5 text-lg font-medium">Awards and Scholarships</h3>
-        <div className="grid grid-cols-1 gap-3 sm:grid-cols-2">
+        <h2 className="section-heading gradient-text">
+          Awards & <span className="gradient-text-pink">Scholarships</span>
+        </h2>
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
           {AWARDS.map((award) => (
             <div
               key={award.id}
-              className="rounded-xl bg-zinc-50/40 p-3 ring-1 ring-zinc-200/50 ring-inset dark:bg-zinc-950/40 dark:ring-zinc-800/50"
+              className="group rounded-xl bg-white p-4 shadow-md ring-1 ring-zinc-200/50 dark:bg-zinc-900/40 dark:ring-zinc-800/50 hover:shadow-lg hover:ring-purple-300 dark:hover:ring-purple-700 transition-all"
             >
-              <h4 className="text-sm font-medium text-zinc-900 dark:text-zinc-50">
-                {award.title}
-              </h4>
-              <p className="text-sm text-zinc-600 dark:text-zinc-400">
-                {award.organization}
-                {award.year && ` • ${award.year}`}
-              </p>
-              {award.description && (
-                <p className="mt-1 text-xs text-zinc-500 dark:text-zinc-400">
-                  {award.description}
-                </p>
-              )}
+              <div className="flex items-start gap-3">
+                <Trophy className="h-5 w-5 icon-pink mt-1 flex-shrink-0" />
+                <div>
+                  <h3 className="text-sm font-semibold text-zinc-900 dark:text-zinc-50">
+                    {award.title}
+                  </h3>
+                  <p className="text-xs text-purple-600 dark:text-purple-400 mt-1">
+                    {award.organization}
+                    {award.year && ` • ${award.year}`}
+                  </p>
+                  {award.description && (
+                    <p className="text-xs text-zinc-500 dark:text-zinc-400 mt-1">
+                      {award.description}
+                    </p>
+                  )}
+                </div>
+              </div>
             </div>
           ))}
         </div>
@@ -267,43 +351,50 @@ export default function Personal() {
 
       {/* Academic Projects */}
       <motion.section
+        id="projects"
         variants={VARIANTS_SECTION}
         transition={TRANSITION_SECTION}
+        className="scroll-mt-20"
       >
-        <h3 className="mb-5 text-lg font-medium">Academic Projects</h3>
-        <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
+        <h2 className="section-heading gradient-text">
+          Academic <span className="gradient-text-pink">Projects</span>
+        </h2>
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           {ACADEMIC_PROJECTS.map((project) => (
-            <div key={project.id} className="space-y-2">
-              <div className="rounded-2xl bg-zinc-50/40 p-4 ring-1 ring-zinc-200/50 ring-inset dark:bg-zinc-950/40 dark:ring-zinc-800/50">
-                {project.link ? (
-                  <a
-                    className="font-medium text-zinc-900 hover:underline dark:text-zinc-50"
-                    href={project.link}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    {project.name}
-                  </a>
-                ) : (
-                  <h4 className="font-medium text-zinc-900 dark:text-zinc-50">
-                    {project.name}
-                  </h4>
-                )}
-                <p className="mt-1 text-sm text-zinc-600 dark:text-zinc-400">
-                  {project.description}
-                </p>
-                {project.technologies && project.technologies.length > 0 && (
-                  <div className="mt-2 flex flex-wrap gap-1">
-                    {project.technologies.map((tech, idx) => (
-                      <span
-                        key={idx}
-                        className="rounded-full bg-zinc-200/60 px-2 py-0.5 text-xs text-zinc-700 dark:bg-zinc-800/60 dark:text-zinc-300"
-                      >
-                        {tech}
-                      </span>
-                    ))}
-                  </div>
-                )}
+            <div
+              key={project.id}
+              className="group rounded-2xl bg-white p-6 shadow-lg ring-1 ring-zinc-200/50 dark:bg-zinc-900/40 dark:ring-zinc-800/50 hover:shadow-xl hover:ring-purple-300 dark:hover:ring-purple-700 transition-all"
+            >
+              <div className="flex items-start gap-3">
+                <Code className="h-6 w-6 icon-blue mt-1 flex-shrink-0" />
+                <div className="flex-1">
+                  {project.link ? (
+                    <a
+                      href={project.link}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-lg font-bold text-zinc-900 hover:text-purple-600 dark:text-zinc-50 dark:hover:text-purple-400"
+                    >
+                      {project.name}
+                    </a>
+                  ) : (
+                    <h3 className="text-lg font-bold text-zinc-900 dark:text-zinc-50">
+                      {project.name}
+                    </h3>
+                  )}
+                  <p className="mt-2 text-sm text-zinc-600 dark:text-zinc-400">
+                    {project.description}
+                  </p>
+                  {project.technologies && project.technologies.length > 0 && (
+                    <div className="mt-3 flex flex-wrap gap-2">
+                      {project.technologies.map((tech, idx) => (
+                        <span key={idx} className="skill-pill text-xs">
+                          {tech}
+                        </span>
+                      ))}
+                    </div>
+                  )}
+                </div>
               </div>
             </div>
           ))}
@@ -312,22 +403,26 @@ export default function Personal() {
 
       {/* Skills & Technologies */}
       <motion.section
+        id="skills"
         variants={VARIANTS_SECTION}
         transition={TRANSITION_SECTION}
+        className="scroll-mt-20"
       >
-        <h3 className="mb-5 text-lg font-medium">Skills & Technologies</h3>
-        <div className="space-y-4">
+        <h2 className="section-heading gradient-text">
+          Skills & <span className="gradient-text-pink">Technologies</span>
+        </h2>
+        <div className="space-y-6">
           {SKILLS.map((skill) => (
             <div key={skill.id}>
-              <h4 className="mb-2 text-sm font-medium text-zinc-700 dark:text-zinc-300">
-                {skill.category}
-              </h4>
+              <div className="flex items-center gap-2 mb-3">
+                <Wrench className="h-5 w-5 icon-purple" />
+                <h3 className="text-lg font-semibold text-zinc-900 dark:text-zinc-100">
+                  {skill.category}
+                </h3>
+              </div>
               <div className="flex flex-wrap gap-2">
                 {skill.items.map((item, idx) => (
-                  <span
-                    key={idx}
-                    className="rounded-full bg-zinc-100 px-3 py-1.5 text-sm text-zinc-900 dark:bg-zinc-900 dark:text-zinc-100"
-                  >
+                  <span key={idx} className="skill-pill">
                     {item}
                   </span>
                 ))}
@@ -339,29 +434,36 @@ export default function Personal() {
 
       {/* Accomplishments & Certifications */}
       <motion.section
+        id="certifications"
         variants={VARIANTS_SECTION}
         transition={TRANSITION_SECTION}
+        className="scroll-mt-20"
       >
-        <h3 className="mb-5 text-lg font-medium">
-          Accomplishments & Certifications
-        </h3>
-        <div className="grid grid-cols-1 gap-3 sm:grid-cols-2">
+        <h2 className="section-heading gradient-text">
+          Accomplishments & <span className="gradient-text-pink">Certifications</span>
+        </h2>
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
           {ACCOMPLISHMENTS.map((cert) => (
             <div
               key={cert.id}
-              className="rounded-xl bg-zinc-50/40 p-3 ring-1 ring-zinc-200/50 ring-inset dark:bg-zinc-950/40 dark:ring-zinc-800/50"
+              className="group rounded-xl bg-white p-4 shadow-md ring-1 ring-zinc-200/50 dark:bg-zinc-900/40 dark:ring-zinc-800/50 hover:shadow-lg hover:ring-purple-300 dark:hover:ring-purple-700 transition-all"
             >
-              <h4 className="text-sm font-medium text-zinc-900 dark:text-zinc-50">
-                {cert.title}
-              </h4>
-              <p className="text-sm text-zinc-600 dark:text-zinc-400">
-                {cert.organization} • {cert.year}
-              </p>
-              {cert.description && (
-                <p className="mt-1 text-xs text-zinc-500 dark:text-zinc-400">
-                  {cert.description}
-                </p>
-              )}
+              <div className="flex items-start gap-3">
+                <Award className="h-5 w-5 icon-blue mt-1 flex-shrink-0" />
+                <div>
+                  <h3 className="text-sm font-semibold text-zinc-900 dark:text-zinc-50">
+                    {cert.title}
+                  </h3>
+                  <p className="text-xs text-purple-600 dark:text-purple-400 mt-1">
+                    {cert.organization} • {cert.year}
+                  </p>
+                  {cert.description && (
+                    <p className="text-xs text-zinc-500 dark:text-zinc-400 mt-1">
+                      {cert.description}
+                    </p>
+                  )}
+                </div>
+              </div>
             </div>
           ))}
         </div>
@@ -369,37 +471,44 @@ export default function Personal() {
 
       {/* Volunteering & Community Involvement */}
       <motion.section
+        id="volunteering"
         variants={VARIANTS_SECTION}
         transition={TRANSITION_SECTION}
+        className="scroll-mt-20"
       >
-        <h3 className="mb-5 text-lg font-medium">
-          Volunteering & Community Involvement
-        </h3>
+        <h2 className="section-heading gradient-text">
+          Volunteering & <span className="gradient-text-pink">Community</span>
+        </h2>
         <div className="space-y-3">
           {VOLUNTEERING.map((vol) => (
             <div
               key={vol.id}
-              className="rounded-xl bg-zinc-50/40 p-3 ring-1 ring-zinc-200/50 ring-inset dark:bg-zinc-950/40 dark:ring-zinc-800/50"
+              className="rounded-xl bg-white p-4 shadow-md ring-1 ring-zinc-200/50 dark:bg-zinc-900/40 dark:ring-zinc-800/50 hover:shadow-lg transition-shadow"
             >
-              <div className="flex flex-row justify-between">
+              <div className="flex items-start gap-3">
+                <Heart className="h-5 w-5 icon-pink mt-1 flex-shrink-0" />
                 <div className="flex-1">
-                  <h4 className="text-sm font-medium text-zinc-900 dark:text-zinc-50">
-                    {vol.role}
-                  </h4>
-                  <p className="text-sm text-zinc-600 dark:text-zinc-400">
-                    {vol.organization}
-                  </p>
+                  <div className="flex items-start justify-between flex-wrap gap-2">
+                    <div>
+                      <h3 className="text-sm font-semibold text-zinc-900 dark:text-zinc-50">
+                        {vol.role}
+                      </h3>
+                      <p className="text-xs text-purple-600 dark:text-purple-400 mt-1">
+                        {vol.organization}
+                      </p>
+                    </div>
+                    {vol.duration && (
+                      <span className="text-xs text-zinc-500">
+                        {vol.duration}
+                      </span>
+                    )}
+                  </div>
                   {vol.description && (
-                    <p className="mt-1 text-xs text-zinc-500 dark:text-zinc-400">
+                    <p className="text-xs text-zinc-600 dark:text-zinc-400 mt-2">
                       {vol.description}
                     </p>
                   )}
                 </div>
-                {vol.duration && (
-                  <p className="text-xs text-zinc-600 dark:text-zinc-400">
-                    {vol.duration}
-                  </p>
-                )}
               </div>
             </div>
           ))}
@@ -408,26 +517,42 @@ export default function Personal() {
 
       {/* Get In Touch */}
       <motion.section
+        id="contact"
         variants={VARIANTS_SECTION}
         transition={TRANSITION_SECTION}
+        className="scroll-mt-20"
       >
-        <h3 className="mb-5 text-lg font-medium">Get In Touch</h3>
-        <p className="mb-3 text-zinc-600 dark:text-zinc-400">
-          Feel free to reach out at{' '}
-          <a className="underline dark:text-zinc-300" href={`mailto:${EMAIL}`}>
-            {EMAIL}
-          </a>
-          {' or '}
-          <a className="underline dark:text-zinc-300" href={`tel:${PHONE}`}>
-            {PHONE}
-          </a>
-        </p>
-        <div className="flex items-center justify-start space-x-3">
-          {SOCIAL_LINKS.map((link) => (
-            <MagneticSocialLink key={link.label} link={link.link}>
-              {link.label}
-            </MagneticSocialLink>
-          ))}
+        <h2 className="section-heading gradient-text">
+          Get In <span className="gradient-text-pink">Touch</span>
+        </h2>
+        <div className="rounded-2xl bg-gradient-to-br from-blue-50 to-purple-50 p-8 dark:from-blue-900/20 dark:to-purple-900/20">
+          <p className="text-lg text-zinc-700 dark:text-zinc-300 mb-6">
+            I'm always open to new opportunities and interesting projects. Feel
+            free to reach out!
+          </p>
+          <div className="space-y-4 mb-6">
+            <a
+              href={`mailto:${EMAIL}`}
+              className="flex items-center gap-3 text-zinc-700 dark:text-zinc-300 hover:text-purple-600 dark:hover:text-purple-400 transition-colors"
+            >
+              <Mail className="h-5 w-5 icon-blue" />
+              <span className="font-medium">{EMAIL}</span>
+            </a>
+            <a
+              href={`tel:${PHONE_NUMBER}`}
+              className="flex items-center gap-3 text-zinc-700 dark:text-zinc-300 hover:text-purple-600 dark:hover:text-purple-400 transition-colors"
+            >
+              <Phone className="h-5 w-5 icon-purple" />
+              <span className="font-medium">{PHONE_NUMBER}</span>
+            </a>
+          </div>
+          <div className="flex flex-wrap items-center gap-3">
+            {SOCIAL_LINKS.map((link) => (
+              <MagneticSocialLink key={link.label} link={link.link}>
+                {link.label}
+              </MagneticSocialLink>
+            ))}
+          </div>
         </div>
       </motion.section>
     </motion.main>
