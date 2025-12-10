@@ -2,6 +2,8 @@
 
 A modern, responsive portfolio website built with Next.js 15, showcasing my work as an Electronic & Telecommunication Engineering undergraduate at University of Moratuwa.
 
+🌐 **Live Site**: [www.damsith.com](https://www.damsith.com)
+
 ## 🚀 Features
 
 - **Modern Design**: Clean, professional interface with dark mode support
@@ -19,23 +21,6 @@ A modern, responsive portfolio website built with Next.js 15, showcasing my work
 - **Theme**: next-themes for dark/light mode
 - **TypeScript**: Full type safety
 
-## 📦 Installation
-
-```bash
-# Clone the repository
-git clone https://github.com/damaya0/Portfolio.git
-
-# Navigate to the project directory
-cd Portfolio
-
-# Install dependencies
-npm install
-
-# Run the development server
-npm run dev
-```
-
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
 
 ## 📁 Project Structure
 
