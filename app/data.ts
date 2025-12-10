@@ -283,7 +283,7 @@ export const ACADEMIC_PROJECTS: AcademicProject[] = [
   },
   {
     name: 'UniLink Social Platform',
-    description: 'Developed UniLink, a Django-based social platform designed to connect Sri Lankan university students. The application features secure user authentication, Twilio-integrated password recovery, and a dynamic news feed with full post-management capabilities. This project creates a centralized digital community for academic networking and social interaction.',
+    description: 'Developed a prototype of UniLink, a Django-based social platform designed to connect Sri Lankan university students. The application features secure user authentication, Twilio-integrated password recovery, and a dynamic news feed with full post-management capabilities. This project creates a centralized digital community for academic networking and social interaction.',
     technologies: ['Web Development', 'Full Stack'],
     link: 'https://github.com/damaya0/Unilink-social-media-platform-m',
     id: 'project4',

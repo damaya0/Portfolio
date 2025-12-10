@@ -744,7 +744,7 @@ export default function Personal() {
             {VOLUNTEERING.map((org) => (
               <div
                 key={org.id}
-                className="min-w-[340px] md:min-w-0 snap-start flex-shrink-0 rounded-2xl bg-white shadow-lg ring-1 ring-zinc-200/50 dark:bg-zinc-900/40 dark:ring-zinc-800/50 hover:shadow-xl transition-all overflow-hidden flex flex-col"
+                className="w-[340px] md:w-auto md:min-w-0 snap-start flex-shrink-0 rounded-2xl bg-white shadow-lg ring-1 ring-zinc-200/50 dark:bg-zinc-900/40 dark:ring-zinc-800/50 hover:shadow-xl transition-all overflow-hidden flex flex-col"
               >
                 {/* Organization Image */}
                 <div className="relative h-48 bg-gradient-to-br from-blue-100 to-purple-100 dark:from-blue-900/30 dark:to-purple-900/30 overflow-hidden">
