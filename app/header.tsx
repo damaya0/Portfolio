@@ -37,7 +37,7 @@ export function Header() {
           className="text-lg text-zinc-600 dark:text-zinc-400 max-w-2xl mx-auto"
           delay={0.8}
         >
-          Passionate about innovation and solving real-world problems with
+          Passionate about novel ideas and solving real-world problems with
           creativity and impact
         </TextEffect>
 

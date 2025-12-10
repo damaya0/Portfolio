@@ -112,8 +112,10 @@ export default function Personal() {
             </p>
             <p className="text-lg text-zinc-700 dark:text-zinc-300 leading-relaxed">
               Passionate about building innovative solutions that blend hardware
-              and software expertise to solve real-world problems with creativity
-              and impact.
+              and software expertise to solve real-world problems.
+            </p>
+            <p className="text-lg text-zinc-700 dark:text-zinc-300 leading-relaxed">
+              Love hiking, public speaking, history and coffee
             </p>
             <div className="space-y-3 pt-4">
               <div className="flex items-center gap-3 text-zinc-600 dark:text-zinc-400">
@@ -360,7 +362,7 @@ export default function Personal() {
                               : 'text-zinc-600 dark:text-zinc-400'
                               }`}
                           >
-                            <span className={achievement.includes('🏆') ? '' : 'text-purple-500 mt-1'}>
+                            <span className={achievement.includes('🏆') ? '' : 'text-purple-500 mt-0'}>
                               {achievement.includes('🏆') ? '' : '•'}
                             </span>
                             {achievement}
