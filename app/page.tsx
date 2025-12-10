@@ -313,6 +313,34 @@ export default function Personal() {
               </div>
             </div>
           </div>
+
+          {/* Internship Photo Gallery */}
+          <div className="mt-8">
+            <h3 className="text-xl font-bold text-zinc-900 dark:text-zinc-50 mb-4 text-center">
+              Internship Snaps
+            </h3>
+            <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
+              {[1, 2, 3, 4, 5, 6].map((num) => (
+                <div
+                  key={num}
+                  className="relative aspect-[4/3] rounded-lg overflow-hidden bg-gradient-to-br from-blue-100 to-purple-100 dark:from-blue-900/30 dark:to-purple-900/30 ring-1 ring-zinc-200/50 dark:ring-zinc-800/50"
+                >
+                  <img
+                    src={`/internship/experience-${num}.jpg`}
+                    alt={`WSO2 Internship Experience ${num}`}
+                    className="w-full h-full object-cover"
+                    onError={(e) => {
+                      e.currentTarget.style.display = 'none'
+                      e.currentTarget.nextElementSibling?.classList.remove('hidden')
+                    }}
+                  />
+                  <div className="hidden absolute inset-0 bg-gradient-to-br from-blue-100 to-purple-100 dark:from-blue-900/30 dark:to-purple-900/30 flex items-center justify-center">
+                    <Briefcase className="h-12 w-12 text-purple-300 dark:text-purple-700" />
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
         </div>
       </motion.section>
 
