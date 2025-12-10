@@ -807,7 +807,108 @@ export default function Personal() {
         <p className="text-xs text-center text-zinc-500 mt-4 md:hidden">
           Swipe to see more →
         </p>
-      </motion.section >
+      </motion.section>
+
+      {/* Featured Media */}
+      <motion.section
+        id="featured"
+        variants={VARIANTS_SECTION}
+        transition={TRANSITION_SECTION}
+        className="scroll-mt-20"
+      >
+        <h2 className="section-heading gradient-text">
+          Featured <span className="gradient-text-pink">Media</span>
+        </h2>
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+          {/* Video 1 - EXMO 2024 */}
+          <div className="rounded-xl overflow-hidden bg-white dark:bg-zinc-900/40 ring-1 ring-zinc-200/50 dark:ring-zinc-800/50 shadow-lg">
+            <div className="relative aspect-video">
+              <iframe
+                className="w-full h-full"
+                src="https://www.youtube.com/embed/UzZ8kH0aw7I"
+                title="EXMO 2024 Live Streaming"
+                frameBorder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                allowFullScreen
+              ></iframe>
+            </div>
+            <div className="p-4">
+              <h3 className="font-bold text-zinc-900 dark:text-zinc-50 mb-1">
+                EXMO 2024 - Live Streaming Host
+              </h3>
+              <p className="text-sm text-zinc-600 dark:text-zinc-400">
+                Hosted the live streaming for EXMO 2023, University of Moratuwa&apos;s annual exhibition
+              </p>
+            </div>
+          </div>
+
+          {/* Video 2 - Speech Olympiad */}
+          <div className="rounded-xl overflow-hidden bg-white dark:bg-zinc-900/40 ring-1 ring-zinc-200/50 dark:ring-zinc-800/50 shadow-lg">
+            <div className="relative aspect-video">
+              <iframe
+                className="w-full h-full"
+                src="https://www.youtube.com/embed/BdzZoRsX7ME"
+                title="Speech Olympiad XVI Finalist"
+                frameBorder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                allowFullScreen
+              ></iframe>
+            </div>
+            <div className="p-4">
+              <h3 className="font-bold text-zinc-900 dark:text-zinc-50 mb-1">
+                Speech Olympiad XVI - Finalist
+              </h3>
+              <p className="text-sm text-zinc-600 dark:text-zinc-400">
+                Delivered my finalist speech at the 16th Speech Olympiad competition
+              </p>
+            </div>
+          </div>
+
+          {/* Video 3 - Drama Performance */}
+          <div className="rounded-xl overflow-hidden bg-white dark:bg-zinc-900/40 ring-1 ring-zinc-200/50 dark:ring-zinc-800/50 shadow-lg">
+            <div className="relative aspect-video">
+              <iframe
+                className="w-full h-full"
+                src="https://www.youtube.com/embed/XsH5kpwsd_U"
+                title="Abhina Drama - Maradodalawa"
+                frameBorder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                allowFullScreen
+              ></iframe>
+            </div>
+            <div className="p-4">
+              <h3 className="font-bold text-zinc-900 dark:text-zinc-50 mb-1">
+                Abhina Drama - &quot;Maradodalawa&quot;
+              </h3>
+              <p className="text-sm text-zinc-600 dark:text-zinc-400">
+                Performance in the Abhina drama production &quot;Maradodalawa&quot;
+              </p>
+            </div>
+          </div>
+
+          {/* Video 4 - Real Analysis Lecture */}
+          <div className="rounded-xl overflow-hidden bg-white dark:bg-zinc-900/40 ring-1 ring-zinc-200/50 dark:ring-zinc-800/50 shadow-lg">
+            <div className="relative aspect-video">
+              <iframe
+                className="w-full h-full"
+                src="https://www.youtube.com/embed/PMilG23Z-yc"
+                title="Real Analysis Kuppi Session"
+                frameBorder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                allowFullScreen
+              ></iframe>
+            </div>
+            <div className="p-4">
+              <h3 className="font-bold text-zinc-900 dark:text-zinc-50 mb-1">
+                Real Analysis - Kuppi Session
+              </h3>
+              <p className="text-sm text-zinc-600 dark:text-zinc-400">
+                Conducted few study sessions (kuppi) on Real Analysis for junior batch students
+              </p>
+            </div>
+          </div>
+        </div>
+      </motion.section>
 
       {/* Get In Touch */}
       < motion.section
