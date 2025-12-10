@@ -207,7 +207,7 @@ export const AWARDS: Award[] = [
     id: 'award7',
   },
   {
-    title: 'Ananda Pradeepa Award',
+    title: 'Most Outstanding student of the physical science section in grade 12',
     organization: 'Ananda College',
     id: 'award9',
   },
@@ -216,7 +216,7 @@ export const AWARDS: Award[] = [
 export const ACADEMIC_PROJECTS: AcademicProject[] = [
   {
     name: 'Multimodal Wild Animal Detection System',
-    description: 'Engineered a mass-deployable edge detection node to mitigate Human-Elephant Conflict (HEC) by fusing computer vision and seismic data. The system runs YOLOv5/v11 models with Quantization Aware Training (QAT) on a Qualcomm QCS6490/Raspberry Pi architecture, integrated with a custom PCB for geophone signal filtering. Features include STA/LTA algorithms for footstep detection and an off-grid solar power management system.',
+    description: 'Currently Developing a mass-deployable edge detection node to mitigate Human-Elephant Conflict (HEC) by fusing computer vision and seismic data. The system runs YOLOv5/v11 models with Quantization Aware Training (QAT) on a Qualcomm QCS6490/Raspberry Pi architecture, integrated with a custom PCB for geophone signal filtering. Features include STA/LTA algorithms for footstep detection and an off-grid solar power management system.',
     technologies: ['Edge AI', 'YOLOv5', 'YOLOv11', 'QAT', 'Qualcomm QCS6490', 'Raspberry Pi', 'PCB Design', 'Seismic Sensing', 'Solar Power'],
     image: '/projects/wild-animal.jpg',
     id: 'project1',
