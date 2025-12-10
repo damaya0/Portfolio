@@ -264,14 +264,14 @@ export const ACADEMIC_PROJECTS: AcademicProject[] = [
   {
     name: 'Joint Phase Noise and Channel Estimation for Sub-THz Communication',
     description:
-      'Final year project focusing on advanced communication systems',
+      'Conducting research on Sub-THz communication in collaboration with the University of Oulu and Nokia Bell Labs. The project utilizes neural networks for the joint estimation of phase noise and channel properties. This AI-driven approach addresses critical signal degradation issues by simultaneously calculating both parameters, bypassing the limitations of traditional independent estimation.',
     technologies: ['Signal Processing', 'Communication Systems'],
     link: 'https://github.com/damaya0/SubTHz-Joint-Estimation',
     id: 'project2',
   },
   {
     name: 'UniLink Social Platform',
-    description: 'Social networking platform for university students',
+    description: 'Developed UniLink, a Django-based social platform designed to connect Sri Lankan university students. The application features secure user authentication, Twilio-integrated password recovery, and a dynamic news feed with full post-management capabilities. This project creates a centralized digital community for academic networking and social interaction.',
     technologies: ['Web Development', 'Full Stack'],
     link: 'https://github.com/damaya0/Unilink-social-media-platform-m',
     id: 'project4',
@@ -368,12 +368,6 @@ export const ACCOMPLISHMENTS: Accomplishment[] = [
     id: 'cert3',
   },
   {
-    title: 'Deep Learning Specialization',
-    organization: 'DeepLearning.AI',
-    year: 'Ongoing',
-    id: 'cert4',
-  },
-  {
     title: 'Computer Vision and Image Processing Essentials',
     organization: 'IBM (Coursera)',
     year: '2024',
@@ -384,6 +378,12 @@ export const ACCOMPLISHMENTS: Accomplishment[] = [
     organization: 'LinkedIn',
     year: '2019',
     id: 'cert6',
+  },
+  {
+    title: 'Deep Learning Specialization',
+    organization: 'DeepLearning.AI',
+    year: 'Ongoing',
+    id: 'cert4',
   },
 ]
 

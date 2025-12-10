@@ -115,7 +115,7 @@ export default function Personal() {
               and software expertise to solve real-world problems.
             </p>
             <p className="text-lg text-zinc-700 dark:text-zinc-300 leading-relaxed">
-              Love hiking, public speaking, history and coffee
+              Love hiking, public speaking, history and coffee.
             </p>
             <div className="space-y-3 pt-4">
               <div className="flex items-center gap-3 text-zinc-600 dark:text-zinc-400">
@@ -191,7 +191,7 @@ export default function Personal() {
                 </div>
               </div>
               <p className="text-zinc-600 dark:text-zinc-400 leading-relaxed mb-6">
-                I completed a 6 month hands-on Software Engineering Internship at WSO2. I completed two projects under this internship:
+                I completed a 6 month hands-on Software Engineering Internship at WSO2. I finished two projects under this internship:
               </p>
 
               {/* Project 1 - Main Project */}
