@@ -1,40 +1,107 @@
-<img src="/public/cover.jpg" alt="Cover image representing Nim, a personal website template" width="100%" />
+# Damsith Adikari - Portfolio
 
-Nim is a free and open-source personal website template built with Next.js 15, React 19, Tailwind CSS v4, and Motion. Designed for developers, designers, and founders, it combines minimalism with delightful animated components powered by [Motion-Primitives](https://motion-primitives.com).
+A modern, responsive portfolio website built with Next.js 15, showcasing my work as an Electronic & Telecommunication Engineering undergraduate at University of Moratuwa.
 
-Live demo: [https://nim-fawn.vercel.app](https://nim-fawn.vercel.app)
+## 🚀 Features
 
-## Features
+- **Modern Design**: Clean, professional interface with dark mode support
+- **Responsive**: Fully responsive design that works on all devices
+- **Performance**: Built with Next.js 15 for optimal performance
+- **Animations**: Smooth animations using Framer Motion
+- **SEO Optimized**: Structured for search engine visibility
 
-- Minimal one-page portfolio layout.
-- Blog support with MDX.
-- Responsive and accessible design.
-- Easy to use
-- [Motion-Primitives](https://motion-primitives.com) for animated components.
+## 🛠️ Tech Stack
 
-## Getting Started
+- **Framework**: Next.js 15
+- **Styling**: Tailwind CSS 4.0
+- **Animations**: Framer Motion (motion/react)
+- **Icons**: Lucide React
+- **Theme**: next-themes for dark/light mode
+- **TypeScript**: Full type safety
 
-For detailed setup instructions, refer to the [Installation Guide](./INSTALLATION.md).
+## 📦 Installation
 
 ```bash
-git clone https://github.com/ibelick/nim.git
-cd nim
+# Clone the repository
+git clone https://github.com/damaya0/Portfolio.git
+
+# Navigate to the project directory
+cd Portfolio
+
+# Install dependencies
 npm install
+
+# Run the development server
 npm run dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
 
-## Contributing
+## 📁 Project Structure
 
-Contributions are welcome! Feel free to open issues or submit pull requests to improve Nim.
+```
+├── app/
+│   ├── data.ts           # Portfolio data (education, experience, projects, etc.)
+│   ├── page.tsx          # Main portfolio page
+│   ├── header.tsx        # Hero section
+│   ├── navigation.tsx    # Navigation bar
+│   ├── footer.tsx        # Footer component
+│   └── globals.css       # Global styles
+├── components/
+│   └── ui/               # Reusable UI components
+├── public/
+│   ├── projects/         # Project images
+│   ├── awards/           # Award images
+│   └── internship/       # Internship photos
+└── README.md
+```
 
-## Deployment
+## ✏️ Customization
 
-You can deploy your site to any hosting platform that supports Next.js. For the easiest deployment experience, consider using Vercel:
+To customize this portfolio for your own use:
 
-[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2Fibelick%2Fnim&env=NEXT_PUBLIC_SITE_URL&project-name=nim&repository-name=nim&redirect-url=https%3A%2F%2Ftwitter.com%2Fibelick&demo-title=Nim&demo-description=Nim%20is%20a%20free%20and%20open-source%20minimal%20personal%20website%20template%20built%20with%20Next.js%2015%2C%20React%2019%2C%20and%20Motion-Primitives.&demo-url=https%3A%2F%2Fnim.vercel.app&demo-image=https%3A%2F%2Fraw.githubusercontent.com%2Fibelick%2Fnim%2Frefs%2Fheads%2Fmain%2F.github%2Fassets%2Freadme.png&teamSlug=ibelick)
+1. **Update Personal Information**: Edit `app/data.ts` to add your own:
+   - Education history
+   - Work experience
+   - Projects
+   - Awards
+   - Skills
+   - Contact information
 
-## About
+2. **Add Images**: Place your images in the respective folders:
+   - `/public/projects/` - Project screenshots
+   - `/public/awards/` - Award certificates
+   - `/public/internship/` - Internship photos
 
-Nim is designed to make personal branding effortless and beautiful. If you enjoy it, consider sharing it and exploring [Motion-Primitives Pro](https://pro.motion-primitives.com/).
+3. **Modify Styling**: Adjust colors and styles in:
+   - `app/globals.css` - Global styles and theme colors
+   - Tailwind classes in components
+
+4. **Update Metadata**: Edit SEO metadata in `app/layout.tsx`
+
+## 🚀 Deployment
+
+The portfolio is deployed on Vercel. To deploy your own:
+
+```bash
+# Build the project
+npm run build
+
+# Deploy to Vercel
+vercel deploy
+```
+
+Or connect your GitHub repository to Vercel for automatic deployments.
+
+## 📝 License
+
+This project is open source and available for personal use.
+
+## 🔗 Connect
+
+- **LinkedIn**: [Damsith Adikari](https://www.linkedin.com/in/damsith-adikari-5244711a0/)
+- **GitHub**: [damaya0](https://github.com/damaya0)
+
+---
+
+Built with ❤️ using Next.js and Tailwind CSS
