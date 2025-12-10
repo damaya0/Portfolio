@@ -106,9 +106,21 @@ export const EDUCATION: Education[] = [
     duration: 'Jan 2018 – Oct 2020',
     achievements: [
       '🏆 Ranked 9th in Sri Lanka and 3rd in Colombo District',
+      "3A's for Physics, Mathematics and Chemistry",
+      "Highest marks in school for Physics and Mathematics",
     ],
     coursework: ['Combined Mathematics', 'Physics', 'Chemistry'],
     id: 'edu2',
+  },
+  {
+    institution: 'Ananda College, Colombo 10',
+    degree: 'GCE Ordinary Level',
+    duration: 'Jan 2016 – Dec 2017',
+    achievements: [
+      "9A's for all subjects including Mathematics, Science and English",
+    ],
+    coursework: ['Mathematics', 'Science', 'English', 'Sinhala', 'Music', 'Buddhism', 'Commerce'],
+    id: 'edu3',
   },
 ]
 
