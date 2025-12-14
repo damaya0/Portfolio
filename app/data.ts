@@ -231,6 +231,7 @@ export const ACADEMIC_PROJECTS: AcademicProject[] = [
     description: 'Currently Developing a mass-deployable edge detection node to mitigate Human-Elephant Conflict (HEC) by fusing computer vision and seismic data. The system runs YOLOv5/v11 models with Quantization Aware Training (QAT) on a Qualcomm QCS6490/Raspberry Pi architecture, integrated with a custom PCB for geophone signal filtering. Features include STA/LTA algorithms for footstep detection and an off-grid solar power management system.',
     technologies: ['Edge AI', 'YOLOv5', 'YOLOv11', 'QAT', 'Qualcomm QCS6490', 'Raspberry Pi', 'PCB Design', 'Seismic Sensing', 'Solar Power'],
     image: '/projects/wild-animal.jpg',
+    link: 'https://github.com/MultimodelWildAnimalDetection/yolov11_and_v8-qat',
     id: 'project1',
   },
   {
