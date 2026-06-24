@@ -84,9 +84,9 @@ export const EDUCATION: Education[] = [
     institution: 'University of Moratuwa',
     degree: 'BSc (Hons) Electronic & Telecommunication Engineering',
     duration: 'Aug 2022 – Present',
-    gpa: '3.80/4.0',
+    gpa: '3.83/4.0',
     achievements: [
-      "Dean's List (Semesters 1, 2, 4, 6)",
+      "Dean's List (Semesters 1, 2, 4, 6, 7, 8)",
     ],
     coursework: [
       'Linear Algebra',
@@ -410,7 +410,7 @@ export const VOLUNTEERING: Volunteering[] = [
         startDate: 'March 2024',
         endDate: 'March 2025',
         description:
-          'Managed membership database and mentoring programs. Organized joint club meetings to foster growth. Successfully increased membership from over 60 people during tenure.',
+          'Managed membership database and mentoring programs. Organized joint club meetings to foster growth. Successfully grew the club to over 60 members during tenure.',
       },
       {
         role: 'Project Chairperson (Chapter-X)',

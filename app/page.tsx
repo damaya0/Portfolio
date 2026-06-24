@@ -167,6 +167,42 @@ export default function Personal() {
           Work <span className="gradient-text-pink">Experience</span>
         </h2>
         <div className="space-y-6">
+          {/* Full-time Role */}
+          <div className="rounded-xl bg-gradient-to-br from-blue-50 to-purple-50 dark:from-blue-900/10 dark:to-purple-900/10 p-6">
+            <div className="flex items-start justify-between gap-4 mb-2">
+              <div>
+                <h3 className="text-2xl font-bold text-zinc-900 dark:text-zinc-50">
+                  Software Engineer at WSO2
+                </h3>
+                <p className="text-purple-600 dark:text-purple-400 font-medium mt-1">
+                  Full-time
+                </p>
+                <span className="flex items-center gap-1 text-sm text-zinc-500 mt-1">
+                  <Calendar className="h-4 w-4" />
+                  Starting July 2026
+                </span>
+              </div>
+              <div className="flex-shrink-0 w-24 h-24 rounded-lg bg-white dark:bg-zinc-800 p-3 shadow-md ring-1 ring-zinc-200/50 dark:ring-zinc-700/50 flex items-center justify-center">
+                <img
+                  src="/internship/wso2-logo.png"
+                  alt="WSO2 Logo"
+                  className="w-full h-full object-contain"
+                  onError={(e) => {
+                    e.currentTarget.style.display = 'none'
+                    e.currentTarget.nextElementSibling?.classList.remove('hidden')
+                  }}
+                />
+                <div className="hidden text-center">
+                  <Briefcase className="h-8 w-8 text-zinc-400 mx-auto" />
+                  <span className="text-xs text-zinc-400 mt-1 block">WSO2</span>
+                </div>
+              </div>
+            </div>
+            <p className="text-zinc-600 dark:text-zinc-400 leading-relaxed">
+              Joining WSO2 full-time as a Software Engineer after completing my internship there, continuing to work on integration and AI-driven enterprise software solutions.
+            </p>
+          </div>
+
           {/* Internship Projects Section */}
           <div className="mt-12 space-y-6">
             <div className="rounded-xl bg-gradient-to-br from-blue-50 to-purple-50 dark:from-blue-900/10 dark:to-purple-900/10 p-6">
@@ -837,7 +873,7 @@ export default function Personal() {
                 EXMO 2024 - Live Streaming Host
               </h3>
               <p className="text-sm text-zinc-600 dark:text-zinc-400">
-                Hosted the live streaming for EXMO 2023, University of Moratuwa&apos;s annual exhibition
+                Hosted the live streaming for EXMO 2024, University of Moratuwa&apos;s annual exhibition
               </p>
             </div>
           </div>

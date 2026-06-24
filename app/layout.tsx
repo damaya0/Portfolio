@@ -13,7 +13,7 @@ export const viewport: Viewport = {
 }
 
 export const metadata: Metadata = {
-  metadataBase: new URL('https://damsithadikari.com/'),
+  metadataBase: new URL('https://www.damsith.com/'),
   alternates: {
     canonical: '/'
   },
