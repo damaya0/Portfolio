@@ -5,6 +5,7 @@ type Education = {
   gpa?: string
   achievements?: string[]
   coursework?: string[]
+  logo?: string
   id: string
 }
 
@@ -98,6 +99,7 @@ export const EDUCATION: Education[] = [
       'Embedded Systems and Applications',
       'Data Structures and Algorithms',
     ],
+    logo: '/education/uom-entc.png',
     id: 'edu1',
   },
   {
@@ -110,6 +112,7 @@ export const EDUCATION: Education[] = [
       "Highest marks in school for Physics and Mathematics",
     ],
     coursework: ['Combined Mathematics', 'Physics', 'Chemistry'],
+    logo: '/education/ananda-college.png',
     id: 'edu2',
   },
   {
@@ -120,6 +123,7 @@ export const EDUCATION: Education[] = [
       "9A's for all subjects including Mathematics, Science and English",
     ],
     coursework: ['Mathematics', 'Science', 'English', 'Sinhala', 'Music', 'Buddhism', 'Commerce'],
+    logo: '/education/ananda-college.png',
     id: 'edu3',
   },
 ]
