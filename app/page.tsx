@@ -62,7 +62,7 @@ function MagneticSocialLink({
     <Magnetic springOptions={{ bounce: 0 }} intensity={0.3}>
       <a
         href={link}
-        className="group relative inline-flex shrink-0 items-center gap-2 rounded-full bg-gradient-to-r from-blue-500/10 to-purple-500/10 px-4 py-2 text-sm font-medium text-purple-700 transition-all duration-200 hover:from-blue-500/20 hover:to-purple-500/20 dark:text-purple-300"
+        className="group relative inline-flex shrink-0 items-center gap-2 rounded-full border border-[var(--ink)] px-4 py-2 text-sm font-medium transition-colors duration-200 hover:bg-[var(--ink)] hover:text-[var(--bg)]"
       >
         {children}
         <svg
@@ -100,56 +100,56 @@ export default function Personal() {
         transition={TRANSITION_SECTION}
         className="scroll-mt-20"
       >
-        <h2 className="section-heading gradient-text">
-          About <span className="gradient-text-pink">Me</span>
-        </h2>
+        <div className="mb-10 flex items-baseline gap-4 border-b border-[var(--line)] pb-4">
+          <h2 className="display text-3xl md:text-4xl">About Me</h2>
+        </div>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-start">
           <div className="space-y-4">
-            <p className="text-lg text-zinc-700 dark:text-zinc-300 leading-relaxed">
-              Electronic & Telecommunication Engineering undergraduate at
-              University of Moratuwa with strong skills in software engineering,
-              AI/ML, and embedded systems.
+            <p className="text-lg text-[var(--ink)]/80 leading-relaxed">
+              Software Engineer at WSO2, working on the AI team within the
+              Integration Business Unit. Electronic & Telecommunication
+              Engineering graduate of University of Moratuwa with strong
+              skills in software engineering, AI/ML, and algorithms.
             </p>
-            <p className="text-lg text-zinc-700 dark:text-zinc-300 leading-relaxed">
-              Passionate about building innovative solutions that blend hardware
-              and software expertise to solve real-world problems.
+            <p className="text-lg text-[var(--ink)]/80 leading-relaxed">
+              Passionate about building AI centered enterprise solutions that uses proper Integration practices.
             </p>
-            <p className="text-lg text-zinc-700 dark:text-zinc-300 leading-relaxed">
+            <p className="text-lg text-[var(--ink)]/80 leading-relaxed">
               Love hiking, public speaking, history and coffee.
             </p>
             <div className="space-y-3 pt-4">
-              <div className="flex items-center gap-3 text-zinc-600 dark:text-zinc-400">
-                <MapPin className="h-5 w-5 icon-purple" />
+              <div className="flex items-center gap-3 text-[var(--muted)]">
+                <MapPin className="h-5 w-5" />
                 <span>Western Province, Sri Lanka</span>
               </div>
-              <div className="flex items-center gap-3 text-zinc-600 dark:text-zinc-400">
-                <Mail className="h-5 w-5 icon-blue" />
-                <a href={`mailto:${EMAIL}`} className="hover:text-purple-600">
+              <div className="flex items-center gap-3 text-[var(--muted)]">
+                <Mail className="h-5 w-5" />
+                <a href={`mailto:${EMAIL}`} className="hover:text-[var(--accent)] transition-colors">
                   {EMAIL}
                 </a>
               </div>
-              <div className="flex items-center gap-3 text-zinc-600 dark:text-zinc-400">
-                <Phone className="h-5 w-5 icon-pink" />
-                <a href={`tel:${PHONE_NUMBER}`} className="hover:text-purple-600">
+              <div className="flex items-center gap-3 text-[var(--muted)]">
+                <Phone className="h-5 w-5" />
+                <a href={`tel:${PHONE_NUMBER}`} className="hover:text-[var(--accent)] transition-colors">
                   {PHONE_NUMBER}
                 </a>
               </div>
             </div>
           </div>
           <div className="flex justify-center">
-            <div className="relative w-64 h-64 rounded-2xl overflow-hidden shadow-xl ring-2 ring-purple-200 dark:ring-purple-800">
+            <div className="group relative w-64 h-64 overflow-hidden border border-[var(--line)]">
               <img
                 src="/profile/profile.jpg"
                 alt="Damsith Adikari"
-                className="w-full h-full object-cover"
+                className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
                 onError={(e) => {
                   // Fallback to DA placeholder if image not found
                   e.currentTarget.style.display = 'none'
                   e.currentTarget.nextElementSibling?.classList.remove('hidden')
                 }}
               />
-              <div className="hidden absolute inset-0 bg-gradient-to-br from-blue-100 to-purple-100 dark:from-blue-900/20 dark:to-purple-900/20 flex items-center justify-center">
-                <div className="text-8xl font-bold gradient-text">DA</div>
+              <div className="hidden absolute inset-0 bg-[var(--line)] items-center justify-center">
+                <div className="display text-8xl text-[var(--muted)]">DA</div>
               </div>
             </div>
           </div>
@@ -163,26 +163,26 @@ export default function Personal() {
         transition={TRANSITION_SECTION}
         className="scroll-mt-20"
       >
-        <h2 className="section-heading gradient-text">
-          Work <span className="gradient-text-pink">Experience</span>
-        </h2>
+        <div className="mb-10 flex items-baseline gap-4 border-b border-[var(--line)] pb-4">
+          <h2 className="display text-3xl md:text-4xl">Work Experience</h2>
+        </div>
         <div className="space-y-6">
           {/* Full-time Role */}
-          <div className="rounded-xl bg-gradient-to-br from-blue-50 to-purple-50 dark:from-blue-900/10 dark:to-purple-900/10 p-6">
+          <div className="panel p-6">
             <div className="flex items-start justify-between gap-4 mb-2">
               <div>
-                <h3 className="text-2xl font-bold text-zinc-900 dark:text-zinc-50">
+                <h3 className="text-2xl font-bold text-[var(--ink)]">
                   Software Engineer at WSO2
                 </h3>
-                <p className="text-purple-600 dark:text-purple-400 font-medium mt-1">
-                  Full-time
+                <p className="eyebrow mt-1">
+                  AI Team · Integration BU · Full-time
                 </p>
-                <span className="flex items-center gap-1 text-sm text-zinc-500 mt-1">
+                <span className="flex items-center gap-1 text-sm text-[var(--muted)] mt-1">
                   <Calendar className="h-4 w-4" />
-                  Starting July 2026
+                  Since July 2026
                 </span>
               </div>
-              <div className="flex-shrink-0 w-24 h-24 rounded-lg bg-white dark:bg-zinc-800 p-3 shadow-md ring-1 ring-zinc-200/50 dark:ring-zinc-700/50 flex items-center justify-center">
+              <div className="flex-shrink-0 w-24 h-24 border border-[var(--line)] p-3 flex items-center justify-center">
                 <img
                   src="/internship/wso2-logo.png"
                   alt="WSO2 Logo"
@@ -193,24 +193,59 @@ export default function Personal() {
                   }}
                 />
                 <div className="hidden text-center">
-                  <Briefcase className="h-8 w-8 text-zinc-400 mx-auto" />
-                  <span className="text-xs text-zinc-400 mt-1 block">WSO2</span>
+                  <Briefcase className="h-8 w-8 text-[var(--muted)] mx-auto" />
+                  <span className="text-xs text-[var(--muted)] mt-1 block">WSO2</span>
                 </div>
               </div>
             </div>
-            <p className="text-zinc-600 dark:text-zinc-400 leading-relaxed">
-              Joining WSO2 full-time as a Software Engineer after completing my internship there, continuing to work on integration and AI-driven enterprise software solutions.
+            <p className="text-[var(--ink)]/70 leading-relaxed">
+              Joined WSO2 full-time as a Software Engineer on the AI team within the Integration Business Unit, Building AI-driven enterprise software solutions.
+            </p>
+          </div>
+
+          {/* Visiting Instructor Role */}
+          <div className="panel p-6">
+            <div className="flex items-start justify-between gap-4 mb-2">
+              <div>
+                <h3 className="text-2xl font-bold text-[var(--ink)]">
+                  Visiting Instructor
+                </h3>
+                <p className="eyebrow mt-1">
+                  Dept. of Electronic & Telecommunication Engineering, University of Moratuwa
+                </p>
+                <span className="flex items-center gap-1 text-sm text-[var(--muted)] mt-1">
+                  <Calendar className="h-4 w-4" />
+                  February 2026 – June 2026
+                </span>
+              </div>
+              <div className="flex-shrink-0 w-24 h-24 border border-[var(--line)] p-3 flex items-center justify-center">
+                <img
+                  src="/education/uom-entc.png"
+                  alt="University of Moratuwa ENTC Logo"
+                  className="w-full h-full object-contain"
+                  onError={(e) => {
+                    e.currentTarget.style.display = 'none'
+                    e.currentTarget.nextElementSibling?.classList.remove('hidden')
+                  }}
+                />
+                <div className="hidden text-center">
+                  <GraduationCap className="h-8 w-8 text-[var(--muted)] mx-auto" />
+                </div>
+              </div>
+            </div>
+            <p className="text-[var(--ink)]/70 leading-relaxed">
+              Taught and mentored first-year undergraduates through course modules and laboratory work in the Department of Electronic & Telecommunication Engineering.
             </p>
           </div>
 
           {/* Internship Projects Section */}
           <div className="mt-12 space-y-6">
-            <div className="rounded-xl bg-gradient-to-br from-blue-50 to-purple-50 dark:from-blue-900/10 dark:to-purple-900/10 p-6">
+            <div className="panel p-6">
               <div className="flex items-start justify-between gap-4 mb-2">
-                <h3 className="text-2xl font-bold text-zinc-900 dark:text-zinc-50">
+                <h3 className="text-2xl font-bold text-[var(--ink)]">
                   Software Engineering Internship at WSO2
                 </h3>
-                <div className="flex-shrink-0 w-24 h-24 rounded-lg bg-white dark:bg-zinc-800 p-3 shadow-md ring-1 ring-zinc-200/50 dark:ring-zinc-700/50 flex items-center justify-center">
+                <div className="flex-shrink-0 w-24 h-24 border border-[var(--line)] p-3 flex items-center justify-center">
                   <img
                     src="/internship/wso2-logo.png"
                     alt="WSO2 Logo"
@@ -221,44 +256,44 @@ export default function Personal() {
                     }}
                   />
                   <div className="hidden text-center">
-                    <Briefcase className="h-8 w-8 text-zinc-400 mx-auto" />
-                    <span className="text-xs text-zinc-400 mt-1 block">WSO2</span>
+                    <Briefcase className="h-8 w-8 text-[var(--muted)] mx-auto" />
+                    <span className="text-xs text-[var(--muted)] mt-1 block">WSO2</span>
                   </div>
                 </div>
               </div>
-              <p className="text-zinc-600 dark:text-zinc-400 leading-relaxed mb-6">
+              <p className="text-[var(--ink)]/70 leading-relaxed mb-6">
                 I completed a 6 month hands-on Software Engineering Internship at WSO2. I finished two projects under this internship:
               </p>
 
               {/* Project 1 - Main Project */}
-              <div className="mb-6 rounded-lg bg-white dark:bg-zinc-900/40 p-5 shadow-md ring-1 ring-zinc-200/50 dark:ring-zinc-800/50">
-                <h4 className="text-lg font-bold text-purple-600 dark:text-purple-400 mb-3">
-                  Main Project: Agentic AI Diagnostic Analyzer (WSO2 Internship)
+              <div className="mb-6 border border-[var(--line)] p-5">
+                <h4 className="text-lg font-bold text-[var(--ink)] mb-3">
+                  Main Project: <span className="accent">Agentic AI Diagnostic Analyzer</span> (WSO2 Internship)
                 </h4>
                 <div className="space-y-3 text-sm">
                   <div>
-                    <span className="font-semibold text-zinc-900 dark:text-zinc-50">Core System: </span>
-                    <span className="text-zinc-600 dark:text-zinc-400">
+                    <span className="font-semibold text-[var(--ink)]">Core System: </span>
+                    <span className="text-[var(--muted)]">
                       Engineered a Tool-Augmented Agentic RAG framework to automate root cause analysis for WSO2 Micro Integrator.
                     </span>
                   </div>
                   <div>
-                    <span className="font-semibold text-zinc-900 dark:text-zinc-50">Key Features: </span>
-                    <span className="text-zinc-600 dark:text-zinc-400">
+                    <span className="font-semibold text-[var(--ink)]">Key Features: </span>
+                    <span className="text-[var(--muted)]">
                       Built custom Python pipelines to parse JVM thread dumps/logs and integrated Pinecone and GitHub APIs for semantic code analysis.
                     </span>
                   </div>
                   <div>
-                    <span className="font-semibold text-zinc-900 dark:text-zinc-50">Outcome: </span>
-                    <span className="text-zinc-600 dark:text-zinc-400">
+                    <span className="font-semibold text-[var(--ink)]">Outcome: </span>
+                    <span className="text-[var(--muted)]">
                       Delivered a full-stack application (React/Flask) that significantly reduces manual debugging time by generating actionable resolution reports.
                     </span>
                   </div>
                   <div>
-                    <span className="font-semibold text-zinc-900 dark:text-zinc-50">Tech Stack: </span>
+                    <span className="font-semibold text-[var(--ink)]">Tech Stack: </span>
                     <div className="flex flex-wrap gap-2 mt-2">
                       {['Python', 'OpenAI API', 'LangChain/RAG', 'Pinecone', 'Flask', 'React'].map((tech) => (
-                        <span key={tech} className="skill-pill text-xs">
+                        <span key={tech} className="tag">
                           {tech}
                         </span>
                       ))}
@@ -268,19 +303,19 @@ export default function Personal() {
 
                 {/* Article 1 under Main Project */}
                 {BLOG_POSTS[0] && (
-                  <div className="mt-4 pt-4 border-t border-zinc-200 dark:border-zinc-800">
+                  <div className="mt-4 pt-4 border-t border-[var(--line)]">
                     <div className="flex items-start gap-3">
-                      <Code className="h-5 w-5 text-purple-500 mt-0.5 flex-shrink-0" />
+                      <Code className="h-5 w-5 text-[var(--muted)] mt-0.5 flex-shrink-0" />
                       <div className="flex-1">
                         <a
                           href={BLOG_POSTS[0].link}
                           target="_blank"
                           rel="noopener noreferrer"
-                          className="text-sm font-semibold text-zinc-900 hover:text-purple-600 dark:text-zinc-50 dark:hover:text-purple-400 transition-colors"
+                          className="text-sm font-semibold text-[var(--ink)] hover:text-[var(--accent)] transition-colors"
                         >
                           {BLOG_POSTS[0].title}
                         </a>
-                        <p className="text-xs text-zinc-500 dark:text-zinc-400 mt-1">
+                        <p className="text-xs text-[var(--muted)] mt-1">
                           {BLOG_POSTS[0].description}
                         </p>
                       </div>
@@ -290,34 +325,34 @@ export default function Personal() {
               </div>
 
               {/* Project 2 - Onboarding Project */}
-              <div className="rounded-lg bg-white dark:bg-zinc-900/40 p-5 shadow-md ring-1 ring-zinc-200/50 dark:ring-zinc-800/50">
-                <h4 className="text-lg font-bold text-purple-600 dark:text-purple-400 mb-3">
-                  Onboarding Project: HubSpot CRM Connector for Ballerina
+              <div className="border border-[var(--line)] p-5">
+                <h4 className="text-lg font-bold text-[var(--ink)] mb-3">
+                  Onboarding Project: <span className="accent">HubSpot CRM Connector for Ballerina</span>
                 </h4>
                 <div className="space-y-3 text-sm">
                   <div>
-                    <span className="font-semibold text-zinc-900 dark:text-zinc-50">Core System: </span>
-                    <span className="text-zinc-600 dark:text-zinc-400">
+                    <span className="font-semibold text-[var(--ink)]">Core System: </span>
+                    <span className="text-[var(--muted)]">
                       Developed a reusable Ballerina connector to interface directly with the HubSpot Companies REST API.
                     </span>
                   </div>
                   <div>
-                    <span className="font-semibold text-zinc-900 dark:text-zinc-50">Key Features: </span>
-                    <span className="text-zinc-600 dark:text-zinc-400">
+                    <span className="font-semibold text-[var(--ink)]">Key Features: </span>
+                    <span className="text-[var(--muted)]">
                       Implemented secure OAuth 2.0 authentication and comprehensive support for CRUD and batch operations on CRM company records.
                     </span>
                   </div>
                   <div>
-                    <span className="font-semibold text-zinc-900 dark:text-zinc-50">Outcome: </span>
-                    <span className="text-zinc-600 dark:text-zinc-400">
+                    <span className="font-semibold text-[var(--ink)]">Outcome: </span>
+                    <span className="text-[var(--muted)]">
                       Streamlined CRM integration for developers, enabling efficient automation of customer data management and business intelligence workflows.
                     </span>
                   </div>
                   <div>
-                    <span className="font-semibold text-zinc-900 dark:text-zinc-50">Tech Stack: </span>
+                    <span className="font-semibold text-[var(--ink)]">Tech Stack: </span>
                     <div className="flex flex-wrap gap-2 mt-2">
                       {['Ballerina', 'HubSpot REST API', 'OAuth 2.0'].map((tech) => (
-                        <span key={tech} className="skill-pill text-xs">
+                        <span key={tech} className="tag">
                           {tech}
                         </span>
                       ))}
@@ -327,19 +362,19 @@ export default function Personal() {
 
                 {/* Article 2 under Onboarding Project */}
                 {BLOG_POSTS[1] && (
-                  <div className="mt-4 pt-4 border-t border-zinc-200 dark:border-zinc-800">
+                  <div className="mt-4 pt-4 border-t border-[var(--line)]">
                     <div className="flex items-start gap-3">
-                      <Code className="h-5 w-5 text-purple-500 mt-0.5 flex-shrink-0" />
+                      <Code className="h-5 w-5 text-[var(--muted)] mt-0.5 flex-shrink-0" />
                       <div className="flex-1">
                         <a
                           href={BLOG_POSTS[1].link}
                           target="_blank"
                           rel="noopener noreferrer"
-                          className="text-sm font-semibold text-zinc-900 hover:text-purple-600 dark:text-zinc-50 dark:hover:text-purple-400 transition-colors"
+                          className="text-sm font-semibold text-[var(--ink)] hover:text-[var(--accent)] transition-colors"
                         >
                           {BLOG_POSTS[1].title}
                         </a>
-                        <p className="text-xs text-zinc-500 dark:text-zinc-400 mt-1">
+                        <p className="text-xs text-[var(--muted)] mt-1">
                           {BLOG_POSTS[1].description}
                         </p>
                       </div>
@@ -352,26 +387,26 @@ export default function Personal() {
 
           {/* Internship Photo Gallery */}
           <div className="mt-8">
-            <h3 className="text-xl font-bold text-zinc-900 dark:text-zinc-50 mb-4 text-center">
+            <h3 className="text-xl font-bold text-[var(--ink)] mb-4 text-center">
               Internship Snaps
             </h3>
             <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
               {[1, 2, 3, 4, 5, 6].map((num) => (
                 <div
                   key={num}
-                  className="relative aspect-[4/3] rounded-lg overflow-hidden bg-gradient-to-br from-blue-100 to-purple-100 dark:from-blue-900/30 dark:to-purple-900/30 ring-1 ring-zinc-200/50 dark:ring-zinc-800/50"
+                  className="group relative aspect-[4/3] overflow-hidden bg-[var(--line)] border border-[var(--line)]"
                 >
                   <img
                     src={`/internship/experience-${num}.jpg`}
                     alt={`WSO2 Internship Experience ${num}`}
-                    className="w-full h-full object-cover"
+                    className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
                     onError={(e) => {
                       e.currentTarget.style.display = 'none'
                       e.currentTarget.nextElementSibling?.classList.remove('hidden')
                     }}
                   />
-                  <div className="hidden absolute inset-0 bg-gradient-to-br from-blue-100 to-purple-100 dark:from-blue-900/30 dark:to-purple-900/30 flex items-center justify-center">
-                    <Briefcase className="h-12 w-12 text-purple-300 dark:text-purple-700" />
+                  <div className="hidden absolute inset-0 bg-[var(--line)] items-center justify-center">
+                    <Briefcase className="h-12 w-12 text-[var(--muted)]" />
                   </div>
                 </div>
               ))}
@@ -387,33 +422,46 @@ export default function Personal() {
         transition={TRANSITION_SECTION}
         className="scroll-mt-20"
       >
-        <h2 className="section-heading gradient-text">Education</h2>
+        <div className="mb-10 flex items-baseline gap-4 border-b border-[var(--line)] pb-4">
+          <h2 className="display text-3xl md:text-4xl">Education</h2>
+        </div>
         <div className="relative space-y-8 pl-8">
-          <div className="timeline-line" />
+          <div className="absolute left-0.5 top-0.5 bottom-0.5 w-px bg-[var(--line)]" />
           {EDUCATION.map((edu, index) => (
             <div key={edu.id} className="relative">
-              <div className="absolute -left-8 top-2 timeline-dot" />
-              <div className="rounded-2xl bg-white p-6 shadow-lg ring-1 ring-zinc-200/50 dark:bg-zinc-900/40 dark:ring-zinc-800/50 hover:shadow-xl transition-shadow">
+              <div className="absolute -left-8 top-2 h-2 w-2 rounded-full bg-[var(--ink)]" />
+              <div className="panel p-6 hover:border-[var(--ink)] transition-colors">
                 <div className="flex items-start gap-4">
-                  <div className="rounded-full bg-gradient-to-br from-blue-100 to-purple-100 p-3 dark:from-blue-900/30 dark:to-purple-900/30">
-                    <GraduationCap className="h-6 w-6 icon-purple" />
+                  <div className="flex-shrink-0 w-12 h-12 border border-[var(--line)] p-2 flex items-center justify-center">
+                    {edu.logo ? (
+                      <img
+                        src={edu.logo}
+                        alt={edu.institution}
+                        className="w-full h-full object-contain"
+                        onError={(e) => {
+                          e.currentTarget.style.display = 'none'
+                          e.currentTarget.nextElementSibling?.classList.remove('hidden')
+                        }}
+                      />
+                    ) : null}
+                    <GraduationCap className={`h-6 w-6 text-[var(--muted)] ${edu.logo ? 'hidden' : ''}`} />
                   </div>
                   <div className="flex-1">
                     <div className="flex items-start justify-between flex-wrap gap-2">
-                      <h3 className="text-xl font-bold text-zinc-900 dark:text-zinc-50">
+                      <h3 className="text-xl font-bold text-[var(--ink)]">
                         {edu.degree}
                       </h3>
-                      <span className="flex items-center gap-1 text-sm text-zinc-500">
+                      <span className="flex items-center gap-1 text-sm text-[var(--muted)]">
                         <Calendar className="h-4 w-4" />
                         {edu.duration}
                       </span>
                     </div>
-                    <p className="text-purple-600 dark:text-purple-400 font-medium mt-1">
+                    <p className="accent font-medium mt-1">
                       {edu.institution}
                     </p>
                     {edu.gpa && (
-                      <p className="text-sm text-zinc-600 dark:text-zinc-400 mt-2">
-                        GPA: <span className="font-semibold">{edu.gpa}</span>
+                      <p className="text-sm text-[var(--muted)] mt-2">
+                        GPA: <span className="font-semibold text-[var(--ink)]">{edu.gpa}</span>
                       </p>
                     )}
                     {edu.achievements && edu.achievements.length > 0 && (
@@ -422,11 +470,11 @@ export default function Personal() {
                           <p
                             key={idx}
                             className={`text-sm flex items-start gap-2 ${achievement.includes('🏆')
-                              ? 'text-zinc-900 dark:text-zinc-50 font-semibold bg-gradient-to-r from-purple-50 to-pink-50 dark:from-purple-900/20 dark:to-pink-900/20 px-3 py-2 rounded-lg'
-                              : 'text-zinc-600 dark:text-zinc-400'
+                              ? 'text-[var(--ink)] font-semibold border-l-2 border-[var(--accent)] pl-3 py-1'
+                              : 'text-[var(--muted)]'
                               }`}
                           >
-                            <span className={achievement.includes('🏆') ? '' : 'text-purple-500 mt-0'}>
+                            <span className={achievement.includes('🏆') ? '' : 'text-[var(--muted)] mt-0'}>
                               {achievement.includes('🏆') ? '' : '•'}
                             </span>
                             {achievement}
@@ -436,14 +484,14 @@ export default function Personal() {
                     )}
                     {edu.coursework && edu.coursework.length > 0 && (
                       <div className="mt-4">
-                        <p className="text-sm font-semibold text-zinc-700 dark:text-zinc-300 mb-2">
+                        <p className="text-sm font-semibold text-[var(--ink)] mb-2">
                           Relevant Coursework:
                         </p>
                         <div className="flex flex-wrap gap-2">
                           {edu.coursework.map((course, idx) => (
                             <span
                               key={idx}
-                              className="text-xs bg-purple-50 text-purple-700 px-2 py-1 rounded-full dark:bg-purple-900/20 dark:text-purple-300"
+                              className="tag"
                             >
                               {course}
                             </span>
@@ -466,26 +514,26 @@ export default function Personal() {
         transition={TRANSITION_SECTION}
         className="scroll-mt-20"
       >
-        <h2 className="section-heading gradient-text">
-          <span className="gradient-text-pink">Certifications</span>
-        </h2>
+        <div className="mb-10 flex items-baseline gap-4 border-b border-[var(--line)] pb-4">
+          <h2 className="display text-3xl md:text-4xl">Certifications</h2>
+        </div>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
           {ACCOMPLISHMENTS.map((cert) => (
             <div
               key={cert.id}
-              className="group rounded-xl bg-white p-4 shadow-md ring-1 ring-zinc-200/50 dark:bg-zinc-900/40 dark:ring-zinc-800/50 hover:shadow-lg hover:ring-purple-300 dark:hover:ring-purple-700 transition-all"
+              className="group panel p-4 hover:border-[var(--ink)] transition-colors"
             >
               <div className="flex items-start gap-3">
-                <Award className="h-5 w-5 icon-blue mt-1 flex-shrink-0" />
+                <Award className="h-5 w-5 text-[var(--muted)] mt-1 flex-shrink-0" />
                 <div>
-                  <h3 className="text-sm font-semibold text-zinc-900 dark:text-zinc-50">
+                  <h3 className="text-sm font-semibold text-[var(--ink)]">
                     {cert.title}
                   </h3>
-                  <p className="text-xs text-purple-600 dark:text-purple-400 mt-1">
+                  <p className="text-xs text-[var(--muted)] mt-1">
                     {cert.organization} • {cert.year}
                   </p>
                   {cert.description && (
-                    <p className="text-xs text-zinc-500 dark:text-zinc-400 mt-1">
+                    <p className="text-xs text-[var(--muted)] mt-1">
                       {cert.description}
                     </p>
                   )}
@@ -503,47 +551,47 @@ export default function Personal() {
         transition={TRANSITION_SECTION}
         className="scroll-mt-20"
       >
-        <h2 className="section-heading gradient-text">
-          Awards & <span className="gradient-text-pink">Scholarships</span>
-        </h2>
+        <div className="mb-10 flex items-baseline gap-4 border-b border-[var(--line)] pb-4">
+          <h2 className="display text-3xl md:text-4xl">Awards & Scholarships</h2>
+        </div>
 
         {/* Awards with Images - 2 per row */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
           {AWARDS.filter(award => award.image && award.id !== 'award_school').map((award) => (
             <div
               key={award.id}
-              className="group rounded-xl bg-white shadow-md ring-1 ring-zinc-200/50 dark:bg-zinc-900/40 dark:ring-zinc-800/50 hover:shadow-lg hover:ring-purple-300 dark:hover:ring-purple-700 transition-all overflow-hidden"
+              className="group panel hover:border-[var(--ink)] transition-colors overflow-hidden"
             >
               {/* Award Image */}
-              <div className="relative h-72 bg-gradient-to-br from-blue-100 to-purple-100 dark:from-blue-900/30 dark:to-purple-900/30 overflow-hidden">
+              <div className="relative h-72 bg-[var(--line)] overflow-hidden">
                 <img
                   src={award.image}
                   alt={award.title}
-                  className="w-full h-full object-cover"
+                  className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
                   onError={(e) => {
                     e.currentTarget.style.display = 'none'
                     e.currentTarget.nextElementSibling?.classList.remove('hidden')
                   }}
                 />
-                <div className="hidden absolute inset-0 bg-gradient-to-br from-blue-100 to-purple-100 dark:from-blue-900/30 dark:to-purple-900/30 flex items-center justify-center">
-                  <Trophy className="h-12 w-12 text-purple-300 dark:text-purple-700" />
+                <div className="hidden absolute inset-0 bg-[var(--line)] items-center justify-center">
+                  <Trophy className="h-12 w-12 text-[var(--muted)]" />
                 </div>
               </div>
 
               {/* Award Content */}
               <div className="p-4">
                 <div className="flex items-start gap-3">
-                  <Trophy className="h-5 w-5 icon-pink mt-1 flex-shrink-0" />
+                  <Trophy className="h-5 w-5 text-[var(--muted)] mt-1 flex-shrink-0" />
                   <div className="flex-1">
-                    <h3 className="text-sm font-semibold text-zinc-900 dark:text-zinc-50">
+                    <h3 className="text-sm font-semibold text-[var(--ink)]">
                       {award.title}
                     </h3>
-                    <p className="text-xs text-purple-600 dark:text-purple-400 mt-1">
+                    <p className="text-xs text-[var(--muted)] mt-1">
                       {award.organization}
                       {award.year && ` • ${award.year}`}
                     </p>
                     {award.description && (
-                      <p className="text-xs text-zinc-600 dark:text-zinc-400 mt-2 leading-relaxed">
+                      <p className="text-xs text-[var(--muted)] mt-2 leading-relaxed">
                         {award.description}
                       </p>
                     )}
@@ -558,22 +606,22 @@ export default function Personal() {
         {AWARDS.filter(award => award.id === 'award_school').map((award) => (
           <div
             key={award.id}
-            className="mt-6 group rounded-2xl bg-white shadow-xl ring-1 ring-zinc-200/50 dark:bg-zinc-900/40 dark:ring-zinc-800/50 hover:shadow-2xl hover:ring-purple-300 dark:hover:ring-purple-700 transition-all overflow-hidden"
+            className="mt-6 group panel hover:border-[var(--ink)] transition-colors overflow-hidden"
           >
             {/* Award Image */}
             {award.image && (
-              <div className="relative h-[28rem] bg-gradient-to-br from-blue-100 to-purple-100 dark:from-blue-900/30 dark:to-purple-900/30 overflow-hidden">
+              <div className="relative h-[28rem] bg-[var(--line)] overflow-hidden">
                 <img
                   src={award.image}
                   alt={award.title}
-                  className="w-full h-full object-cover"
+                  className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
                   onError={(e) => {
                     e.currentTarget.style.display = 'none'
                     e.currentTarget.nextElementSibling?.classList.remove('hidden')
                   }}
                 />
-                <div className="hidden absolute inset-0 bg-gradient-to-br from-blue-100 to-purple-100 dark:from-blue-900/30 dark:to-purple-900/30 flex items-center justify-center">
-                  <Trophy className="h-16 w-16 text-purple-300 dark:text-purple-700" />
+                <div className="hidden absolute inset-0 bg-[var(--line)] items-center justify-center">
+                  <Trophy className="h-16 w-16 text-[var(--muted)]" />
                 </div>
               </div>
             )}
@@ -581,17 +629,17 @@ export default function Personal() {
             {/* Award Content */}
             <div className="p-6 md:p-8">
               <div className="flex items-start gap-4">
-                <Trophy className="h-6 w-6 icon-pink mt-1 flex-shrink-0" />
+                <Trophy className="h-6 w-6 text-[var(--muted)] mt-1 flex-shrink-0" />
                 <div className="flex-1">
-                  <h3 className="text-xl font-bold text-zinc-900 dark:text-zinc-50">
+                  <h3 className="text-xl font-bold text-[var(--ink)]">
                     {award.title}
                   </h3>
-                  <p className="text-sm text-purple-600 dark:text-purple-400 mt-1">
+                  <p className="text-sm text-[var(--muted)] mt-1">
                     {award.organization}
                     {award.year && ` • ${award.year}`}
                   </p>
                   {award.description && (
-                    <p className="text-sm text-zinc-600 dark:text-zinc-400 mt-3 leading-relaxed">
+                    <p className="text-sm text-[var(--ink)]/70 mt-3 leading-relaxed">
                       {award.description}
                     </p>
                   )}
@@ -601,9 +649,9 @@ export default function Personal() {
                       {award.awards.map((subAward, idx) => (
                         <div
                           key={idx}
-                          className="text-sm text-zinc-700 dark:text-zinc-300 flex items-start gap-2"
+                          className="text-sm text-[var(--ink)]/80 flex items-start gap-2"
                         >
-                          <span className="text-purple-500 mt-1">•</span>
+                          <span className="text-[var(--muted)] mt-1">•</span>
                           <span className="font-medium">{subAward}</span>
                         </div>
                       ))}
@@ -620,20 +668,20 @@ export default function Personal() {
           {AWARDS.filter(award => !award.image && award.id !== 'award_school').map((award) => (
             <div
               key={award.id}
-              className="group rounded-xl bg-white p-4 shadow-md ring-1 ring-zinc-200/50 dark:bg-zinc-900/40 dark:ring-zinc-800/50 hover:shadow-lg hover:ring-purple-300 dark:hover:ring-purple-700 transition-all"
+              className="group panel p-4 hover:border-[var(--ink)] transition-colors"
             >
               <div className="flex items-start gap-3">
-                <Trophy className="h-5 w-5 icon-pink mt-1 flex-shrink-0" />
+                <Trophy className="h-5 w-5 text-[var(--muted)] mt-1 flex-shrink-0" />
                 <div className="flex-1">
-                  <h3 className="text-sm font-semibold text-zinc-900 dark:text-zinc-50">
+                  <h3 className="text-sm font-semibold text-[var(--ink)]">
                     {award.title}
                   </h3>
-                  <p className="text-xs text-purple-600 dark:text-purple-400 mt-1">
+                  <p className="text-xs text-[var(--muted)] mt-1">
                     {award.organization}
                     {award.year && ` • ${award.year}`}
                   </p>
                   {award.description && (
-                    <p className="text-xs text-zinc-600 dark:text-zinc-400 mt-2 leading-relaxed">
+                    <p className="text-xs text-[var(--muted)] mt-2 leading-relaxed">
                       {award.description}
                     </p>
                   )}
@@ -651,29 +699,29 @@ export default function Personal() {
         transition={TRANSITION_SECTION}
         className="scroll-mt-20"
       >
-        <h2 className="section-heading gradient-text">
-          Academic <span className="gradient-text-pink">Projects</span>
-        </h2>
+        <div className="mb-10 flex items-baseline gap-4 border-b border-[var(--line)] pb-4">
+          <h2 className="display text-3xl md:text-4xl">Academic Projects</h2>
+        </div>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           {ACADEMIC_PROJECTS.map((project) => (
             <div
               key={project.id}
-              className="group rounded-2xl bg-white shadow-lg ring-1 ring-zinc-200/50 dark:bg-zinc-900/40 dark:ring-zinc-800/50 hover:shadow-xl hover:ring-purple-300 dark:hover:ring-purple-700 transition-all overflow-hidden"
+              className="group panel hover:border-[var(--ink)] transition-colors overflow-hidden"
             >
               {/* Project Image */}
               {project.image && (
-                <div className="relative h-72 bg-gradient-to-br from-blue-100 to-purple-100 dark:from-blue-900/30 dark:to-purple-900/30 overflow-hidden">
+                <div className="relative h-72 bg-[var(--line)] overflow-hidden">
                   <img
                     src={project.image}
                     alt={project.name}
-                    className="w-full h-full object-cover"
+                    className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
                     onError={(e) => {
                       e.currentTarget.style.display = 'none'
                       e.currentTarget.nextElementSibling?.classList.remove('hidden')
                     }}
                   />
-                  <div className="hidden absolute inset-0 bg-gradient-to-br from-blue-100 to-purple-100 dark:from-blue-900/30 dark:to-purple-900/30 flex items-center justify-center">
-                    <Code className="h-12 w-12 text-purple-300 dark:text-purple-700" />
+                  <div className="hidden absolute inset-0 bg-[var(--line)] items-center justify-center">
+                    <Code className="h-12 w-12 text-[var(--muted)]" />
                   </div>
                 </div>
               )}
@@ -681,7 +729,7 @@ export default function Personal() {
               {/* Project Content */}
               <div className="p-6">
                 <div className="flex items-start gap-3">
-                  {!project.image && <Code className="h-6 w-6 icon-blue mt-1 flex-shrink-0" />}
+                  {!project.image && <Code className="h-6 w-6 text-[var(--muted)] mt-1 flex-shrink-0" />}
                   <div className="flex-1">
                     <div className="flex items-center justify-between gap-2">
                       <div className="flex-1">
@@ -690,12 +738,12 @@ export default function Personal() {
                             href={project.link}
                             target="_blank"
                             rel="noopener noreferrer"
-                            className="text-lg font-bold text-zinc-900 hover:text-purple-600 dark:text-zinc-50 dark:hover:text-purple-400"
+                            className="text-lg font-bold text-[var(--ink)] hover:text-[var(--accent)] transition-colors"
                           >
                             {project.name}
                           </a>
                         ) : (
-                          <h3 className="text-lg font-bold text-zinc-900 dark:text-zinc-50">
+                          <h3 className="text-lg font-bold text-[var(--ink)]">
                             {project.name}
                           </h3>
                         )}
@@ -705,20 +753,20 @@ export default function Personal() {
                           href={project.link}
                           target="_blank"
                           rel="noopener noreferrer"
-                          className="flex-shrink-0 p-2 rounded-lg bg-zinc-100 dark:bg-zinc-800 hover:bg-purple-100 dark:hover:bg-purple-900/30 transition-colors group/github"
+                          className="flex-shrink-0 p-2 border border-[var(--line)] hover:border-[var(--ink)] transition-colors group/github"
                           aria-label="View on GitHub"
                         >
-                          <Github className="h-5 w-5 text-zinc-600 dark:text-zinc-400 group-hover/github:text-purple-600 dark:group-hover/github:text-purple-400" />
+                          <Github className="h-5 w-5 text-[var(--muted)] group-hover/github:text-[var(--ink)]" />
                         </a>
                       )}
                     </div>
-                    <p className="mt-2 text-sm text-zinc-600 dark:text-zinc-400">
+                    <p className="mt-2 text-sm text-[var(--muted)]">
                       {project.description}
                     </p>
                     {project.technologies && project.technologies.length > 0 && (
                       <div className="mt-3 flex flex-wrap gap-2">
                         {project.technologies.map((tech, idx) => (
-                          <span key={idx} className="skill-pill text-xs">
+                          <span key={idx} className="tag">
                             {tech}
                           </span>
                         ))}
@@ -739,21 +787,21 @@ export default function Personal() {
         transition={TRANSITION_SECTION}
         className="scroll-mt-20"
       >
-        <h2 className="section-heading gradient-text">
-          Skills & <span className="gradient-text-pink">Technologies</span>
-        </h2>
+        <div className="mb-10 flex items-baseline gap-4 border-b border-[var(--line)] pb-4">
+          <h2 className="display text-3xl md:text-4xl">Skills & Technologies</h2>
+        </div>
         <div className="space-y-6">
           {SKILLS.map((skill) => (
             <div key={skill.id}>
               <div className="flex items-center gap-2 mb-3">
-                <Wrench className="h-5 w-5 icon-purple" />
-                <h3 className="text-lg font-semibold text-zinc-900 dark:text-zinc-100">
+                <Wrench className="h-5 w-5 text-[var(--muted)]" />
+                <h3 className="text-lg font-semibold text-[var(--ink)]">
                   {skill.category}
                 </h3>
               </div>
               <div className="flex flex-wrap gap-2">
                 {skill.items.map((item, idx) => (
-                  <span key={idx} className="skill-pill">
+                  <span key={idx} className="tag">
                     {item}
                   </span>
                 ))}
@@ -770,9 +818,9 @@ export default function Personal() {
         transition={TRANSITION_SECTION}
         className="scroll-mt-20"
       >
-        <h2 className="section-heading gradient-text">
-          Volunteering & <span className="gradient-text-pink">Community</span>
-        </h2>
+        <div className="mb-10 flex items-baseline gap-4 border-b border-[var(--line)] pb-4">
+          <h2 className="display text-3xl md:text-4xl">Volunteering & Community</h2>
+        </div>
 
         {/* Horizontal Scrolling Container for Organizations */}
         <div className="relative -mx-4 px-4 md:mx-0 md:px-0">
@@ -780,25 +828,25 @@ export default function Personal() {
             {VOLUNTEERING.map((org) => (
               <div
                 key={org.id}
-                className="w-[280px] md:w-auto md:min-w-0 snap-start flex-shrink-0 rounded-2xl bg-white shadow-lg ring-1 ring-zinc-200/50 dark:bg-zinc-900/40 dark:ring-zinc-800/50 hover:shadow-xl transition-all overflow-hidden flex flex-col"
+                className="group w-[280px] md:w-auto md:min-w-0 snap-start flex-shrink-0 panel hover:border-[var(--ink)] transition-colors overflow-hidden flex flex-col"
               >
                 {/* Organization Image */}
-                <div className="relative h-48 bg-gradient-to-br from-blue-100 to-purple-100 dark:from-blue-900/30 dark:to-purple-900/30 overflow-hidden">
+                <div className="relative h-48 bg-[var(--line)] overflow-hidden">
                   {org.image ? (
                     <img
                       src={org.image}
                       alt={org.organization}
-                      className="w-full h-full object-cover"
+                      className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
                     />
                   ) : (
                     <div className="w-full h-full flex items-center justify-center">
-                      <Heart className="h-16 w-16 text-purple-300 dark:text-purple-700" />
+                      <Heart className="h-16 w-16 text-[var(--muted)]" />
                     </div>
                   )}
                   {/* Organization Badge */}
                   <div className="absolute bottom-3 left-3 right-3">
-                    <div className="bg-white/95 dark:bg-zinc-900/95 backdrop-blur-sm rounded-lg px-3 py-2 shadow-lg">
-                      <h3 className="text-sm font-bold text-zinc-900 dark:text-zinc-50 leading-tight">
+                    <div className="bg-[var(--bg)]/95 backdrop-blur-sm border border-[var(--line)] px-3 py-2">
+                      <h3 className="text-sm font-bold text-[var(--ink)] leading-tight">
                         {org.organization}
                       </h3>
                     </div>
@@ -810,15 +858,15 @@ export default function Personal() {
                   {org.roles.map((role, roleIndex) => (
                     <div
                       key={roleIndex}
-                      className="pb-4 border-b border-zinc-100 dark:border-zinc-800 last:border-0 last:pb-0"
+                      className="pb-4 border-b border-[var(--line)] last:border-0 last:pb-0"
                     >
                       <div className="flex items-start gap-2 mb-2">
-                        <Heart className="h-4 w-4 icon-purple mt-1 flex-shrink-0" />
+                        <Heart className="h-4 w-4 text-[var(--muted)] mt-1 flex-shrink-0" />
                         <div className="flex-1">
-                          <h4 className="font-semibold text-sm text-zinc-900 dark:text-zinc-50">
+                          <h4 className="font-semibold text-sm text-[var(--ink)]">
                             {role.role}
                           </h4>
-                          <div className="flex items-center gap-1.5 text-xs text-zinc-500 mt-1">
+                          <div className="flex items-center gap-1.5 text-xs text-[var(--muted)] mt-1">
                             <Calendar className="h-3 w-3" />
                             <span>
                               {role.startDate} - {role.endDate}
@@ -827,7 +875,7 @@ export default function Personal() {
                         </div>
                       </div>
                       {role.description && (
-                        <p className="text-xs text-zinc-600 dark:text-zinc-400 leading-relaxed ml-6">
+                        <p className="text-xs text-[var(--muted)] leading-relaxed ml-6">
                           {role.description}
                         </p>
                       )}
@@ -840,7 +888,7 @@ export default function Personal() {
         </div>
 
         {/* Scroll Hint for Mobile */}
-        <p className="text-xs text-center text-zinc-500 mt-4 md:hidden">
+        <p className="eyebrow text-center mt-4 md:hidden">
           Swipe to see more →
         </p>
       </motion.section>
@@ -852,12 +900,12 @@ export default function Personal() {
         transition={TRANSITION_SECTION}
         className="scroll-mt-20"
       >
-        <h2 className="section-heading gradient-text">
-          Featured <span className="gradient-text-pink">Media</span>
-        </h2>
+        <div className="mb-10 flex items-baseline gap-4 border-b border-[var(--line)] pb-4">
+          <h2 className="display text-3xl md:text-4xl">Featured Media</h2>
+        </div>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           {/* Video 1 - EXMO 2024 */}
-          <div className="rounded-xl overflow-hidden bg-white dark:bg-zinc-900/40 ring-1 ring-zinc-200/50 dark:ring-zinc-800/50 shadow-lg">
+          <div className="panel overflow-hidden">
             <div className="relative aspect-video">
               <iframe
                 className="w-full h-full"
@@ -869,17 +917,17 @@ export default function Personal() {
               ></iframe>
             </div>
             <div className="p-4">
-              <h3 className="font-bold text-zinc-900 dark:text-zinc-50 mb-1">
+              <h3 className="font-bold text-[var(--ink)] mb-1">
                 EXMO 2024 - Live Streaming Host
               </h3>
-              <p className="text-sm text-zinc-600 dark:text-zinc-400">
+              <p className="text-sm text-[var(--muted)]">
                 Hosted the live streaming for EXMO 2024, University of Moratuwa&apos;s annual exhibition
               </p>
             </div>
           </div>
 
           {/* Video 2 - Speech Olympiad */}
-          <div className="rounded-xl overflow-hidden bg-white dark:bg-zinc-900/40 ring-1 ring-zinc-200/50 dark:ring-zinc-800/50 shadow-lg">
+          <div className="panel overflow-hidden">
             <div className="relative aspect-video">
               <iframe
                 className="w-full h-full"
@@ -891,17 +939,17 @@ export default function Personal() {
               ></iframe>
             </div>
             <div className="p-4">
-              <h3 className="font-bold text-zinc-900 dark:text-zinc-50 mb-1">
+              <h3 className="font-bold text-[var(--ink)] mb-1">
                 Speech Olympiad XVI - Finalist
               </h3>
-              <p className="text-sm text-zinc-600 dark:text-zinc-400">
+              <p className="text-sm text-[var(--muted)]">
                 Delivered my finalist speech at the 16th Speech Olympiad competition
               </p>
             </div>
           </div>
 
           {/* Video 3 - Drama Performance */}
-          <div className="rounded-xl overflow-hidden bg-white dark:bg-zinc-900/40 ring-1 ring-zinc-200/50 dark:ring-zinc-800/50 shadow-lg">
+          <div className="panel overflow-hidden">
             <div className="relative aspect-video">
               <iframe
                 className="w-full h-full"
@@ -913,17 +961,17 @@ export default function Personal() {
               ></iframe>
             </div>
             <div className="p-4">
-              <h3 className="font-bold text-zinc-900 dark:text-zinc-50 mb-1">
+              <h3 className="font-bold text-[var(--ink)] mb-1">
                 Abhina Drama - &quot;Maradodalawa&quot;
               </h3>
-              <p className="text-sm text-zinc-600 dark:text-zinc-400">
+              <p className="text-sm text-[var(--muted)]">
                 Performance in the Abhina drama production &quot;Maradodalawa&quot;
               </p>
             </div>
           </div>
 
           {/* Video 4 - Real Analysis Lecture */}
-          <div className="rounded-xl overflow-hidden bg-white dark:bg-zinc-900/40 ring-1 ring-zinc-200/50 dark:ring-zinc-800/50 shadow-lg">
+          <div className="panel overflow-hidden">
             <div className="relative aspect-video">
               <iframe
                 className="w-full h-full"
@@ -935,10 +983,10 @@ export default function Personal() {
               ></iframe>
             </div>
             <div className="p-4">
-              <h3 className="font-bold text-zinc-900 dark:text-zinc-50 mb-1">
+              <h3 className="font-bold text-[var(--ink)] mb-1">
                 Real Analysis - Kuppi Session
               </h3>
-              <p className="text-sm text-zinc-600 dark:text-zinc-400">
+              <p className="text-sm text-[var(--muted)]">
                 Conducted few study sessions (kuppi) on Real Analysis for junior batch students
               </p>
             </div>
@@ -953,27 +1001,27 @@ export default function Personal() {
         transition={TRANSITION_SECTION}
         className="scroll-mt-20"
       >
-        <h2 className="section-heading gradient-text">
-          Get In <span className="gradient-text-pink">Touch</span>
-        </h2>
-        <div className="rounded-2xl bg-gradient-to-br from-blue-50 to-purple-50 p-8 dark:from-blue-900/20 dark:to-purple-900/20">
-          <p className="text-lg text-zinc-700 dark:text-zinc-300 mb-6">
+        <div className="mb-10 flex items-baseline gap-4 border-b border-[var(--line)] pb-4">
+          <h2 className="display text-3xl md:text-4xl">Get In Touch</h2>
+        </div>
+        <div className="panel p-8">
+          <p className="text-lg text-[var(--ink)]/80 mb-6">
             I&apos;m always open to new opportunities and interesting projects. Feel
             free to reach out!
           </p>
           <div className="space-y-4 mb-6">
             <a
               href={`mailto:${EMAIL}`}
-              className="flex items-center gap-3 text-zinc-700 dark:text-zinc-300 hover:text-purple-600 dark:hover:text-purple-400 transition-colors"
+              className="flex items-center gap-3 text-[var(--ink)]/80 hover:text-[var(--accent)] transition-colors"
             >
-              <Mail className="h-5 w-5 icon-blue" />
+              <Mail className="h-5 w-5 text-[var(--muted)]" />
               <span className="font-medium">{EMAIL}</span>
             </a>
             <a
               href={`tel:${PHONE_NUMBER}`}
-              className="flex items-center gap-3 text-zinc-700 dark:text-zinc-300 hover:text-purple-600 dark:hover:text-purple-400 transition-colors"
+              className="flex items-center gap-3 text-[var(--ink)]/80 hover:text-[var(--accent)] transition-colors"
             >
-              <Phone className="h-5 w-5 icon-purple" />
+              <Phone className="h-5 w-5 text-[var(--muted)]" />
               <span className="font-medium">{PHONE_NUMBER}</span>
             </a>
           </div>
