@@ -1,59 +1,64 @@
 'use client'
-import { motion } from 'motion/react'
-import { EMAIL } from './data'
-
-const EASE = [0.22, 1, 0.36, 1] as const
+import { TextEffect } from '@/components/ui/text-effect'
+import { Mail, Download } from 'lucide-react'
 
 export function Header() {
   return (
-    <header
-      id="home"
-      className="flex min-h-[88vh] flex-col justify-center py-20"
-    >
-      <motion.p
-        className="eyebrow mb-8"
-        initial={{ opacity: 0, y: 12 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.6, ease: EASE }}
-      >
-        Portfolio — Sri Lanka · {new Date().getFullYear()}
-      </motion.p>
+    <header id="home" className="min-h-screen flex items-center justify-center pt-16 pb-20">
+      <div className="text-center space-y-6 max-w-4xl mx-auto px-4">
+        <TextEffect
+          as="p"
+          preset="fade"
+          per="char"
+          className="text-lg text-zinc-600 dark:text-zinc-400"
+          delay={0.2}
+        >
+          Hello there! I&apos;m
+        </TextEffect>
 
-      <h1 className="display text-[clamp(3.2rem,13vw,11rem)]">
-        {['Damsith', 'Adikari'].map((word, i) => (
-          <span key={word} className="block overflow-hidden">
-            <motion.span
-              className="block"
-              initial={{ y: '100%' }}
-              animate={{ y: 0 }}
-              transition={{ duration: 0.9, ease: EASE, delay: 0.1 + i * 0.12 }}
-            >
-              {word}
-            </motion.span>
-          </span>
-        ))}
-      </h1>
+        <h1 className="text-6xl md:text-7xl lg:text-8xl font-bold gradient-text leading-tight">
+          Damsith Adikari
+        </h1>
 
-      <motion.div
-        className="mt-10 flex max-w-3xl flex-col gap-6 sm:flex-row sm:items-end sm:justify-between"
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ duration: 0.8, ease: EASE, delay: 0.5 }}
-      >
-        <p className="max-w-md text-lg leading-relaxed text-[var(--muted)]">
-          Electronic &amp; Telecommunication Engineering undergraduate at the
-          University of Moratuwa, working across software, AI/ML, and embedded
-          systems.
-        </p>
-        <div className="flex gap-3">
-          <a href="#contact" className="btn-line is-accent">
-            Get in touch
+        <TextEffect
+          as="h2"
+          preset="fade"
+          per="word"
+          className="text-2xl md:text-3xl font-semibold text-zinc-900 dark:text-zinc-100"
+          delay={0.5}
+        >
+          Electronic & Telecommunication Engineering Undergraduate
+        </TextEffect>
+
+        <TextEffect
+          as="p"
+          preset="fade"
+          per="word"
+          className="text-lg text-zinc-600 dark:text-zinc-400 max-w-2xl mx-auto"
+          delay={0.8}
+        >
+          Passionate about novel ideas and solving real-world problems with
+          creativity and impact
+        </TextEffect>
+
+        <div className="flex flex-col sm:flex-row gap-4 justify-center items-center pt-8">
+          <a
+            href="#contact"
+            className="btn-primary inline-flex items-center gap-2"
+          >
+            <Mail className="h-5 w-5" />
+            Get In Touch
           </a>
-          <a href="/damsith-resume.pdf" download className="btn-line">
-            Résumé
+          <a
+            href="/damsith-resume.pdf"
+            download
+            className="btn-secondary inline-flex items-center gap-2"
+          >
+            <Download className="h-5 w-5" />
+            Download Resume
           </a>
         </div>
-      </motion.div>
+      </div>
     </header>
   )
 }
