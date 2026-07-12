@@ -4,6 +4,7 @@ import './globals.css'
 import { Header } from './header'
 import { Navigation } from './navigation'
 import { Footer } from './footer'
+import { Analytics } from '@vercel/analytics/next'
 
 export const viewport: Viewport = {
   width: 'device-width',
@@ -57,6 +58,7 @@ export default function RootLayout({
             <Footer />
           </div>
         </div>
+        <Analytics />
       </body>
     </html>
   )
