@@ -1,17 +1,10 @@
 'use client'
 import Link from 'next/link'
-import { Moon, Sun, Menu, X } from 'lucide-react'
-import { useTheme } from 'next-themes'
-import { useEffect, useState } from 'react'
+import { Menu, X } from 'lucide-react'
+import { useState } from 'react'
 
 export function Navigation() {
-    const { theme, setTheme } = useTheme()
-    const [mounted, setMounted] = useState(false)
     const [menuOpen, setMenuOpen] = useState(false)
-
-    useEffect(() => {
-        setMounted(true)
-    }, [])
 
     const navItems = [
         { label: 'About', href: '#about' },
@@ -26,13 +19,13 @@ export function Navigation() {
     ]
 
     return (
-        <nav className="fixed top-0 left-0 right-0 z-50 bg-white/80 backdrop-blur-md border-b border-zinc-200 dark:bg-zinc-950/80 dark:border-zinc-800">
+        <nav className="fixed top-0 left-0 right-0 z-50 bg-[var(--bg)]/90 backdrop-blur-md border-b border-[var(--line)]">
             <div className="mx-auto max-w-screen-xl px-4">
                 <div className="flex h-16 items-center justify-between">
                     {/* Logo/Initials */}
                     <Link
                         href="#home"
-                        className="text-xl font-bold gradient-text hover:opacity-80 transition-opacity"
+                        className="display text-xl hover:opacity-70 transition-opacity"
                         onClick={() => setMenuOpen(false)}
                     >
                         DA
@@ -44,7 +37,7 @@ export function Navigation() {
                             <a
                                 key={item.label}
                                 href={item.href}
-                                className="text-sm font-medium text-zinc-600 hover:text-purple-600 dark:text-zinc-400 dark:hover:text-purple-400 transition-colors"
+                                className="eyebrow link-underline pb-0.5 hover:text-[var(--ink)] transition-colors"
                             >
                                 {item.label}
                             </a>
@@ -52,32 +45,17 @@ export function Navigation() {
                     </div>
 
                     <div className="flex items-center gap-2">
-                        {/* Theme Toggle */}
-                        {mounted && (
-                            <button
-                                onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}
-                                className="rounded-full p-2 hover:bg-zinc-100 dark:hover:bg-zinc-800 transition-colors"
-                                aria-label="Toggle theme"
-                            >
-                                {theme === 'dark' ? (
-                                    <Sun className="h-5 w-5 text-zinc-600 dark:text-zinc-400" />
-                                ) : (
-                                    <Moon className="h-5 w-5 text-zinc-600 dark:text-zinc-400" />
-                                )}
-                            </button>
-                        )}
-
                         {/* Mobile Menu Toggle */}
                         <button
                             onClick={() => setMenuOpen((open) => !open)}
-                            className="md:hidden rounded-full p-2 hover:bg-zinc-100 dark:hover:bg-zinc-800 transition-colors"
+                            className="md:hidden rounded-full p-2 hover:bg-black/5 transition-colors"
                             aria-label="Toggle menu"
                             aria-expanded={menuOpen}
                         >
                             {menuOpen ? (
-                                <X className="h-5 w-5 text-zinc-600 dark:text-zinc-400" />
+                                <X className="h-5 w-5 text-[var(--ink)]" />
                             ) : (
-                                <Menu className="h-5 w-5 text-zinc-600 dark:text-zinc-400" />
+                                <Menu className="h-5 w-5 text-[var(--ink)]" />
                             )}
                         </button>
                     </div>
@@ -86,14 +64,14 @@ export function Navigation() {
 
             {/* Mobile Menu Panel */}
             {menuOpen && (
-                <div className="md:hidden border-t border-zinc-200 dark:border-zinc-800 bg-white/95 dark:bg-zinc-950/95 backdrop-blur-md">
+                <div className="md:hidden border-t border-[var(--line)] bg-[var(--bg)]/95 backdrop-blur-md">
                     <div className="mx-auto max-w-screen-xl px-4 py-3 grid grid-cols-2 gap-1">
                         {navItems.map((item) => (
                             <a
                                 key={item.label}
                                 href={item.href}
                                 onClick={() => setMenuOpen(false)}
-                                className="rounded-lg px-3 py-2 text-sm font-medium text-zinc-600 hover:bg-zinc-100 hover:text-purple-600 dark:text-zinc-400 dark:hover:bg-zinc-800 dark:hover:text-purple-400 transition-colors"
+                                className="eyebrow rounded-lg px-3 py-2 hover:bg-black/5 hover:text-[var(--ink)] transition-colors"
                             >
                                 {item.label}
                             </a>
