@@ -84,8 +84,8 @@ export const EDUCATION: Education[] = [
   {
     institution: 'University of Moratuwa',
     degree: 'BSc (Hons) Electronic & Telecommunication Engineering',
-    duration: 'Aug 2022 – Present',
-    gpa: '3.83/4.0',
+    duration: 'Aug 2022 – July 2026',
+    gpa: '3.85/4.0',
     achievements: [
       "Dean's List (Semesters 1, 2, 4, 6, 7, 8)",
     ],
